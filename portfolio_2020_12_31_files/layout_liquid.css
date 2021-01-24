@@ -1,0 +1,58 @@
+/*-----------------------------------
+ *---------- LIQUID LAYOUT ---------*
+ -----------------------------------*/
+/*
+ * 	=Global layout elements
+ *	=Content layout
+ *		|-
+ *	=Right column layout
+ *	=Footer layout
+*/
+
+/*--------------------------*/
+/* =GLOBAL LAYOUT ELEMENTS= */
+/*-----------------------------------------------------------------------------*/
+html body{margin:0px} /*over ride sq_global.css*/
+
+body {
+    background-color:#fff;
+    margin: 0;
+    padding: 0 ;
+}
+
+/*-------------------------*/
+/* =TOP BANNER NAVIGATION= */
+/*-----------------------------------------------------------------------------*/
+
+#topNav {width: 100%;}
+#topBannerContainer {width:100%; }
+
+
+/*------------------*/
+/* =CONTENT LAYOUT= */
+/*-----------------------------------------------------------------------------*/
+
+#contentwrapper {
+    width: 80%;
+}
+
+/*----------------------*/
+/* =LEFT COLUMN LAYOUT= */
+/*-----------------------------------------------------------------------------*/
+#leftcolumn {
+    float: left;
+    width: 18%;
+    margin:0 0 0 4px;
+}
+
+/*-----------------*/
+/* =FOOTER LAYOUT= */
+/*-----------------------------------------------------------------------------*/
+
+#footerContent {
+    width: 99%;
+}
+
+/*need to move*/
+
+#portlets .contentBox.splitWidth{width:100%}

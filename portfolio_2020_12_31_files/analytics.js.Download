@@ -1,0 +1,191 @@
+// Add ECMA262-5 Array indexOf method if not supported natively
+if (!('indexOf' in Array.prototype)) {
+  //Object.defineProperty() unsupported in IE7
+  /* jshint freeze:false */
+  Array.prototype.indexOf= function(find, i /*opt*/) {
+  /* jshint freeze:true */
+    'use strict';
+
+    if (i === undefined) {
+      i = 0;
+    }
+    if (i < 0) {
+      i+= this.length;
+    }
+    if (i < 0) {
+      i = 0;
+    }
+    for (var n = this.length; i < n; i++) {
+      if (i in this && this[i] === find) {
+        return i;
+      }
+    }
+    return -1;
+  };
+}
+
+function loadScript(src, callback) {
+  'use strict';
+
+  var s, r, t;
+
+  r = false;
+  s = document.createElement('script');
+
+  s.type = 'text/javascript';
+  s.src = src;
+
+  s.onload = s.onreadystatechange = function () {
+    if (!r && (!this.readyState || this.readyState === 'complete')) {
+      r = true;
+      callback();
+    }
+  };
+
+  t = document.getElementsByTagName('script')[0];
+  t.parentNode.insertBefore(s, t);
+}
+
+(function (global, $) {
+  'use strict';
+
+  var DEFAULT_PIWIK_URL = 'www.swissquote.ch/stats';
+
+  var SQAnalytics = (function () {
+    var module = {
+      tracker: null,
+
+      track: function (analytics) {
+        window._paq = window._paq || [];
+
+        this.analytics = analytics;
+
+        this._loadPiwik(analytics);
+      },
+
+      _loadPiwik: function (params) {
+        var self = this;
+        var analytics = this.analytics;
+
+        var protocol = ('https:' === document.location.protocol) ?
+            'https://' : 'http://';
+        var u = protocol + (params.piwikUrl || DEFAULT_PIWIK_URL) + '/';
+
+        window._paq.push(['setTrackerUrl', u + 'piwik.php']);
+        window._paq.push(['setSiteId', analytics.siteId]);
+
+        loadScript(u + 'piwik.js', function () {
+          var analytics = self.analytics;
+
+          // track global page goal
+          if (analytics.goalId) {
+            var goal = ['trackGoal', analytics.goalId];
+
+            if (analytics.goalCustomRevenue) {
+              goal.push(analytics.goalCustomRevenue);
+            }
+
+            window._paq.push(goal);
+          }
+          self._initPiwik();
+        });
+      },
+
+      _initPiwik: function () {
+        var analytics = this.analytics;
+
+        // keep the Tracker reference
+        this.tracker = window.Piwik.getTracker();
+
+        if (analytics.url) {
+          window._paq.push(['setCustomUrl', analytics.url]);
+        }
+
+        if (analytics.referrer) {
+          window._paq.push(['setReferrerUrl', analytics.referrer]);
+        }
+
+        if (analytics.title) {
+          window._paq.push(['setDocumentTitle', analytics.title]);
+        }
+
+        if (analytics.language) {
+        	window._paq.push(['setCustomVariable', 1, 'LANGUAGE', analytics.language, 'visit']);
+        }
+        
+        window._paq.push(['trackPageView']);
+        window._paq.push(['enableLinkTracking']);
+
+        this._attachEvents();
+      },
+
+      _attachEvents: function () {
+        var tracker = this.tracker;
+        var analytics = this.analytics;
+
+        if (+jQuery.fn.jquery.split('.').join('') < 170) {
+          jQuery.fn.on = jQuery.fn.bind;
+        }
+
+        // search the page for analytics data attributes
+        $.each($('[data-analytics]'), function (idx, item) {
+          var properties = $(this).attr('data-analytics');
+          var data = {
+            trigger: null,
+            params: []
+          };
+          var type;
+
+          $.each(properties.split(','), function (idx, prop) {
+            var propParts = prop.split(':');
+            var key = propParts[0];
+            var value = propParts[1];
+
+            if (key === 'type' || key === 'track') {
+              type = value;
+            } else if (key === 'trigger') {
+              value = (value === 'hover') ? 'mouseover' : value;
+              data.trigger = value;
+            } else {
+              data.params.push(value);
+            }
+          });
+
+          // track form submit if type=submit
+          var $type = $(this).attr('type');
+          if ($type && $type.toLowerCase() === 'submit') {
+            data.trigger = 'submit';
+
+            item = $(item).parents('form');
+          }
+
+          // default trigger
+          if (!data.trigger) {
+            data.trigger = 'click';
+          }
+
+          // attach the events
+          var prefix = ['goal', 'event', 'action'].indexOf(type) === -1 ?
+              'set' : 'track';
+          $(item).on(data.trigger, function () {
+            if (window.Piwik.getTracker().getSiteId() !== analytics.siteId) {
+              // set the `siteId` again as Piwik is also loaded by `urchin.js`
+              // which resets the siteId
+              tracker.setSiteId(analytics.siteId);
+              window._paq.push(['setSiteId', SQAnalytics.analytics.siteId]);
+            }
+
+            window._paq.push(
+                [prefix + type.charAt(0).toUpperCase() + type.slice(1)]
+                    .concat(data.params));
+          });
+        });
+      }
+    };
+
+    return module;
+  })();
+
+  // expose SQAnalytics module
+  global.SQAnalytics = SQAnalytics;
+})(this, jQuery);

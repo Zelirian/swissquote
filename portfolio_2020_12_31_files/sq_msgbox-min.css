@@ -1,0 +1,1 @@
+.msgBoxContainer{clear:both;margin:10px 0 10px 0;padding:10px}.msgBox{border:solid 1px #ccc;width:auto;padding:0;margin:0}.msgBox td{margin:0;padding:2px}.msgBox td.imgCell{width:30px;text-align:center}.msgBox td.seenCell{width:50px;text-align:center}.msgBox td.seenCell a{color:#f96}.msgBox td.alertLvl1{color:#c00;font-weight:bold}

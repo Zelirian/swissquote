@@ -1,0 +1,521 @@
+  /*-------------*/
+ /* =  FORMS  = */
+/*-----------------------------------------------------------------------------*/
+
+
+/*
+ * =Label
+ * =Inputs
+ * =Buttons
+ * =Classes
+ *
+ */
+
+/* =LABEL= */
+label{display:block; float:left; clear:left; width:160px;}
+
+
+/* =INPUTS= */
+input,select{
+    display:block;
+    float:left;
+}
+
+/* =BUTTONS STYLE= */
+
+
+/* =CLASSES= */
+.error{
+    /*font-size:11px;*/
+    float:left;
+    border:1px solid #F96;
+    background-color:#FFE6CC;
+    margin-top:2px;
+    /*padding:0 5px 0 20px; */
+    background-image:url('../../sq-css-theme/images/form_warning.gif');
+    background-repeat:no-repeat; 
+    background-position:5px 50%;
+}
+
+
+/* SQWFORM */
+/* just add sqwForm to form to have the below style */
+
+form.sqwForm{
+	padding:10px 0 0 0;
+	margin:0;
+	width:100%;
+}
+
+
+
+	.sqwForm fieldset,
+	.sqwForm .formBlock{
+		width:100%;
+		padding:0px;
+		margin-bottom:10px;
+	}
+
+		.sqwForm legend{
+                    font-weight: bold;
+                    padding: 1.5em 0;
+                    margin: 0; 
+
+                    text-indent: 4px;
+                    color: inherit;
+                    font-weight: bold; 
+                    font-size: 100%; 
+		}
+
+
+
+/* .sqwForm label, */
+/* .sqwForm button{ cursor: pointer; } */
+
+/* Default layout is inline */
+
+/* 			.sqwForm label, */
+/* 			.sqwForm .label{ */
+/* 				float:none; */
+/* 				display:inline; */
+/* 				margin-right:10px; */
+/* 				line-height: 100%; */
+/* 				} */
+
+/* 			.sqwForm input{ */
+/* 				float:none; */
+/* 				display:inline; */
+/* 				margin-left:0; */
+/* 				margin-right:3px; */
+/* 				} */
+
+/* 			.sqwForm .blockLabels label, */
+/* 			.sqwForm .blockLabels .label{ */
+/* 				float:left; */
+/* 				display:block; */
+/* 				} */
+
+/* 			.sqwForm .blockLabels input{ */
+/* 				float:left; */
+/* 				display:block; */
+/* 				} */
+
+
+
+
+/*       Float the input elements */
+/*       .sqwForm .textInput, */
+/*       .sqwForm .fileUpload, */
+/*       .sqwForm .selectInput, */
+/*       .sqwForm select, */
+/*       .sqwForm textarea{ float: none; margin: 0; } */
+
+
+/* ------------------------------------------------------------------------------
+   Copyright (c) 2010, Dragan Babic
+   http://sprawsm.com/uni-form/
+   ------------------------------------------------------------------------------ */
+/* #############################   GENERALS   ################################### */
+/* ------------------------------------------------------------------------------ */
+
+.sqwForm{ margin: 0; padding: 0; position: relative; } /* reset stuff */
+
+  /* Some generals and more resets */
+  .sqwForm fieldset,
+  .sqwForm .formBlock{ border: none; margin: 10px 0 10px 0; padding: 10px; width:auto;}
+    .sqwForm fieldset legend{ margin: 0; padding: 0; }
+
+  /* This are the main units that contain form elements */
+  .sqwForm .ctrlHolder,
+  .sqwForm .buttonHolder{ margin: 0; padding: 0; clear: both; }
+
+  /* Clear all floats */
+  .sqwForm:after,
+    .sqwForm .buttonHolder:after,
+    .sqwForm .ctrlHolder:after,
+      .sqwForm .ctrlHolder .multiField:after,
+        .sqwForm .inlineLabel:after{ content: "."; display: block; height: 0; line-height: 0; font-size: 0; clear: both; min-height: 0; visibility: hidden; }
+
+  .sqwForm label,
+  .sqwForm button{ cursor: pointer; }
+
+/* ------------------------------------------------------------------------------ */
+/* ##########################   DEFAULT LAYOUT   ################################ */
+/* ------------------------------------------------------------------------------ */
+/*       Styles for form controls where labels are above the input elements       */
+/* ------------------------------------------------------------------------------ */
+
+  .sqwForm label,
+  .sqwForm .label{ display: block; float: none; margin: 0 0 .5em 0; padding: 0; line-height: 100%; width: auto; }
+
+  .sqwForm .labelRadio { margin-top:2px; float:left; margin-right:4px; }
+
+  /* Float the input elements */
+  .sqwForm .textInput,
+  .sqwForm .fileUpload,
+  .sqwForm .selectInput,
+  .sqwForm select,
+  .sqwForm textarea{
+    float: left; 
+    width: 53%; 
+    margin: 0; 
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+      
+  .sqwForm .textInput.widthShort,
+  .sqwForm .fileUpload.widthShort,
+  .sqwForm .selectInput.widthShort,
+  .sqwForm select.widthShort,
+  .sqwForm textarea.widthShort {
+    width:19%;
+  }
+      
+  .sqwForm .textInput.widthLong,
+  .sqwForm .fileUpload.widthLong,
+  .sqwForm .selectInput.widthLong,
+  .sqwForm select.widthLong,
+  .sqwForm textarea.widthLong {
+    width:30%;
+  }
+
+    /* Read-Only output */
+    .sqwForm .readOnlyLabel{ margin: 0; font-size: 1em; font-weight: bold; }
+    .sqwForm .readOnly{ font-size: .85em; }
+      .sqwForm .readOnly .choiceLabel{ color: #777; text-transform: uppercase; font-size: .75em; letter-spacing: .15em; }
+
+      /* Postition the hints */
+      .sqwForm .formHint{ float: right; width: 43%; margin: 0; clear: none; }
+
+      /* Position the elements inside combo boxes (multiple inputs/selects/checkboxes/radio buttons per unit) */
+      .sqwForm .ctrlHolder ul{ float: left; width: 53%; margin: 0; padding: 0; }
+        .sqwForm .ctrlHolder ul li{ margin: 0 0 .5em 0; list-style: none;}
+        .sqwForm .ctrlHolder ul li:hover{ background-color: transparent;} /* fix for crush ".ui-corner-all li:hover" in jquery-ui */
+          .sqwForm .ctrlHolder ul li label{ margin: 0; float: none; display: block; overflow: visible; }
+        /* Alternate layout */
+        .sqwForm .ctrlHolder ul.alternate li{ float: left; width: 30%; margin-right: 3%; }
+          .sqwForm .ctrlHolder ul.alternate li label{ float: none; display: block; width: 98%; }
+            .sqwForm .ctrlHolder ul .textInput,
+            .sqwForm .ctrlHolder ul .selectInput,
+            .sqwForm .ctrlHolder ul select,
+            .sqwForm .ctrlHolder ul.alternate .textInput,
+            .sqwForm .ctrlHolder ul.alternate .selectInput,
+            .sqwForm .ctrlHolder ul.alternate select{ width: 98%; margin-top: .5em; display: block; float: none; }
+
+        /* Required fields asterisk styling */
+        .sqwForm label em,
+        .sqwForm .label em{ float: left; width: 1em; margin: 0 0 0 -1em; }
+
+/* ------------------------------------------------------------------------------ */
+/* #########################   ALTERNATE LAYOUT   ############################### */
+/* ------------------------------------------------------------------------------ */
+/*    Styles for form controls where labels are in line with the input elements   */
+/*    Set the class of the parent (preferably to a fieldset) to .inlineLabels     */
+/* ------------------------------------------------------------------------------ */
+
+      .sqwForm .inlineLabels label,
+      .sqwForm .inlineLabels .label,
+      .sqwForm .inlineLabels .readOnlyLabel{ float: left; margin:4px 0 0 0; padding: 0; line-height: 18px; height:18px; position: relative; width: 34%; *width:33%; }
+
+      .sqwForm .inlineLabels .readOnlyLabel{ margin: 0; }
+
+      /* Float the input elements */
+      .sqwForm .inlineLabels .textInput,
+      .sqwForm .inlineLabels .fileUpload,
+      .sqwForm .inlineLabels .selectInput,
+      .sqwForm .inlineLabels select,
+      .sqwForm .inlineLabels textarea{ float: left; width: 64%; }
+      
+      .sqwForm .inlineLabels .textInput.widthShort,
+      .sqwForm .inlineLabels .fileUpload.widthShort,
+      .sqwForm .inlineLabels .selectInput.widthShort,
+      .sqwForm .inlineLabels select.widthShort,
+      .sqwForm .inlineLabels textarea.widthShort {
+		width:20%;
+      }
+      
+      .sqwForm .inlineLabels .textInput.widthLong,
+      .sqwForm .inlineLabels .fileUpload.widthLong,
+      .sqwForm .inlineLabels .selectInput.widthLong,
+      .sqwForm .inlineLabels select.widthLong,
+      .sqwForm .inlineLabels textarea.widthLong {
+      	width:42%;
+      }
+      
+      .sqwForm .inlineLabels .textInput.widthEqual,
+      .sqwForm .inlineLabels .fileUpload.widthEqual,
+      .sqwForm .inlineLabels .selectInput.widthEqual,
+      .sqwForm .inlineLabels select.widthEqual,
+      .sqwForm .inlineLabels textarea.widthEqual {
+      	width:31%;
+      }
+
+    /* Postition the hints */
+    .sqwForm .inlineLabels .formHint{ clear: both; float: none; width: auto; margin-left: 34%; position: static; }
+
+    /* Position the elements inside combo boxes (multiple inputs/selects/checkboxes/radio buttons per unit) */
+    .sqwForm .inlineLabels .ctrlHolder ul{ float: left; width: 66%; margin:0 !important; padding:0 !important; }
+    .sqwForm .inlineLabels.bottom .ctrlHolder ul { width: 67%; }
+      .sqwForm .inlineLabels .ctrlHolder ul li{ margin: .5em 0; }
+        .sqwForm .inlineLabels .ctrlHolder ul li label{ float: none; display: block; width: 100%; }
+      /* Alternate layout */
+      /*.sqwForm .inlineLabels ul.alternate{ width:100% }*/
+      .sqwForm .inlineLabels .ctrlHolder ul.alternate li{ margin-left: 3%; margin-top: .25em; }
+          .sqwForm .inlineLabels .ctrlHolder ul li label .textInput,
+          .sqwForm .inlineLabels .ctrlHolder ul li label textarea,
+          .sqwForm .inlineLabels .ctrlHolder ul li label select{ float: none; display: block; width: 98%;  }
+
+    .sqwForm .inlineLabels .readOnly{ float: right; width: 66%; }
+
+    /* Required fields asterisk styling */
+    .sqwForm .inlineLabels label em,
+    .sqwForm .inlineLabels .label em{ display: block; float: none; margin: 0; position: absolute; right: 0; }
+
+/* ----------------------------------------------------------------------------- */
+/* ########################### Additional Stuff ################################ */
+/* ----------------------------------------------------------------------------- */
+
+  /* Generals */
+
+      .sqwForm .secondaryAction{ float: left; }
+
+      /* .inlineLabel is used for inputs within labels - checkboxes and radio buttons */
+      .sqwForm .inlineLabel input,
+      .sqwForm .inlineLabels .inlineLabel input,
+      .sqwForm .blockLabels .inlineLabel input,
+      /* class .inlineLabel is depreciated */
+      .sqwForm label input{ float: none; display: inline; margin: 0; padding: 0; border: none; }
+
+      .sqwForm .buttonHolder .inlineLabel,
+      .sqwForm .buttonHolder label{ float: left; margin: .5em 0 0 0;padding:0; width: auto; max-width: 60%; text-align: left; }
+
+      /* When you don't want to use a label */
+      .sqwForm .inlineLabels .noLabel ul{ margin-left: 34%; /* Match to width of label + gap to field */ }
+
+      /* Classes for control of the widths of the fields */
+      .sqwForm .small { width: 30% !important; }
+      .sqwForm .medium{ width: 45% !important; }
+      .sqwForm .large {  } /* Large is default and should match the value you set for .textInput, textarea or select */
+      .sqwForm .auto  { width: auto !important; height: auto !important; }
+      .sqwForm .small,
+      .sqwForm .medium,
+      .sqwForm .auto{ margin-right: 4px; }
+
+
+
+/* ------------------------------------------------------------------------------
+
+   UNI-FORM READY by DRAGAN BABIC                            (v2) | Wed, 31 Mar 10
+
+   ------------------------------------------------------------------------------ */
+
+.sqwForm{ background: transparent; color: #000;}
+.sqwForm fieldset h3{ background:#187193; color: #FFF;}
+    .sqwForm .ctrlHolder.focused label {color:#FFF;}
+    .sqwForm .ctrlHolder.focused.error label {color:#000;}
+    .sqwForm .ctrlHolder{ padding: 5px; border-bottom:none; }
+    .sqwForm .ctrlHolder.focused{ background: #96B343; }
+
+    .sqwForm .buttonHolder{ background: #f3f3f3; color:#fff; text-align: right; margin: 1.5em 0 0 0; padding: 1.5em;}
+
+      .sqwForm .buttonHolder .primaryAction:active{ position: relative; top: 1px; }
+      .sqwForm .secondaryAction            { text-align: left; }
+      .sqwForm button.secondaryAction      { background: transparent; border: none; color: #FFF; margin: 1.25em 0 0 0; padding: 0; }
+
+        .sqwForm .inlineLabels label em,
+        .sqwForm .inlineLabels .label em{ font-style: normal; font-weight: bold; }
+        .sqwForm label small{ font-size: .75em; color: #777; }
+
+      .sqwForm .textInput,
+      .sqwForm .selectInput,
+      .sqwForm textarea    { padding: 4px 2px; height:26px; border: 1px solid #b5b5b5; background: #FFF; color: #000; margin-left:2%;}
+      .sqwForm textarea    { height: 12em;}
+      
+      .sqwForm .textInput:focus,
+      .sqwForm textarea:focus{ border: 1px solid #187193; background-color: #FFF; color: #000;}
+	  
+	  .sqwForm .disabled, .sqwForm .disabled:focus {
+		  color: #999;
+		  background-color: #eee;
+		  border-color: #ccc;
+		  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+		  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+		  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+	  }
+
+	  .sqwForm .noField { padding: 4px 2px; min-height:18px; color: #000; margin-left:2%; font-weight:normal;}
+      
+
+      .sqwForm .ctrlHolder.error textarea,
+      .sqwForm .ctrlHolder.error .selectInput,
+      .sqwForm .ctrlHolder.error .textInput{border: 1px solid #c20f2e;}
+      .sqwForm .ctrlHolder.focused.error textarea,
+      .sqwForm .ctrlHolder.focused.error .textInput{border: 3px solid #c20f2e;}
+
+      .sqwForm .ctrlHolder.focused textarea,
+      .sqwForm .ctrlHolder.focused .textInput{border: 3px solid #187193;}
+
+      /* Get rid of the 'glow' effect in WebKit, optional */
+      .sqwForm .ctrlHolder .textInput:focus,
+      .sqwForm .ctrlHolder textarea:focus{ outline: none; }
+
+      .sqwForm .formHint                    { font-size: .85em; color: #777; }
+      .sqwForm .inlineLabels .formHint      { padding-top: .5em; }
+      .sqwForm .ctrlHolder.focused .formHint{ color: #fff; }
+
+/* ----------------------------------------------------------------------------- */
+/* ############################### Messages #################################### */
+/* ----------------------------------------------------------------------------- */
+    
+    
+    .sqwForm #errorMsg, 
+    .sqwForm #okMsg {
+        border: 1px solid #232323; 
+        color: #fff; 
+        margin: 0 0 1.5em 0; 
+        padding: 0 1.5em;
+        
+        /* CSS3 */
+        border-radius:         4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius:    4px;
+        -o-border-radius:      4px;
+        -khtml-border-radius:  4px;
+    }
+    .sqwForm #errorMsg p, 
+    .sqwForm #okMsg p {
+        margin:0;
+    }
+  /* Success messages at the top of the form */
+  .sqwForm #okMsg{ 
+      background: #59a20e; 
+      text-align: center;
+    }
+  /* Error message at the top of the form */
+  .sqwForm #errorMsg{ 
+      background: #c20f2e; 
+    }
+    .sqwForm #errorMsg ol{ 
+        margin: 0 0 1.5em 0; 
+        padding: 0; 
+    }
+      .sqwForm #errorMsg ol li{ 
+            margin: 0 0 3px 1.5em; 
+            padding: 7px; 
+            background: #a20d27; 
+            position: relative; 
+            font-size: .85em;
+            
+            /* CSS3 */
+            border-radius:         4px;
+            -webkit-border-radius: 4px;
+            -moz-border-radius:    4px;
+            -o-border-radius:      4px;
+            -khtml-border-radius:  4px;
+        }
+
+  .sqwForm .ctrlHolder.error,
+  .sqwForm .ctrlHolder.focused.error{ 
+      float:none;
+      padding:4px;
+      
+      background: #FFDFDF; 
+      border: 1px solid #c20f2e; 
+      color: #000;
+                                                      
+      /* CSS3 */
+      border-radius:         4px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius:    4px;
+      -o-border-radius:      4px;
+      -khtml-border-radius:  4px;
+    }
+    .sqwForm .ctrlHolder.error input.error,
+    .sqwForm .ctrlHolder.error select.error,
+    .sqwForm .ctrlHolder.error textarea.error{ 
+        color: #af4c4c; 
+        margin: 0 0 6px 0; 
+        padding: 4px; 
+        background: #ffbfbf; 
+    }
+
+    .sqwForm .ctrlHolder.error .formHint{ color: #000; }
+
+/* ----------------------------------------------------------------------------- */
+/* ############################### Columns ##################################### */
+/* ----------------------------------------------------------------------------- */
+
+    .sqwForm .col{ 
+        float:left; 
+        width:50%; 
+    }
+    /* Use .first and .last classes to control the layout/spacing of your columns */
+    .sqwForm .col.first{ 
+        width: 49%; 
+        float: left; 
+        clear: none;                   
+    }
+    .sqwForm .col.last { 
+        width: 49%; 
+        float: right; 
+        clear: none; 
+        margin-right: 0; 
+    }
+
+    .sqwForm .col.full{ width:100%; }
+
+  /*---------------------------------------*/
+ /* = MultiLine FIX 4 RADIOS + CHECKBOX = */
+/*-----------------------------------------------------------------------------
+    when a radio or checkbox label needs be on multi lines, add .multiLine
+	this will add a left padding and align the text nicely
+*/
+
+.sqwForm .ctrlHolder label.multiLine{padding-left:18px}
+.sqwForm .ctrlHolder label.multiLine input {margin-left:-18px}
+
+  /*------------------*/
+ /* = added tweaks = */
+/*-----------------------------------------------------------------------------*/
+
+
+.form-overlay {
+    background:black;
+    
+    -moz-opacity: 0.20;
+    -khtml-opacity: 0.20;
+    opacity: 0.20;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+    filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=20)";
+    filter:"alpha(opacity=20)";
+
+    display:none;
+    z-index:100000;
+    left:0;
+    top:0;
+}
+
+.form-overlay-text {
+    left:50%;
+    top:50%;
+    z-index:2;
+}
+
+.form-overlay-text div {
+    position:relative;
+    left:-50%;
+    top:-50%;
+    
+    background:#000;
+    color:white;
+    padding:6px;
+    font-weight:bold;
+}
+
+.boxshadow .form-overlay-text div {
+	-moz-box-shadow: 0 0 3px 3px #fff;
+	-webkit-box-shadow: 0 0 3px 3px#fff;
+	box-shadow: 0 0 3px 3px #fff;
+}

@@ -1,0 +1,112 @@
+
+$(document).ready(function () {
+	
+	var searchDelay = 700;
+
+	var searchInput = $('#symbols');
+	searchInput.val(value_search);
+	searchInput.addClass("defaultInput");
+	
+	var isChanged = false;
+	searchInput.focus(function () {
+		if (!isChanged) {
+			$(this).removeClass("defaultInput");
+			$(this).val('');
+		}
+		$(this).addClass("textInputOver");
+	});
+	searchInput.blur(function () {
+		if (!isChanged) {
+			$(this).val(value_search);
+			$(this).addClass("defaultInput");
+		}
+		$(this).removeClass("textInputOver");
+	});
+
+	searchInput.bind("keyup paste", function (event) {
+		var Key = {
+			ENTER: 13,
+			ESCAPE: 27
+		}
+		switch(event.keyCode) {
+			case Key.ENTER:
+				delay(forwardToFullquote, 0);
+				return false;
+			case Key.ESCAPE:
+				$(this).blur();
+				return false;
+			default:
+				setTimeout(function () {
+					runSearch(searchInput);
+				}, 0);
+				break;
+		}
+	});
+	
+	function runSearch(searchField) {
+		var currentValue = searchField.val();
+		var hiddenInput = $('#symbols_val')
+		if(hiddenInput.val() != currentValue) {
+			hiddenInput.val(currentValue);
+			delay(forwardToQuicksearch, searchDelay);
+		}
+		inputChanged(searchField); // f.e. the middle mouse button doesn't trigger the change event
+	}
+
+	searchInput.click(function (event) {
+		$(this).removeClass("defaultInput");
+		$(this).addClass("textInputOver");
+		var value = $('#symbols_val').val();
+		if (value != searchInput.val() && searchInput.val() == value_search) {
+			searchInput.val(value);
+		}
+		});
+
+	searchInput.change(function () {
+		inputChanged($(this));
+	});
+
+	var delay = (function () {
+		var previousFunction;
+		return function (callback, ms) {
+			clearTimeout(previousFunction);
+			previousFunction = setTimeout(callback, ms);
+		};
+	})();
+
+	function inputChanged(searchField) {
+		if (searchField.val() == '') {
+			isChanged = false;
+		} else {
+			isChanged = true;
+		}
+	}
+
+});
+
+function forwardToQuicksearch() {
+	var baseURL = '/sqi_web_search/market/equity/SearchForward.action?activeTab=all&';
+	forwardTo(baseURL);
+}
+
+function forwardToFullquote() {
+	var baseURL = '/sqi_web_search/market/equity/SearchForward.action?activeTab=all&navigate_to_first_result=&';
+	forwardTo(baseURL);
+}
+
+function forwardTo(baseURL, target) {
+	var $symbols = $('#symbols_val');
+	var param = '';
+	param += 'l=' + lang1;
+	param += '&r=' + random;
+	param += '&isFromNav=true';
+	if (!$symbols.hasClass('defaultInput')) {
+		param += '&searchText=' + encodeURI($symbols.val());
+	}
+	try {
+		var wnd = (target == '_top') ? top : top.frames['sqmain'];
+		wnd.location.href = baseURL + param;
+	} catch (e) {
+		top.location = baseURL + param + "&frame=true";
+	}
+}

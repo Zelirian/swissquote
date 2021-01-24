@@ -1,0 +1,190 @@
+$(function(){
+	var accountMessageBox = $('#toggle_show');
+	if(accountMessageBox){
+		accountMessageBox.on('click', function(){
+			var symbol = $('#toggle_show_text');
+			if(symbol.hasClass('m_middle minus')){
+				window._paq.push(['trackEvent', 'My Trade Account', 'Show', 'Client Message']);
+			}else{
+				window._paq.push(['trackEvent', 'My Trade Account', 'Hide', 'Client Message']);
+			}
+		});
+	}
+
+	var bpContainer = $('.bpContainer');
+	if(bpContainer){
+		bpContainer.on('click', function(){
+			if(bpContainer.hasClass('is-active')){
+				window._paq.push(['trackEvent', 'My Trade Account', 'Expanded', 'BP']);
+			}else{
+				window._paq.push(['trackEvent', 'My Trade Account', 'Collapsed', 'BP']);
+			}
+		});
+	}
+
+	var creditContainer = $('.bpContainer');
+	if(creditContainer){
+		creditContainer.on('click', function(){
+			if(creditContainer.hasClass('is-active')){
+				window._paq.push(['trackEvent', 'My Trade Account', 'Expanded', 'BP Increase']);
+			}else{
+				window._paq.push(['trackEvent', 'My Trade Account', 'Collapsed', 'BP Increase']);
+			}
+		});
+	}
+
+	var bpTotal = $('#trtotal').find('a').eq(0);
+	if(bpTotal){
+		bpTotal.on('click', function(){
+			window._paq.push(['trackEvent', 'My Trade Account', 'Page Access - details', 'BP']);
+		});
+	}
+
+	var increaseDemandButton = $('a.creditLombardButton.hasLoan');
+	if(increaseDemandButton){
+		increaseDemandButton.on('click', function(){
+			window._paq.push(['trackEvent', 'My Trade Account', 'Request', 'BP Increase Modification']);
+		});
+	}else{
+		var loanDemandButton = $('a.creditLombardButton');
+		if(loanDemandButton){
+			increaseDemandButton.on('click', function(){
+				window._paq.push(['trackEvent', 'My Trade Account', 'Request', 'BP Increase Request']);
+			});
+		}
+	}
+
+	var hideEmpty = $('#hideEmpty');
+	if(hideEmpty){
+		hideEmpty.on('click', function(){
+			window._paq.push(['trackEvent', 'My Trade Account', 'HideOrShow: no value positions', 'Accounts']);
+		});
+	}
+
+	var accountsShowHide = $('#account_show_text');
+	if(accountsShowHide){
+		accountsShowHide.on('click', function(){
+			if(accountsShowHide.hasClass('m_middle minus')){
+				window._paq.push(['trackEvent', 'My Trade Account', 'Show', 'Accounts']);
+			}else{
+				window._paq.push(['trackEvent', 'My Trade Account', 'Hide', 'Accounts']);
+			}
+		});
+	}
+
+	var accountsRefresh = $('#account_refresh_link');
+	if(accountsRefresh){
+		accountsRefresh.on('click', function(){
+			window._paq.push(['trackEvent', 'My Trade Account', 'Reload', 'Accounts']);
+		});
+	}
+
+	var orderBox = $('#orders_show_text');
+	if(orderBox){
+		orderBox.on('click', function(){
+			if(orderBox.hasClass('m_middle minus')){
+				window._paq.push(['trackEvent', 'My Trade Account', 'Show', 'Daily Orders']);
+			}else{
+				window._paq.push(['trackEvent', 'My Trade Account', 'Hide', 'Daily Orders']);
+			}
+		});
+	}
+
+	var orderRefresh = $('#order_refresh_link');
+	if(orderRefresh){
+		orderRefresh.on('click', function(){
+			window._paq.push(['trackEvent', 'My Trade Account', 'Reload', 'Daily Orders']);
+		});
+	}
+
+	var newsBox = $('#news_show_text');
+	if(newsBox){
+		newsBox.on('click', function(){
+			if(newsBox.hasClass('m_middle minus')){
+				window._paq.push(['trackEvent', 'My Trade Account', 'Show', 'News']);
+			}else{
+				window._paq.push(['trackEvent', 'My Trade Account', 'Hide', 'News']);
+			}
+		});
+	}
+
+	var newsRefresh = $('#news_refresh_link');
+	if(newsRefresh){
+		newsRefresh.on('click', function(){
+			window._paq.push(['trackEvent', 'My Trade Account', 'Reload', 'News']);
+		});
+	}
+
+	var assetItems = $('#assets-table').find('.item:not(.submenu)');
+	if(assetItems){
+		$.each(assetItems, function( index, item ) {
+			itemObject = $(item);	
+			itemObject.removeAttr('id');//NOTE: strangely all the submenu items have the same id
+			itemObject.attr('data-analytics', 'track:event,trigger:click,category:My Trade Account,action:Page Access - '+itemObject.text().trim()+',name:Securities');
+		});
+	}
+
+	var assetGroup = $('#groubByBtn');
+	if(assetGroup){
+		assetGroup.on('click', function(){
+			window._paq.push(['trackEvent', 'My Trade Account', 'Group', 'Securities:tools']);
+		});
+	}
+
+	var assetExport = $('#downloadCsvBtn');
+	if(assetExport){
+		assetExport.on('click', function(){
+			window._paq.push(['trackEvent', 'My Trade Account', 'Export', 'Securities:tools']);
+		});
+	}
+
+	var assetAnalyzer = $('#pfAnalyzerBtn');
+	if(assetAnalyzer){
+		assetAnalyzer.on('click', function(){
+			window._paq.push(['trackEvent', 'My Trade Account', 'Porttfolio Analyzer', 'Securities:tools']);
+		});
+	}
+
+	var assetBox = $('#assets_show_text');
+	if(assetBox){
+		assetBox.on('click', function(){
+			if(assetBox.hasClass('m_middle minus')){
+				window._paq.push(['trackEvent', 'My Trade Account', 'Show', 'Securities']);
+			}else{
+				window._paq.push(['trackEvent', 'My Trade Account', 'Hide', 'Securities']);
+			}
+		});
+	}
+
+	var assetRefresh = $('#asset_refresh_link');
+	if(assetRefresh){
+		assetRefresh.on('click', function(){
+			window._paq.push(['trackEvent', 'My Trade Account', 'Reload', 'Securities']);
+		});
+	}
+
+	var newsBox = $('#news_show_text');
+	if(newsBox){
+		newsBox.on('click', function(){
+			if(newsBox.hasClass('m_middle minus')){
+				window._paq.push(['trackEvent', 'My Trade Account', 'Show', 'News']);
+			}else{
+				window._paq.push(['trackEvent', 'My Trade Account', 'Hide', 'News']);
+			}
+		});
+	}
+
+	var newsRefresh = $('#news_refresh_link');
+	if(newsRefresh){
+		newsRefresh.on('click', function(){
+			window._paq.push(['trackEvent', 'My Trade Account', 'Reload', 'News']);
+		});
+	}
+
+	SQAnalytics.track({
+		piwikUrl : piwikParams.URL,
+		siteId : 2,
+		title: 'Trading Account ::My Account',
+		language: piwikParams.LANG
+	});
+});

@@ -1,0 +1,207 @@
+/*----------------------------
+ * ---------- TYPO ----------*
+ ----------------------------*/
+/*
+ * 	=Style default text
+ * 	=Menu default text
+ *  =Links default text
+ *  =Page titles
+ *  =Data table text
+ */
+
+/*
+ *This file contains the basic font type, color and size for
+ *text, title and links.
+ */
+
+/* =STYLE DEFAULT COLOR */
+	/* #333; */
+	body,p,div,td{color:#333;}
+
+	/* #555; */
+	#navBar a,#toolBar a{color:#555;}
+
+
+
+/* =STYLE DEFAULT TEXT= */
+	body,p,div,td{
+		font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+		font-size: 12px;
+		line-height: 1.5em;
+	}
+
+	p, .contentArticle{margin-top:10px; margin-bottom:10px;}
+
+	.disclaimer{font-size:10px;}
+
+/* =MENU DEFAULT TEXT= */
+
+
+/* Paths to webfonts */
+	@font-face {
+		font-family: "din_regular";
+		src: url('../fonts/din_regular.eot');
+		src: url('../fonts/din_regular.eot?#iefix') format('embedded-opentype'),
+			 url('../fonts/din_regular.woff') format('woff'),
+			 url('../fonts/din_regular.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	@font-face {
+	  font-family: "din_medium";
+		src: url('../fonts/din_medium.eot');
+		src: url('../fonts/din_medium.eot?#iefix') format('embedded-opentype'),
+			 url('../fonts/din_medium.woff') format('woff'),
+			 url('../fonts/din_medium.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "din_bold";
+		src: url('../fonts/din_bold.eot');
+		src: url('../fonts/din_bold.eot?#iefix') format('embedded-opentype'),
+			 url('../fonts/din_bold.woff') format('woff'),
+			 url('../fonts/din_bold.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	/* Fonts Top nav*/
+	#navBar #quickMenu a,
+	#navBar #communityNav a,
+	#navBar #companyNav a {
+		font-family: din_regular, Verdana, Geneva, Arial, Helvetica, sans-serif;
+	}
+
+	#navBar #mainNav a {
+		font-family: din_medium, Verdana, Geneva, Arial, Helvetica, sans-serif;
+	}
+
+	#top_right_nav #lang_de a,
+	#top_right_nav #lang_fr a,
+	#top_right_nav #lang_en a {
+		font-family: din_bold, Verdana, Geneva, Arial, Helvetica, sans-serif;
+		text-align: center;
+	}
+
+	#top_right_nav #loginBox a {
+		font-family: din_regular, Verdana, Geneva, Arial, Helvetica, sans-serif;
+	}
+
+	#top_right_nav a,
+	#navBar a,
+	#toolBar a {
+		text-decoration: none;
+		font-size: 13px;
+		/*letter-spacing:-0.02em;*/
+	}
+
+	#loginBox span.middle {
+		text-decoration: none;
+		font-size: 13px;
+	}
+
+	#helpNav a{
+		font-family: din_regular, Verdana, Geneva, Arial, Helvetica, sans-serif;
+		color:#333;font-size:13px;
+	}
+	/*#top_right_nav a{color:#333;font-size:13px;}*/
+
+	#loginBox a{
+		color:#333;
+		font-size:13px;
+	}
+
+	#loginBox a strong{
+		color:#555;
+	}
+
+	#loginBox .openAccount a {
+		color:#fff;
+	}
+
+
+/* =LINK DEFAULT TEXT (orange underline)= */
+	a, a:link, a:visited, a:active {
+		color:#FF6633;
+		text-decoration:underline;
+	}
+	a:hover {
+		color:#FF6633;
+		text-decoration:none;
+	}
+
+
+/* =PAGE TITLES= */
+	h1{}
+	h2{
+		color:#333;
+		font-size:14px;
+		margin: 25px 0 10px;
+		font-weight: bold;
+		clear:left;
+		}
+	#title h2.subtitle {
+		color:#333;
+		font-size:12px;
+		font-weight:bold;
+		padding:0 0 0 0;
+		}
+
+	h3{
+		color:#333;
+		font-size:12px;
+		font-weight:bold;
+		clear:left;
+		margin:20px 0 0 0;
+		}
+
+	h4{
+		color:#333;
+		font-size:12px;
+		font-weight:bold;
+		margin:15px 0 0;
+		padding:0;
+		clear:left;
+		}
+
+/* =DATA TABLE TEXT= */
+
+	.dataTable{font-family:Arial,Helvetica;}
+
+
+/* =Page Content=*/
+
+	#contentwrapper li{line-height:18px;padding-bottom:5px;}
+	
+/* =Lists= */
+
+	ol.decimal,
+	ol.lower-roman,
+	ol.upper-roman,
+	ol.upper-alpha,
+	ol.lower-alpha {
+		padding-left:2em;
+	}
+
+	ol.decimal {
+		list-style-type:decimal;
+	}
+	
+	ol.lower-roman {
+		list-style-type:lower-roman;
+	}
+	
+	ol.upper-roman {
+		list-style-type:upper-roman;
+	}
+	
+	ol.upper-alpha {
+		list-style-type:upper-alpha;
+	}
+	
+	ol.lower-alpha {
+		list-style-type:lower-alpha;
+	}

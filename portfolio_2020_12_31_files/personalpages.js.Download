@@ -1,0 +1,27 @@
+<!--
+// COPYRIGHT (c) 2004 BY SWISSQUOTE GROUP LTD, GLAND, SWITZERLAND - Ver 4.1
+var path_pp='/fcgi-bin/personalpages';
+var pp_lg='';var pp_pw='';var pp_name='';var pp_col_setup='';var pp_nb_pages='';var pp_timestamp='';var pp_menupages='';var pp_order='';var pp_sc='';
+function pp_login(){
+    Mlang();tm=new Date();now=Math.round(tm.getTime()/1000);random=Math.random();
+ if((now-pp_timestamp)>14400){
+  var url_ppl=path_pp+'?LANGUAGE='+Mla+'&r='+random;
+  if(fset){top.frames[Targ2].frames[Targ].location=url_ppl;}
+  else{top.frames[Targ].location=url_ppl;};
+ }
+ else if(parent.pp_timestamp&&(now-parent.pp_timestamp)<0.4){
+  if(Mla==4){alert("Please slow down your requests.");}
+  else if(Mla==2){alert("SVP, ralentissez le rythme de vos requêtes!");}
+  else{alert("Bitte verlangsamen Sie Ihre Klick-Geschwindigkeit!");}
+ }
+ else{
+  if(!pp_lg){pp_lg='+';};
+  pp_timestamp=now;
+  var url_pplf=path_pp+'?PP_USERID='+pp_lg+'&PP_NAME='+pp_name+'&PP_LANGUAGE='+Mla+'&PP_COL_SETUP='+pp_col_setup+'&PP_NB_PAGES='+pp_nb_pages+'&PP_LIST='+pp_menupages+'&TIMESTAMP='+parent.pp_timestamp+'&SECURITY_CODE='+parent.pp_sc;
+  if(fset){top.frames[Targ2].frames[Targ].location=url_pplf;}
+  else{top.frames[Targ].location=url_pplf;};
+ }
+}
+function pp_sms(){
+ top.frames[2].location='/sq_mi/sms/view.jsp'}
+// -->

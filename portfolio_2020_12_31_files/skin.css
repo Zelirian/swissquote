@@ -1,0 +1,716 @@
+
+	/*----------------------------
+	 * ---------Top Nav----------*
+	 ----------------------------*/
+	 a img {
+	 	border: 0;
+	 }
+
+	 #topBanner {
+		border-bottom:4px solid #FF6633;
+		background: #ffcc99 repeat-y 50% 50% url('../../images/navigation/nav/background.gif');
+	 }
+	 #topBannerContainer {
+	 	position: relative;
+	 	height: 96px;
+	 }
+
+	 #topBanner h1 {
+	 	margin: 0;
+	 	padding: 15px 0 15px 0;
+	 	float: left;
+	 }
+
+	 #topBanner ol {
+	 	list-style: none;
+	 	padding: 0px;
+	 	margin: 0;
+	}
+
+	 #topBanner ol ul li {
+	 	margin-left: 0;
+	 }
+
+	 ol#navBar {
+	 	position: absolute;
+	 	bottom: 0;
+	 	left: 0;
+	 }
+
+	 ol#toolBar {
+	 	position: absolute;
+	 	bottom: 0;
+	 	right: 0;
+	 }
+
+	 ol#navBar a {
+		height: 14px;
+		line-height: 14px;
+		display: block;
+	 }
+
+	 ol#navBar li, ol#toolBar li {
+		float: left;
+		display: block;
+	 }
+
+	 ol#navBar ul li {
+		cursor: pointer;
+		margin-right: 6px;
+
+		/* Default color for tabs */
+		border: 1px solid #c4c4c4;
+		border-bottom-style: none;
+		background-color: #f0f0f0;
+
+		-webkit-border-top-right-radius: 3px;
+			-moz-border-top-right-radius: 3px;
+				border-top-right-radius: 3px;
+		-webkit-border-top-left-radius: 3px;
+			-moz-border-top-left-radius: 3px;
+				border-top-left-radius: 3px;
+	 }
+
+	 ol#navBar ul li a {
+		padding: 9px 6px 6px 6px;
+	 }
+
+	 ol#navBar #mainNav li#mkt_epb,
+	 ol#navBar #mainNav li#mkt_trading,
+	 ol#navBar #mainNav li#mkt_forex,
+	 ol#navBar #mainNav li#mkt_others {
+		/* Redefine default color for some tabs */
+		border: 1px solid #f39756;
+		border-bottom-style: none;
+		background-color: #fcc58e;
+	 }
+
+	 /* On Hover Behaviour */
+	 ol#navBar ul li.hover {
+	 	background-color: #fff;
+	 }
+
+	 ol#navBar #mainNav li#mkt_epb.hover,
+	 ol#navBar #mainNav li#mkt_trading.hover,
+	 ol#navBar #mainNav li#mkt_forex.hover,
+	 ol#navBar #mainNav li#mkt_others.hover {
+		background-color: #fcddbf;
+	 }
+
+	 /* On Select Behaviour */
+	 ol#navBar ul li.selected,
+	 ol#navBar #mainNav li#mkt_epb.selected,
+	 ol#navBar #mainNav li#mkt_trading.selected,
+	 ol#navBar #mainNav li#mkt_forex.selected,
+	 ol#navBar #mainNav li#mkt_others.selected {
+		/* Redefine default color for some tabs on hover */
+		background-color: #fff;
+	 }
+
+	 /* On Select "Merge" Behaviour */
+	 ol#navBar ul li.selected a {
+		/* Trick to get over the orange border of the topBanner and "merge" with the page */
+		border-bottom: 4px solid #fff;
+		margin-bottom: -4px;
+	 }
+
+	 /* Community */
+	ol#navBar li ul#communityNav li#community a {
+		background: url('../../images/navigation/nav/picto_community.gif') no-repeat 6px 50%;
+		/*Added 12px to the 12px padding to account for the picto in the tab*/
+		padding-left: 18px;
+	}
+
+	/* Help Nav */
+	ol#navBar li ul#toolsNav {
+		margin-right: 0px;
+	}
+
+	#helpNav li a {
+		height: 14px;
+		line-height: 14px;
+		display: block;
+	}
+
+	#helpNav li {
+		cursor: pointer;
+		background-color: #f0f0f0;
+		border: 1px solid #c4c4c4;
+		border-bottom-style: none;
+
+		-webkit-border-top-right-radius: 3px;
+			-moz-border-top-right-radius: 3px;
+				border-top-right-radius: 3px;
+
+		-webkit-border-top-left-radius: 3px;
+			-moz-border-top-left-radius: 3px;
+				border-top-left-radius: 3px;
+	}
+
+	#helpNav li a{
+		padding: 9px 6px 6px 6px; /*Giving the padding to the link to stay coherent with the rest of the navBar*/
+	}
+
+	#helpNav li.hover {
+		background-color: #fff;
+	}
+
+	#helpNav li.selected a{
+		background-color: #fff;
+		border-bottom: 4px solid #fff;
+		margin-bottom: -4px;
+	}
+
+	/* SLIM */
+	#topBanner .slim {
+		border-bottom: 4px solid #FF6633;
+		min-width: 950px;
+		width: 100%;
+		height: 88px;
+		background: #fff repeat-y -200px 0;
+	}
+
+	#topBanner .slim h1 {
+		padding: 0;
+		line-height: 1em;
+	}
+
+	#topBanner .slim ol {
+		margin-right: 12px;
+	}
+
+	#topBanner .slim ol#navBar {
+		left: 9px;
+	}
+
+	#top_right_nav {
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 2;
+	}
+
+	/* Language Nav */
+	#topBanner ol#languageNav {
+		position: relative;
+		float: left;
+		margin-right: 6px;
+	}
+
+	#topBanner ol#languageNav li {
+		display: block;
+		float: left;
+		width: 19px;
+		height: 18px;
+		line-height: 20px;
+
+		padding: 0px 2px 0 2px;
+        text-align: center;
+	}
+
+	#topBanner ol#languageNav li.hover {
+		padding-top: 7px;
+	}
+
+	#topBanner ol#languageNav li.hover a {
+		color: #F63;
+	}
+
+	#topBanner ol#languageNav li a {
+		font-size: 11px;
+		color: #333;
+		text-decoration: none;
+		display: block;
+	}
+
+	#topBanner ol#languageNav li#lang_de {
+		background-color: #c4c4c4;
+		border: 1px solid #c4c4c4;
+		border-right-style: none;
+
+		-webkit-border-bottom-left-radius: 3px;
+			-moz-border-bottom-left-radius: 3px;
+				border-bottom-left-radius: 3px;
+	}
+
+	#topBanner ol#languageNav li#lang_fr {
+		background-color: #c4c4c4;
+		border: 1px solid #c4c4c4;
+		/*border-right-color: #9D9D9D;
+		border-left-color: #9D9D9D;*/
+	}
+
+	#topBanner ol#languageNav li#lang_en {
+		background-color: #c4c4c4;
+		border: 1px solid #c4c4c4;
+		border-left-style: none;
+
+		-webkit-border-bottom-right-radius: 3px;
+			-moz-border-bottom-right-radius: 3px;
+				border-bottom-right-radius: 3px;
+	}
+
+	#topBanner ol#languageNav li#lang_de:hover,
+	#topBanner ol#languageNav li#lang_fr:hover,
+	#topBanner ol#languageNav li#lang_en:hover{
+		background-color: #f0f0f0;
+	}
+
+
+	#topBanner ol#languageNav li#lang_de.selected,
+	#topBanner ol#languageNav li#lang_fr.selected,
+	#topBanner ol#languageNav li#lang_en.selected {
+		background-color: #fff;
+	}
+
+	/* Login box */
+	#loginBox {
+		position: relative;
+		float: left;
+		/*right: 12px;*/
+	}
+
+	ol#loginBox li{
+		display: inline;
+	}
+
+	#loginBox a {
+		display: block;
+		text-decoration: none;
+		white-space: nowrap;
+	}
+
+	/* Base button */
+	#loginBox a.button {
+		padding: 0 4px;
+		margin: 0;
+
+		float: left;
+		height: 12px;
+		font-weight: normal;
+	}
+
+	#loginBox a.button span.middle {
+		display: block;
+		height: 14px;
+		line-height: 14px;
+		padding: 0;
+
+		/*Reset the background image set as failsafe by action.css*/
+		border-radius: 0;
+		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+		background-image: none;
+	}
+
+	#loginBox a.button span.right,
+	#loginBox a.button span.left {
+		display: none;
+	}
+
+	/** Submenu bank login */
+	#loginBox div.moreLogin {
+		background-color: #c4c4c4;
+		float: left;
+		height: 12px;
+		display: block;
+		margin: 0 3px;
+		padding: 8px 9px 8px 9px;
+		position: relative;
+		border: 1px solid #c4c4c4;
+		-webkit-border-bottom-right-radius: 3px;
+			-moz-border-bottom-right-radius: 3px;
+				border-bottom-right-radius: 3px;
+		-webkit-border-bottom-left-radius: 3px;
+			-moz-border-bottom-left-radius: 3px;
+				border-bottom-left-radius: 3px;
+        width: 103px;
+	}
+
+	#loginBox div.moreLogin:hover {
+		background-color: #f0f0f0;
+	}
+
+	#loginBox div.moreLogin .arrow {
+		position: absolute;
+		top: 0;
+		right: 0;
+
+		width: 26px;
+		height: 28px;
+		cursor: pointer;
+
+		background: url("../../images/navigation/nav/more_arrow.png") no-repeat center center;
+	}
+
+	#loginBox div.moreLogin a.button {
+		display: block;
+		padding: 0 10px 0 0;
+		margin: 0;
+		float: none;
+	}
+
+	#loginBox div.moreLogin a.button span.middle {
+		display: block;
+	}
+
+	#loginBox div.moreLogin div.links {
+		height: 0;
+		overflow: hidden;
+		position: relative;
+		bottom: -8px; /* Compensate for the padding because IE7 doesn't support hidden property */
+		/*Negative Margin to make sure the dropdown is fitting*/
+		margin: 0 -10px;
+	}
+
+	#loginBox div.moreLogin.active div.links {
+		bottom: 1px;
+	}
+
+	#loginBox div.moreLogin div.links .link {
+		background-color: #f0f0f0;
+		padding: 5px 9px 2px 9px;
+		line-height: 12px;
+		cursor: pointer;
+		height: 12px;
+		position: relative;
+		border: 1px solid #c4c4c4;
+		border-top-style: none;
+	}
+
+	#loginBox div.moreLogin div.links .link:hover {
+		background-color: #fff;
+	}
+
+	#loginBox div.moreLogin div.links .link a:hover {
+		text-decoration: underline;
+	}
+
+	#loginBox div.moreLogin div.links .help {
+		background-image: url("../../images/navigation/nav/help.png");
+		width: 10px;
+		height: 10px;
+		text-indent: 20px;
+		overflow: hidden;
+		display: inline-block;
+
+		position: absolute;
+		right: 5px;
+		top: 5px;
+	}
+
+	#loginBox .my_account div.moreLogin div.links .help {
+		background-image: url("../../images/navigation/nav/circle_help_w.png");
+	}
+
+	#loginBox .my_account div.moreLogin div.links .link:hover .help {
+		background-image: url("../../images/navigation/nav/circle_help_o.png");
+	}
+
+	#loginBox div.moreLogin.active {
+		background: #f0f0f0;
+	}
+
+	#loginBox div.moreLogin.active a {
+		margin-bottom: 10px;
+		font-size: 12px;
+	}
+
+	/* Premium Button */
+	#loginBox .login a.premium {
+		background-color: #c4c4c4;
+		padding: 8px 6px;
+		border: 1px solid #c4c4c4;
+		-webkit-border-bottom-right-radius: 3px;
+			-moz-border-bottom-right-radius: 3px;
+				border-bottom-right-radius: 3px;
+		-webkit-border-bottom-left-radius: 3px;
+			-moz-border-bottom-left-radius: 3px;
+				border-bottom-left-radius: 3px;
+	}
+
+	#loginBox .login a.premium:hover {
+		background-color: #f0f0f0;
+	}
+
+	/* MY ACCOUNT */
+
+	#loginBox .my_account div.moreLogin {
+		background-color: #f39756;
+		border-color: #f39756;
+	}
+
+	#loginBox .my_account div.moreLogin.active {
+		background-color: #f9ab74;
+		border-color: #f39756;
+	}
+
+	#loginBox .my_account div.moreLogin.active a {
+		margin-bottom: 8px;
+	}
+
+	#loginBox .my_account div.moreLogin:hover {
+		background-color: #f9ab74;
+	}
+
+	#loginBox .my_account div.moreLogin.active .link {
+		background-color: #f9ab74;
+		border-color: #f39756;
+	}
+
+	#loginBox a.button.my_account span.middle {
+		/* Resetting action.css presets */
+		border-radius: 0;
+		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+		background-image: none;
+	}
+
+	/* When we show the mini menu */
+	#loginBox div.moreLogin.active div.links {
+		height: auto;
+		z-index: -1;
+        width: 123px;
+	}
+
+	/* Open account */
+	#loginBox .openAccount a {
+		display: block;
+		float: left;
+		height: 29px;
+		text-decoration: none;
+		margin-left: 3px;
+
+		background-color: #f39756;
+
+		-webkit-border-bottom-right-radius: 3px;
+			-moz-border-bottom-right-radius: 3px;
+				border-bottom-right-radius: 3px;
+		-webkit-border-bottom-left-radius: 3px;
+			-moz-border-bottom-left-radius: 3px;
+				border-bottom-left-radius: 3px;
+
+		border: 1px solid #f39756;
+		border-top-style: none;
+	}
+
+	#loginBox .openAccount a:hover {
+		background-color: #f9ab74;
+	}
+
+	#loginBox .openAccount a span {
+		display: block;
+		line-height: 12px;
+		padding: 0 6px 8px 6px;
+
+		/* IE 7 !! */
+        border-top: 10px solid transparent;
+		/* Other Nicer Browsers :) */
+		border-top: 10px solid rgba(249, 171, 116, 0.75);
+	}
+
+	#sqLogin {
+		top:28px;
+		-moz-border-radius: 8px;
+		-webkit-border-radius: 8px;
+		border-radius: 8px;
+		-moz-box-shadow: 2px 2px 5px #888;
+		-webkit-box-shadow: 2px 2px 5px #888;
+		box-shadow: 2px 2px 5px #888;;
+		width: 720px;
+		height: 40px;
+	}
+
+
+
+
+	  /*----------------------*/
+	 /* =LEFT NAV COLUMN= */
+	/*-----------------------------------------------------------------------------*/
+
+	/* =SIDE NAV */
+	#sideNav {
+		width: 177px;
+		border: 1px solid #e4e4e4;
+		border-top: none;
+		margin: auto;
+	}
+
+	#sideNav li {
+		list-style-image: none;
+	}
+
+	#sideNav div.header {
+		text-align: center;
+		margin: 0;
+		padding: 10px 0 13px 0;
+		background-color: #fff;
+	}
+
+	#sideNav a {
+		font-size: 11px;
+		color: #7b7b7b;
+		text-decoration: none;
+		text-transform: uppercase;
+	}
+
+	#sideNav li.selected ul a {
+		font-size: 11px;
+		text-transform: none;
+	}
+
+	#sideNav a:hover {
+		color: #7b7b7b;
+	}
+
+	#sideNav li:hover {
+		background-color: #e3e3e3;
+	}
+
+	#sideNav ol li.selected ul li:hover {
+		background-color: #fff;
+	}
+
+	#sideNav ol li.open_account {
+		padding-bottom: 5px;
+		padding-top: 7px;
+		border: none;
+		background-image: url(../../images/navigation/nav/open_account_trading.gif);
+		background-repeat: no-repeat;
+	}
+
+	#sideNav ol li.open_account a{
+		color: white;
+		font-size: 13px;
+	}
+
+	#sideNav ol {
+		background-color: #f1f1f1;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	#sideNav ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	#sideNav ol li {
+		border-top: 1px solid #d1d1d1;
+		cursor: pointer;
+	}
+	#sideNav ol li.selected{
+		padding: 0;
+	}
+
+	#sideNav ol li ul{
+		display: none;
+		background-color: #f1f1f1;
+		padding: 0;
+	}
+
+	#sideNav ol li > a {
+		padding: 10px 0 10px 10px;
+		display: block;
+	}
+
+	#sideNav ol li.selected ul li a {
+		margin-left: 0px !important;
+	}
+
+	/*First level*/
+	#sideNav ol li.selected ul {
+		display: block;
+		background-color: #fff;
+	}
+
+	#sideNav ol li.selected ul li ul {
+		display: none;
+	}
+
+	#sideNav ol li.selected {
+		background-color: #e3e3e3;
+	}
+	#sideNav ol li.selected ul li.selected {
+		background-color: #fff;
+	}
+
+	#sideNav ol li.selected {
+		background-color: #e3e3e3;
+	}
+
+	/*Second level*/
+	#sideNav ol li.selected ul li {
+		padding: 0;
+	}
+
+	#sideNav ol li.selected ul {
+		list-style: none;
+		margin: 0;
+	}
+
+	#sideNav ol li.selected ul.selected li ul {
+		margin-top: 5px;
+		line-height: 15px;
+	}
+
+	#sideNav ul li.selected ul {
+		display:block !important;
+	}
+
+	#sideNav ul li.selected ul li a {
+		display:block !important;
+	}
+
+	#sideNav ol li.selected ul li{
+		border: 0px;
+	}
+
+	#sideNav ol li.selected ul li a {
+		padding: 4px 0 4px 11px;
+		display:block;
+	}
+
+	#sideNav ol li.selected ul li a:hover {
+		text-decoration: underline !important;
+	}
+
+	#sideNav ol li.selected ul li.selected a {
+		text-decoration: underline !important;
+	}
+
+	/*Third level*/
+	#sideNav ol li.selected ul li.selected ul li a {
+		text-decoration: none !important;
+		padding-left:23px;
+	}
+
+	#sideNav ol li.selected ul li.selected ul li a:hover {
+		text-decoration: underline !important;
+	}
+
+	#sideNav ol li.selected ul li.selected ul li.selected a {
+		text-decoration: underline !important;
+	}
+
+	 /*------------------------------------*/
+	/*------------------------------------*/
+
+	/*--------------------------------------*/
+	/* footer manchester */
+
+	#footerContent {
+		background : right 26px transparent url('../../images/navigation/manchester-swissquote.png') no-repeat;
+	}
+	.sfFooter, .sfPush {
+		height: 70px;
+	}
+	.sfFooter hr {
+		margin-bottom: 26px;
+	}
+
+	.sfWrapper {
+	    margin: 0px auto -85px;
+	}

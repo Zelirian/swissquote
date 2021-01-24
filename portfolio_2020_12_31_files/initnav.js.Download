@@ -1,0 +1,125 @@
+<!--
+// COPYRIGHT (c) 2004 BY SWISSQUOTE GROUP LTD, GLAND, SWITZERLAND - Ver 4.0
+VerJS='4.1';
+mnuCur='';
+TopFrm="hnav";
+TreeFrm="vnav";
+LnkFrm="sqmain";
+ReqFrm="request"
+var DefStat="Swissquote";
+bgCol="#FFFFFF";
+bgImg="/gifs/nl/vnav_bg.gif";
+idxpath="/index/index_"
+vmpath="/menu/vnav/vnav_";
+rmpath="/menu/request/req_";
+navbg="#EFEFEF";
+snavbg="#EFEFEF";
+//snavbg="";
+TblW="148";
+CloseOrNot=1;
+fclfo1sf="";
+fclfo2sf="";
+hclfo1="::&nbsp;";
+hclfo2="&nbsp;&nbsp;&nbsp;";
+fclfo1="&nbsp;&gt;";
+fclfo2="&nbsp;&gt;";
+hopfo1="::&nbsp;";
+hopfo2="&nbsp;&nbsp;&nbsp;";
+fopfo1="&nbsp;::";
+fopfo2="&nbsp;:";
+hfi1="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+hfi2="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+ffi1="";
+ffi2="";
+mSrv="services";
+mQuo="quote";
+mWar="warrants";
+mFun="funds";
+mFor="forex";
+mBan="bank";
+mNew="news";
+mGrp="group";
+mHlp="help";
+mSgn="signup";
+mCtc="contact";
+mSav="saving";
+mSavPortal="saving_portal";
+m3a="3a";
+m3aPortal="3a_portal";
+
+var vTop = 0;
+var vVnav = 0;
+
+var CorrMenu = new Array();
+CorrMenu[mSrv] = "services";
+CorrMenu[mQuo] = "market";
+CorrMenu[mWar] = "derivate";
+CorrMenu[mFun] = "funds";
+CorrMenu[mFor] = "forex";
+CorrMenu[mNew] = "news";
+CorrMenu[mGrp] = "company";
+CorrMenu[mHlp] = "help";
+CorrMenu[mSgn] = "signup";
+CorrMenu[mCtc] = "contact";
+CorrMenu[mSav] = "saving";
+CorrMenu[mBan] = "bank";
+
+sCond_f="Informations juridiques importantes";
+sPub_f="Votre pub sur Swissquote";
+sCond_e="Important legal information";
+sPub_e="Advertise on Swissquote";
+sCond_d="Wichtiger rechtlicher Hinweis";
+sPub_d="Ihre Werbung auf Swissquote";
+sCond_i="Termini e condizioni";
+sPub_i="La Vostra pubblicità su Swissquote";
+if (Mla==4){Cla="_e"}else if(Mla==2){Cla="_f"}else if(Mla==3){Cla="_i"}else{Cla="_d"};
+
+function Go(mnu)
+{
+  mnuCur=mnu;
+  if(parent.VerBug)
+  {
+    eval(TreeFrm+".window.location="+vmpath+"noscript_"+mnu+Cla+".html");
+  }
+  else
+  {
+    loadData(mnu);
+    InitNdFol();
+    DrawTree();
+  };
+};
+
+function DrawTree()
+{
+  OutF=eval(TreeFrm+".window.document");
+  OutF.open("text/html");
+  OutF.write("<HTML><!-- "+VerJS+" -->\n<HEAD>\n<META HTTP-EQUIV='Pragma' CONTENT='no-cache'>\n<STYLE media='screen' type='text/css'><!--\n");
+  OutF.write("td {color: #444; font-size: 12px; font-family: arial, helvetica;}\na {color: #444; text-decoration: none}\na:hover {color: #FF9C64; text-decoration: none}\na:active {color: #FF9C64; text-decoration: none}\n.submenu {background-color: #ffe7d1; font-size: 12px; font-weight: normal; padding: 0px 0px 0px 0px }\n.menu {padding: 4px 0px 2px 5px; font-weight: bold; border-top: 1px solid #9e9e9e }\n.submenuF {background-color: #ffe7d1; padding: 0px 0 0px 5px; font-weight: bold}\n.note { font-size: 10px; font-weight: normal}\n.small {background-color: #ffe7d1; font-size:11px; padding: 0px 0px 0px 0px;}");
+  OutF.write("a.Open {color: #FFFFEF; text-decoration: none}\na.Open:hover {color: #FFFFEF; text-decoration: none}\na.Open:active {color: #FFFFEF; text-decoration: none}\n.submenuFO {background-color: #ff9a66; color:#ffffEf; padding: 0px 0 0px 5px; font-weight: bold}\n.menuO {background-color: #ff9a66;padding: 4px 0px 2px 5px; font-weight: bold; border-bottom: 1px solid #9e9e9e; border-top: 1px solid #9e9e9e }\n-->\n</STYLE>\n");
+  OutF.write("<SCRIPT LANGUAGE=\"JAVASCRIPT\"><!--\nmnuCur=\""+mnuCur+"\";\n// --></SCRIPT>\n</HEAD>\n");
+  OutF.write("<BODY leftmargin='0' marginwidth='0' topmargin='0' marginheight='0' background='"+bgImg+"'>\n");
+  OutF.write("<A NAME='top'></A><TABLE border='0' bgcolor='"+bgCol+"' cellpadding='0' cellspacing='0' width='"+(TblW-1)+"'>\n<TR>\n<TD>\n");
+  OutF.write("<TABLE border='0' cellspacing='0' cellpadding='0' width='100%'>\n");
+  DrawBrch("root");
+  OutF.write("</TABLE>\n</TD>\n</TR>\n</TABLE>\n");
+  OutF.write("<TABLE border='0' cellspacing='0' cellpadding='0' width='"+TblW+"'>\n<TR>\n<TD bgcolor='#333333' colspan='2' height='1'><img src='/gifs/blocker.gif' width='1' height='1' border='0'></td></TR>\n<TR>\n<TD><img src='/gifs/blocker.gif' width='12' height='1' border='0'></TD><TD valign='top' align='center'><BR>&nbsp;</TD>\n</TR>\n<TR>\n<TD></TD><TD valign='top' align='left' class='note'><a href='/website-static/terms_conditions/terms_conditions"+Cla+".html' target='"+LnkFrm+"'>"+eval("sCond"+Cla)+"</a></TD>\n</TR>\n<TR height='20'>\n<TD></TD><TD valign='top' height='20'></TD>\n</TR>\n<TR>\n<TD></TD><TD valign='top' align='left' class='note'><BR><BR></TD>\n</TR>\n</TABLE>\n&nbsp;&nbsp;\n");
+  OutF.write("</BODY>\n</HTML>");
+  OutF.close();
+};
+
+var old_color = "";
+function ChangeColor(object,color){
+	if(color){
+		object.style.backgroundColor = old_color;
+	}else{
+		old_color = object.style.backgroundColor;
+		object.style.backgroundColor = '#9a9a9a';
+	};
+};
+
+function StMsg(s,fl)
+{
+  top.status=(fl==0)?DefStat:s;return true;
+};
+
+// -->

@@ -1,0 +1,114 @@
+// COPYRIGHT (c) 2004 BY SWISSQUOTE GROUP LTD, GLAND, SWITZERLAND - Ver 4.0
+var dns_mig_tmp = 'https://premium.swissquote.ch';
+var popWin = '';
+var bars = 'status=no,toolbar=no,menubar=no,scrollable=no,resizable=no,scrollbars=no,directories=no';
+function launch_popup(pg, tr, w, h) {
+	popWin = window
+			.open(
+					pg,
+					tr,
+					'width='
+							+ w
+							+ ',height='
+							+ h
+							+ ',toolbar=no,directories=no,status=no,scrollbars=yes,resize=yes,menubar=no');
+	popMove(10, 10);
+}
+function launch_glossary(lg) {
+	if (lg == '') {
+		lg = 'e';
+	}
+	;
+	popWin = window
+			.open(
+					'http://group.swissquote.com/glossary/glossary_' + lg
+							+ '.html',
+					'Glossary',
+					'width=580,height=600,status=no,toolbar=no,menubar=no,scrollable=no,resizable=yes,scrollbars=yes,directories=no');
+	popMove(10, 10);
+}
+function launch_warrant(h) {
+	var barw = 'status=no,toolbar=no,menubar=no,scrollable=no,resizable=yes,scrollbars=no,directories=no';
+	popWin = window.open(dns_mig_tmp
+			+ '/sqi_warrant/WarrantChooser.action?detached=true&s=' + h,
+			'Warrant_Chooser', 'width=1024,height=630,resizable=yes');
+	popMove(10, 10);
+//	if (!h) {
+//		help('/website-help/tools/warrant_chooser/wch_help' + parent.Cla
+//				+ '.html')
+//	}
+}
+function launch_analysis(h) {
+	popWin = window.open(
+			dns_mig_tmp + '/static/launch_tools/analysis_tools_load'
+					+ parent.Cla + '.html', 'Analysis', 'width=790,height=590,'
+					+ bars);
+	popMove(10, 10);
+	// popWin=window.open('/static/launch_tools/analysis_tools_load_e.html','Analysis','width=790,height=590,'+bars);popMove(10,10);
+	if (h) {
+		help('/website-help/tools/charts/charts_intro' + parent.Cla + '.html')
+	}
+}
+function launch_intraday(h) {
+	popWin = window.open(dns_mig_tmp
+			+ '/static/launch_tools/intraday_live_load.html', 'Live_Intraday',
+			'width=702,height=567,' + bars);
+	popMove(10, 10);
+	// popWin=window.open('/static/launch_tools/intraday_live_load.html','Live_Intraday','width=702,height=567,'+bars);popMove(10,10);
+	if (h) {
+		help('/website-help/tools/intraday/intraday' + parent.Cla + '.html')
+	}
+}
+
+function launch_new_orderbook(qt) {
+	if (Modernizr.canvas) {
+        var orderbookUrl = '/sqi-web-orderbook/Orderbook.action?quote=' + qt + '&detached=true';
+        var orderbookWindow = window.open(orderbookUrl, 'Orderbook', 'width=1024,height=630,status=no,toolbar=no,menubar=no,resizable=yes,directories=no');
+        orderbookWindow.focus();
+    }
+}
+function help(p) {
+	if (p) {
+		if (fset) {
+			top.frames[Targ2].frames[Targ].location = p;
+		} else {
+			top.frames[Targ].location = p;
+		}
+		;
+	}
+}
+function popMove(x, y) {
+	popWin.moveTo(x, y);
+	popWin.focus();
+}
+function PopWin(pg, nm, wi, he, sc, rz) {
+	window.open('' + pg + '', '' + nm + '', 'width=' + wi + ',height=' + he
+			+ ',scrollbars=' + sc + ',resizable=' + rz + '');
+}
+
+var wndAtools = null;
+var lastSymbol = null;
+var lastIntraday = null;
+
+onerror = function() {
+	if (lastSymbol)
+		launch_atools(lastSymbol, lastIntraday, true);
+	return true;
+}
+
+function launch_atools(symbol, intraday, noapplet) {
+		if (intraday) {
+			if (typeof Modernizr !== 'undefined' && Modernizr.canvas) {
+				var atoolsUrl = '/sqi_atools/AnalysisTools.action?stock=' + symbol + '&frequence=live&type=4&indicators=&compare=&mode=intraday';
+				var atoolWindow = window.open(atoolsUrl + '&detached=true', 'Analysis_Tools_2', 'width=1024,height=630,status=no,toolbar=no,menubar=no,scrollable=no,resizable=yes,scrollbars=no,directories=no');
+				atoolWindow.focus();
+			}
+                }
+		else {
+			if (typeof Modernizr !== 'undefined' && Modernizr.canvas) {
+				var atoolsUrl = '/sqi_atools/AnalysisTools.action?stock=' + symbol + '&frequence=daily&type=1&period=year&mode=historical';
+				var atoolWindow = window.open(atoolsUrl + '&detached=true', 'Analysis_Tools_2', 'width=1024,height=630,status=no,toolbar=no,menubar=no,scrollable=no,resizable=yes,scrollbars=no,directories=no');
+				atoolWindow.focus();
+			}
+		}
+}

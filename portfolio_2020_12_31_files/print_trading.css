@@ -1,0 +1,15 @@
+a.style_account, a.style_account:link, a.style_account:active, a.style_account:visited, a.style_account:hover,
+#header .menu,
+#msgbox,
+ul.tabnav_right,
+table.trading a.button.buy_new, table.trading a.button.buy_new:visited, table.trading a.button.buy_new:link, table.trading a.button.buy_new:hover,
+table.trading a.button.sell_new, table.trading a.button.sell_new:visited, table.trading a.button.sell_new:link, table.trading a.button.sell_new:hover,
+#dailyorders-portlet,
+#news-portlet,
+#account_footer,
+.ddmenu-image {
+	display: none;
+}
+.tabnav li span.m_left, .tabnav li span.m_middle, .tabnav li span.m_right {
+	background: none;
+}

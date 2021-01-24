@@ -1,0 +1,120 @@
+
+$(document).ready(function(){
+	//Link Hover and clicks
+	$('#topBannerContainer ul li')
+	.click(function(){
+		var href=$(this).find("a").attr("href");
+		if (href){
+			top.location=href;
+		}
+	})
+	
+	.hover(function () {
+		$(this).addClass("hover");
+	}, function () {
+		$(this).removeClass("hover");
+	});
+	
+
+	if(parent.mnuCur){
+		$('#'+parent.mnuCur).addClass('selected');
+	} else {
+		if(idSection == "mkt_saving" || idSection == "mkt_pension" || idSection == "mkt_mortgage"){
+			$('#mkt_others').attr("class", "selected "+idSection);
+		} else {
+			$('#'+idSection).addClass('selected');
+		}
+	}
+	$('#lang_'+sLang).addClass("selected");
+	
+});
+
+function chIndex(l){
+	l = l.substr(0,1); //1-letter format
+	var mnuCur=parent.mnuCur;
+	if (mnuCur==''){
+		top.location = '/index_' + l + '.html';
+	} else {
+		top.location = '/index/index_' + mnuCur + '_' + l + '.html';
+	}
+}
+
+function ChangeBtn(btn){
+	$('#navBar ul li, #toolBar ul li').removeClass('selected');
+	$('#'+btn).addClass('selected');
+}
+
+function chLanguage(lang){
+	var homepage = new RegExp("swissquote.ch\/index_.\.html");
+
+	if(homepage.test(document.location.href)){
+		top.location.href="/index_"+lang+".html";
+	} else {
+
+		top.location.href=updateQueryStringParameter(top.location.href,"l",lang);
+	}
+}
+
+function updateQueryStringParameter(uri, key, value) {
+	  var re = new RegExp("([?|&])" + key + "=.*?(&|$)", "i");
+	  separator = uri.indexOf('?') !== -1 ? "&" : "?";
+	  if (uri.match(re)) {
+	    return uri.replace(re, '$1' + key + "=" + value + '$2');
+	  }
+	  else {
+	    return uri + separator + key + "=" + value;
+	  }
+	}
+
+//used only by acm
+//if you want to use on a framed page replace "document." by "top."
+function chLanguageDomain(lang){
+	var swissquotech = new RegExp(".swissquote.ch");
+	var swissquoteeu = new RegExp(".swissquote.eu");
+	var swissquotecom = new RegExp(".swissquote.com");
+	var acmarkets = new RegExp(".ac-markets.com");
+
+	if(swissquotech.test(document.location.href)){
+		chLanguage(lang);
+
+	} else {
+		if(swissquoteeu.test(document.location.href)) {
+			var domain = ".swissquote.eu";
+		}
+        if(swissquotecom.test(document.location.href)) {
+            var domain = ".swissquote.com";
+        }
+		if(acmarkets.test(document.location.href)) {
+			var domain = ".ac-markets.com";
+		}
+
+		if(lang == 'en'){ lang = 'www'; }
+
+		var final_url = document.location.protocol + "//" + lang + domain +
+		((document.location.port != '')? ':' + document.location.port : '') + //has port ?
+		document.location.pathname;
+
+		//Remove the lang parameters as they have precedence on the server side
+		if(document.location.search != ''){
+			final_url += removeParameter(document.location.search, ['l', 'language','LANGUAGE','lang']);
+		}
+
+		document.location.href = final_url;
+	}
+}
+
+function removeParameter(queryString, parameter)
+{
+      var pars = queryString.split(/[&;]/g);
+      for(var param= parameter.length; param-- > 0;){
+    	  var prefix = encodeURIComponent(parameter[param])+'=';
+          for (var i= pars.length; i-- > 0;){ //reverse iteration as may be destructive
+        	  if (pars[i].lastIndexOf(prefix, 0)!==-1) { //idiom for string.startsWith
+        		  pars.splice(i, 1);
+        	  }
+          }
+      }
+
+      return pars.join('&');
+}
+

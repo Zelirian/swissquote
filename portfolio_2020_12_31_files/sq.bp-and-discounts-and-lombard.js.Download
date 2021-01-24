@@ -1,0 +1,135 @@
+var loadings 	= {
+    f: 'Calcul du pouvoir d\'achat en cours...',
+    d: 'Berechnung des verf&uuml;gbaren Betrags...',
+    e: 'Calculation of the Buying Power in progress...',
+    i: 'Calcolo del importo disponibile...'
+};
+var bpTexts = {
+    f:  'Pouvoir d\'achat',
+    d: 'Verf&uuml;gbarer Betrag',
+    e: 'Buying power',
+    i: 'Importo disponibile'
+};
+var bp_init_message = '<table id="%s_table" width="100%" border="0" cellpadding="0" cellspacing="0" align="center">' +
+    '<tbody>' +
+    '<tr>' +
+    '<td class="text_left" nowrap="nowrap">%s :&nbsp;</td>' +
+    '<td class="text_right" nowrap="nowrap">' +
+    '<div id="%s_container" class="bpcontainer">%s</div></td>' +
+    '<td width="99%"> &nbsp;</td>' +
+    '</tr>' +
+    '</tbody>' +
+    '</table>';
+
+String.prototype.format = function() {
+    var i = 0,
+        params = arguments;
+
+    return this.replace(/%(?:%|(?:(|[+-]+)(|0|'.+?)([1-9]\d*)?(?:\.([1-9]\d*))?)?(s|d|f))/g, function(match, sign, padding, width, precision, type) {
+        if (match == '%%') {
+            return '%';
+        }
+
+        var v = params[i++];
+
+        if (type == 'd') {
+            v = Math.round(v);
+        }
+        else if (type == 'f') {
+            v = v.toFixed(precision ? precision : 6);
+        }
+
+        if (/\+/.test(sign) && v > 0) {
+            v = '+' + v;
+        }
+
+        v += '';
+
+        if (type != 'f' && precision) {
+            v = v.substr(0, precision);
+        }
+
+        if (width) {
+            v = v.pad(width, padding == '' ? ' ' : padding[0] == "'" ? padding.substr(1) : padding, /-/.test(sign) ? 'right' : 'left');
+        }
+
+        return v;
+    });
+};
+
+function BpAndDiscounts(id, lang, currency, withDiscounts, withPerformance, contextPath) {
+    // until we change the old account templates we display the discounts everywhere
+    $.ajax({
+        url: contextPath + "/BuyingPowerTooltip.action",
+        data: {currency: currency, withDiscounts: true, withLombard: true},
+        cache: false,
+        beforeSend: initialize(id, lang, withPerformance),
+        success: function(data, textStatus, jqXHR) {
+        	display_buying_power(id, data, textStatus, jqXHR);
+        }
+    });
+}
+
+// parsing de la reponse
+function display_buying_power(id, response, textStatus, jqXHR ){
+	// IE is your friend :)
+	if ($.browser.msie) {
+		var $html = $.fn.html;
+		$.fn.html = function(data) {
+			if (arguments.length == 1 && !data) {
+				return $html.call(this, '');
+			}
+
+			var html = $html.apply(this, arguments);
+			return html ? html : '';
+		};
+	}
+
+    var domResponse = $(response);
+
+    var bpDetailInfo = domResponse.find('div#bp_detail').html();
+
+    var bp_detail_link = domResponse.find('#formattedTotalBPWithCurrency').html();
+    $("#buyingPowerWithDiscounts").html(bp_detail_link);
+
+    var discounts =  domResponse.find("div#discounts").html();
+    $('div#discounts').html(discounts);
+    //$("#idFlatTradesLink").attr("href", "/sqb_core/PackageMarketingCtrl?commandName=viewPackageMarketing&marketingName=PACKAGE_FT&phase=summary");
+
+
+    var nonFormattedTotalBP =domResponse.find('div#nonFormattedTotalBP');
+    $('#buyingPower').val(nonFormattedTotalBP.text());
+
+    var messageNegativeBP =domResponse.find('tr#messageNegativeBP');
+    $('#'+id+'_table > tbody:last').append(messageNegativeBP.html());
+    $('.messageNegativeBP').html(messageNegativeBP.text());
+
+    var tooltip = new Tooltip(id+'.Tooltip',bp_detail_link,'');
+    $('#'+ id+'_container').html(tooltip.toHTML());
+    tooltip = null;
+
+    $('.tooltipLabel').removeAttr('onmouseout');
+    $('.tooltipLabel').removeAttr('onmousemove');
+
+    $('.bpContainer').removeClass('bp');
+
+    $('.bpInfo').html(bpDetailInfo);
+    
+	$('.bpinfo tbody tr:nth-child(even)').addClass('evenTr');
+	$('.bpinfo tbody tr:nth-child(odd)').addClass('oddTr');
+	$('.bpinfo tbody tr').hover(function() {
+		$(this).toggleClass("highlightTr");
+	});	
+}
+
+function initialize (id,lang, withPerformance) {
+    $('.bpContainer').addClass('bp');
+
+
+    if ( !withPerformance) {
+        var bpText = bpTexts[lang];
+        var loading = loadings[lang];
+        document.writeln(bp_init_message.format(id, bpText, id, loading));
+    }
+
+}

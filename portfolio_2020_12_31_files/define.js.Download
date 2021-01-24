@@ -1,0 +1,86 @@
+// 
+
+(function () {
+  var navConfigUrl = "/sq-meta-nav-plugin/webapi/metanav";
+  var rightNavTranslationsUrl = "/sq-meta-nav-plugin/webapi/metanav/i18n/metanav";
+  var unreadMessagesUrl = "/sqc-messages-plugin/webapi/messages/unreadMessages";
+  var unreadNotificationsUrl = "/sqc-ctrp-notifications-plugin/webapi/notifications/unreadNotificationsCount";
+  var reloadUnreadMessagesInterval = "300000";
+  var reloadUnreadNotificationsInterval = "1800000";
+  var lang = "de";
+  var brandingID = "null";
+
+  // Build the list of modules that are needed by this plugin to work
+  // Don't load them directly, only inform RequireJS of their existence
+  if (!requirejs.defined('react') || !window.React) {
+    define('react', ['sq-meta-nav-plugin/webjars/react/0.14.7/react'], function (module) {
+      return module;
+    });
+  }
+
+  if (!requirejs.defined('react-dom') || !window.ReactDOM) {
+    define('react-dom', ['sq-meta-nav-plugin/webjars/react/0.14.7/react-dom'], function (module) {
+      return module;
+    });
+  }
+
+  var minCssThemeFile = '/resources/css/theme_0.min.css';
+
+  var deps = [
+    "react",
+    "react-dom",
+    'sq-meta-nav-plugin/webjars/jquery-xhrfilter/0.9.2/jquery.xhrfilter.min',
+    'sq-meta-nav-plugin/resources/js/app.min',
+    'css!/sq-meta-nav-plugin' + minCssThemeFile
+  ];
+
+  define("sq-meta-nav-plugin/actions", ["sq-meta-nav-plugin/resources/js/app.min"], function (plugin) {
+    return plugin.MetaNavActions;
+  });
+
+
+  // Add the meta navigation on top of the page
+
+  require(deps, function (React, ReactDOM, jqueryFilter, app) {
+
+    var reactRoot = document.createElement("div");
+    document.body.insertBefore(reactRoot, document.body.firstChild);
+
+    require(["squp"],
+      function (api) {
+        /*if (!window.ReactDOM && window.React) {
+          // In this case we probably have react 0.13
+          // We'll just alias React as ReactDOM
+          window.ReactDOM = window.React;
+        }*/
+        if (window.$) {
+          $.ajaxRegisterFilter({
+            done: function (jqXHR, data, settings, reject, next) {
+              if (jqXHR.getResponseHeader("X-SQ-Login-Required") != null) {
+                // somewhere else in the application hosting this plugin
+                // the session expiration check should be done
+                // otherwise the host application will loop infinitely
+                window.location.reload(true);
+              }
+              next();
+            }
+          });
+        }
+
+        ReactDOM.render(React.createElement(app.MetaNav, {
+          api: api,
+          navConfigUrl: navConfigUrl,
+          rightNavTranslationsUrl: rightNavTranslationsUrl,
+          unreadMessagesUrl: unreadMessagesUrl,
+          unreadNotificationsUrl: unreadNotificationsUrl,
+          reloadUnreadMessagesInterval: reloadUnreadMessagesInterval,
+          reloadUnreadNotificationsInterval: reloadUnreadNotificationsInterval,
+          lang: lang,
+          brandingID: brandingID,
+          ioeId: null
+        }), reactRoot);
+      }
+    );
+  })
+})();
+

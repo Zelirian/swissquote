@@ -1,0 +1,73 @@
+/**
+ * Created by digreamon on 04.04.14.
+ */
+var lang0 = Number(grepScriptArg('req_quote', 'lang0'));
+var lang1 = grepScriptArg('req_quote', 'lang1');
+var lang2 = grepScriptArg('req_quote', 'lang2');
+var value_search="Symbol / Name";
+var random=Math.random();
+var nav_container;
+
+$(document).ready(function(){
+	nav_container = document.getElementById('nav_container');
+	updateViewport();
+	window.onresize = updateViewport;
+
+	customizeSavingPage();
+
+	setNavigation(top.mnuCur);
+	tree.startPrint();
+	tree.openNewNav(top.mnuCur,top.mnuCur);
+});
+
+function customizeSavingPage() {
+	        // mnuCur is set in index_saving_$.html
+		if (top.mnuCur != "saving" && top.mnuCur != "3a") return;
+		// the class saving
+		$("body").addClass("nosearch");
+}
+
+function updateViewport(){
+	var viewportheight;
+
+	// the more standards compliant browsers (mozilla/netscape/opera/IE7) use window.innerWidth and window.innerHeight
+	if (typeof window.innerWidth != 'undefined')
+	{ viewportheight = window.innerHeight }
+
+	// IE6 in standards compliant mode (i.e. with a valid doctype as the first line in the document)
+	else if (typeof document.documentElement != 'undefined'
+		&& typeof document.documentElement.clientWidth !=
+		'undefined' && document.documentElement.clientWidth != 0)
+	{ viewportheight = document.documentElement.clientHeight }
+	// older versions of IE
+	else
+	{ viewportheight = document.getElementsByTagName('body')[0].clientHeight }
+
+	nav_container.style.height = (viewportheight-120)+'px';
+}
+
+function configureAdvancedSearchLink(linkElement){
+	var searchActionIdParamName = "searchAction";
+	var link = "/sq_mi/market/equity/SearchForward.action";
+	var searchAction = null;
+	if(typeof(Storage)!=="undefined") {
+		searchAction = window.localStorage.getItem(searchActionIdParamName);
+		link += "?" + searchActionIdParamName + "=" + searchAction;
+	}
+	linkElement.attr("href", link);
+}
+
+/**
+ * Retrieves parameter from URI in the the &lt;script&gt;'s <b>src</b> parameter.
+ * Requires jQuery.
+ * @param scriptName
+ * @param argName
+ * @returns {string} String value for parameter name or <b>null</b> if there is no parameter in the URI
+ */
+function grepScriptArg(scriptName, argName){
+	var scriptSrc = $('script[src*=' + scriptName + '.js]').attr('src');
+	argName = argName.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");
+	var p = (new RegExp("[\\?&]"+argName+"=([^&#]*)")).exec(scriptSrc);
+	return (p===null) ? null : p[1];
+}
+

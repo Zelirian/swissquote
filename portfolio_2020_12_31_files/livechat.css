@@ -1,0 +1,21 @@
+
+.btnLiveChat {
+    width: 100px;
+    border: none !important;
+}
+
+.liveChat {
+    border: none !important;
+}
+
+.btnLiveChat:hover {
+    background-color: #d1d1d1;
+}
+
+.btn-liveChat__label {
+    color: black;
+    font: 14px Helvetica, Arial, sans-serif;
+    line-height: 24px;
+    padding-left: 6px;
+    padding-right: 2px;
+}

@@ -1,0 +1,570 @@
+/* eslint-disable */
+/**
+ * @author tlohner
+ */
+var random=Math.random();
+var LnkCH='http://www.swissquote.ch';
+var LnkCHpre='https://premium.swissquote.ch';
+//var LnkCHsav='https://piwtradegl.bank.swissquote.ch';
+var LnkCHsav='https://trade.swissquote.ch';
+var LnkCHsec='https://secure.swissquote.ch';
+//var LnkSK='/sq_mi/market/sk/figures.jsp?figure='; // dead link
+var LnkNEWS='/sqi_premium/market/news/NewsList.action?';
+//var LnkEW='/sq_mi/market/euwax/figures.jsp?figure='; // dead link
+//var LnkParsefq='/fcgi-bin/parsefquote?quote=';
+var LnkWinLos='/sq_mi/market/Listing.action?market=ch&list=';
+//var LnkStockf='/fcgi-bin/stockfquote?symbols=';
+//var LnkAfxParser='http://news.swissquote.ch/cgi-bin/SQ_afxparser/afxparser';
+var LnkPress='http://www.swissquote.ch/SQ_press/le_temps/';
+var LnkList='/sq_mi/market/Listing.action?l=CLANG2&';
+var LnkOverview='/web-market-quote/?l=CLANG2&';
+var LnkEurexOptions="/sqi_premium/market/derivatives/optionfuture/OptionFuture.action?type=option&market=eu&l=CLANG2&"; //still used ?
+var LnkEurexFutures="/sqi_premium/market/derivatives/optionfuture/OptionFuture.action?type=future&market=eu?l=CLANG2&"; //still used ?
+
+
+var LnkRq2LOV="/SQ_rquote2/listOfValues/";
+var LnkWarrantOn="/sqi_premium/market/derivatives/ew/WarrantOn.action?l=CLANG2&";
+var LnkDerivatives="/sqi_premium/market/derivatives";
+var LnkESpace="/espace/renderer/ComponentRenderer.action?displayDisclaimer=true&siteId=";
+var LnkETF="/espace/renderer/ComponentRenderer.action?displayDisclaimer=true&siteId=";
+
+var LnkOptFut="/sqi_premium/market/derivatives/optionfuture/OptionFuture.action?type=";
+var LnkEqui="/sqi_web_search/market/equity/";
+
+var LnkPersonalPagePub="https://account.swissquote.ch/myswissquote/login/iframe/pp?l=CLANG2&returnUrl=https%3A%2F%2Fpremium.swissquote.ch%2Furl%2Fpersonal_page%3Fl%3DCLANG2";
+var LnkPortfolioManagerPub="https://account.swissquote.ch/myswissquote/login/iframe/pf?l=CLANG2&returnUrl=https%3A%2F%2Fpremium.swissquote.ch%2Furl%2Fportfolio_manager%3Fl%3DCLANG2";
+var LnkPersonalPagePre="/sqi_runnerbook/views/Watchlist.action?rand="+ random;
+var LnkPortfolioManagerPre="/sqi_runnerbook/views/Portfolio.action?rand="+ random;
+
+var LnkOrderBookLive = "/website-help/tools/orderbook/order_book_CLANG1.html#2";
+var LnkRunnerbook = "/sq_mi/runnerbook/views/Home.action";
+var LnkRanking = '/sqi_premium/ranking/Search.action';
+
+var LnkInvestmentIdeas = '/sqw-static/investment-ideas/?l=CLANG1';
+var LnkThemesTrading = '/investment-themes-webapp/index.jsp';
+var LnkLiveAnalysis = '/url/live-analysis';
+
+var LnkIntradayLive = 'javascript:intraday_new()';
+var LnkAnalysisTool = 'javascript:historical_new()';
+
+//var LnkOpenCommunity = 'javascript:openCommunity()';
+var LnkOpenLiveAnalysis = 'javascript:openLiveAnalysis()';
+var LnkOpenInfoMobile = 'javascript:openMobileMarketing()';
+
+var LnkWarrantChooser = 'javascript:parent.launch_warrant(0)';
+var NewParams = {New:'new'};
+var LnkNewsAlert = '/sqi_premium/alert/news/List.action?lang=CLANG1';
+var LnkPriceAlert = '/sqi_premium/alert/price/WatchList.action?mode=coming_from_menu_tools&lang=CLANG1';
+var LnkInfoMobile = '/url/mobile-informations';
+
+var LnkEtfs = '/sqi_premium/etf/Home.action?l=CLANG2';
+var LnkSmiMovers = "/sq_mi/market/Movers.action?market=ch&list=smi";
+var LnkUSSNP = '/sqi_web_search/market/equity/future/FutureSearch.action?searchFilter.market=ud&searchFilter.usFutureUnderlying=ES&l=CLANG2';
+
+var LnkWorldOverview = '/sq-web-info/worldmap?l=CLANG1';
+var LnkWarrantsIntro = '/url/espaces_warrant';
+var LnkWarrantsSwOrverview = '/url/espaces_warrant_swiss';
+var LnkSwissDotsOverview = '/sq-web-info/home-dots?l=CLANG2';
+var LnkSwissDots = '/sq-web-info/home-dots?l=CLANG2';
+var LnkEquitySwDeriv = "/sqi_web_search/market/equity/swissderivatives/";
+var LnkWarrantGerman = '/url/espaces_warrant_german';
+var LnkWarrantsAfterHours = '/url/espaces_warrant_';
+
+var LnkOptionFutureIndex = '/sqi_premium/market/derivatives/optionfuture/Index.action?l=CLANG2';
+var LnkOptionFuturePresentation = '/website-static/opt_futures/opt_futures_presentation_CLANG1.html';
+var LnkOptionFutureOverview = '/sqi_premium/market/derivatives/optionfuture/Index.action?l=CLANG2';
+var LnkOptionFutureEurope = '/sq-web-info/home-eurex?l=CLANG2';
+var LnkOptionFutureUSA = '/website-static/opt_futures/opt_futures_usa_CLANG1.html';
+
+var fundTerms = '/sq-web-info/termsAuto/Funds?l=CLANG1&cookieName=SQ_terms&cookieValue=TC_Funds:I_AGREE&urlRedirect=';
+var LnkFunds = '/website-static/funds/';
+var LnkFundsEspace = '/espace/renderer/';
+var NewLnkFundsEspace = fundTerms + 'https://www.swissquote.ch/sq-espaces-cms/#fund/espace/31';
+var LnkFundsSearch = fundTerms + 'https://www.swissquote.ch/sqi_web_search/market/funds/SearchByTier.action?lang=CLANG1&I_AGREE';
+var LnkFundsTerms = fundTerms + 'https://www.swissquote.ch/sqi_web_search/market/equity/funds/FundSearch.action?lang=CLANG2&I_AGREE';
+
+var LnkETFOverview = '/url/espaces_etf';
+
+var LnkIndiceSw = "/sq_mi/market/Listing.action?market=chi&list=indices";
+var LnkIndiceOverview = '/sqi_premium/market/IndexOverview.action?range=day';
+var LnkIndiceSector = "/sq_mi/market/Listing.action?market=chi&list=sectors";
+
+var ForexMarketCurrencies = "/sqi_premium/market/currencies/";
+var LnkCommoditiesMarket = "/sq_mi/market/";
+var LnkCommoditiesDeriv = "/sqi_premium/market/derivatives/ch/MapSearch.action?search=underlying&market=co";
+var LnkOblIntro = "/sq-web-info/home-bonds?l=CLANG2";
+var LnkOblInterest = "/sqi_premium/market/bonds/RateCurve.action?&sort=type&asc=true&l=CLANG2";
+var LnkOblBridportNews = "/sqi_premium/market/BridportNews.action?l=CLANG2";
+
+// var LnkNewsOverview = "/sq-web-info/home-news?l=CLANG2";
+var LnkNewsOverview = "/web-news-section/"
+var LnkNewsSearch = "/sqi_web_search/market/equity/NewsSearch.action?form=&lang=CLANG2";
+var LnkNewsCompany = "/sqi_premium/market/news/NewsOnCompany.action";
+var LnkNewsNewsAlert = "/sqi_premium/alert/news/List.action?lang=CLANG1";
+var LnkNewsBulletin = "/sqi_premium/market/news/NewsHome.action?lang=CLANG2";
+var LnkNewsLetter = "/sqw-newsletter/index.jsp?onframe=true";
+
+// var LnkCommunity = "https://community.swissquote.ch/sqi_community/page/Home.action";
+
+var LnkElseHelp = "/website-help/main_CLANG1.html";
+var LnkElseOffice = "/website-help/offices/offices_CLANG1.html";
+var LnkElseGroup = "/website-group/group/";
+var LnkElseInvestor = "/website-group/investor/";
+var LnkElseGroupContact = "/website-group/contact/";
+var LnkElseGroupCorporate = "/website-group/corporate/";
+var LnkElseGroupPress = "/website-group/press/";
+var LnkElseGroupJob = "/website-group/job/";
+
+var LnkCrypto = "/web-market-quote/?market=cryp&l=CLANG2#cryp";
+
+function intraday_new(){
+    if(Modernizr.canvas){
+        var atoolsUrl = '/sqi_atools/AnalysisTools.action?frequence=live&type=4&indicators=&compare=&mode=intraday&detached=true';
+        var atoolWindow = window.open(atoolsUrl,'Analysis_Tools_2','width=1024,height=630,status=no,toolbar=no,menubar=no,scrollable=no,resizable=yes,scrollbars=no,directories=no');
+        atoolWindow.focus();
+    }else{
+        parent.launch_atools('','live');
+    }
+}
+
+function historical_new(){
+    if(Modernizr.canvas){
+        var atoolsUrl = '/sqi_atools/AnalysisTools.action?frequence=daily&type=1&period=year&mode=historical&detached=true';
+        var atoolWindow = window.open(atoolsUrl,'Analysis_Tools_2','width=1024,height=630,status=no,toolbar=no,menubar=no,scrollable=no,resizable=yes,scrollbars=no,directories=no');
+        atoolWindow.focus();
+    }else{
+        parent.launch_atools('');
+    }
+}
+
+//function openCommunity(){
+//  parent.location.replace(LnkCommunity)
+//}
+
+function openLiveAnalysis() {
+    parent.location.replace(LnkLiveAnalysis);
+}
+
+function openMobileMarketing() {
+    parent.location.replace(LnkInfoMobile)
+}
+
+function setNavigation(type){
+  tree = new NavNode();
+  if (type == "quote" || type == "warrants" || type == "funds" || type == "news" || type == "forex" || type == "bank") {
+    //tree.addChild("Personal Page", "javascript:parent.pp_login()");
+    tree.addChild("Personal Page", LnkPersonalPagePub,{Domaine:"public"});
+    tree.addChild("Personal Page", LnkPersonalPagePre ,{Domaine:"premium"});
+    tree.addChild("Portfolio Manager", LnkPortfolioManagerPub, {Domaine:"public"});
+    tree.addChild("Portfolio Manager", LnkPortfolioManagerPre, {Domaine:"premium"});
+    tree.addChild("Themes Trading", LnkThemesTrading);
+    var _finance = tree.addChild(["Finanz-Tools", "Financial Tools", "Outils financiers"]);
+    var _charts = _finance.addChild("Charts", "");
+    _charts.addChild("Intraday Live", LnkIntradayLive);
+    _charts.addChild(["Analysis Tool","Analysis Tool","Analysis Tool"], LnkAnalysisTool);
+//          var _live = _finance.addChild("Live Quotes", "",{Domaine:"premium"});
+//              _live.addChild("Orderbook Live", LnkOrderBookLive ,{Domaine:"premium"});
+//              _live.addChild("Runnerbook", LnkRunnerbook ,{Domaine:"premium"});
+//              _live.addChild("Runner Live", "javascript:parent.launch_runner(1)");
+    var _derTools = _finance.addChild(["Derivate", "Derivatives", "Dérivés"], "");
+    _derTools.addChild("Warrant Chooser", LnkWarrantChooser);
+    var _derTools_ch = _derTools.addChild(["Schweizer", "Swiss", "Suisse"], "");
+    _derTools_ch.addChild("Derivative On", LnkDerivatives + "/ch/MapSearch.action?l=CLANG2");
+    _derTools_ch.addChild("Derivative Finder", LnkEqui + "swissderivatives/SwissDerivativeSearch.action");
+    var _derTools_de = _derTools.addChild(["Deutscher ", "German", "Allemand"],"",{Domaine:"premium"});
+    _derTools_de.addChild("Derivative on", LnkWarrantOn,{Domaine:"premium"});
+    _derTools_de.addChild("Derivative Search", LnkEqui + "euwax/EuwaxSearch.action",{Domaine:"premium"});
+    var _analyse = _finance.addChild(["Analyse", "Analyze", "Analyse"], "",{Domaine:"premium"});
+// SQI-832:     _analyse.addChild("Equity Analyzer", LnkCHsec + "/fcgi-bin/analyzer?LANGUAGE=CLANG0");
+    _analyse.addChild("Ranking", LnkRanking,{Domaine:"premium"});
+    var _alert = _finance.addChild(["Alert", "Alert", "Alerte"], "",{Domaine:"premium"});
+    _alert.addChild("News Alert", LnkNewsAlert,{Domaine:"premium"});
+    _alert.addChild("Price Alert", LnkPriceAlert,{Domaine:"premium"});
+    var _mobile = _finance.addChild("Mobile", "");
+    _mobile.addChild(["Mobile Informationsdienste","Mobile Information Services","Informations mobiles","Servizi d\"informazione a distanza"], LnkOpenInfoMobile);
+    _mobile.addChild("SMS", "javascript:parent.pp_sms()",{Domaine:"premium"});
+    //var _suisse = tree.addChild(["Schweiz", "Switzerland", "Suisse"], LnkParsefq + "116", {idPublic:"swx"});
+
+    var suisse_etfTerms = '/sq-web-info/termsAuto/Switzerland?l=CLANG1&cookieName=SQ_terms&cookieValue=TC_Funds:I_AGREE;path=/;&urlRedirect='
+
+    var _suisse = tree.addChild(["Schweiz", "Switzerland", "Suisse"], LnkOverview + "market=ch#ch", {idPublic:"swx"});
+    _suisse.addChild(["Übersicht", "Overview", "Aperçu"], LnkOverview+ "market=ch#ch");
+    _suisse.addChild("Winners", LnkWinLos + "winners");
+    _suisse.addChild("Losers", LnkWinLos + "losers");
+    _suisse.addChild("Best Turnover", LnkList + "market=ch&list=best_turnover");
+    _suisse.addChild("Best Volume", LnkList + "market=ch&list=best_volume");
+    _suisse.addChild("Most Volatile", LnkList + "market=ch&list=best_high_low_spread");
+    _suisse.addChild("Biggest Trades", LnkList + "market=ch&list=biggest_trade",{Domaine:"premium"});
+    _suisse.addChild("Stop Trading", LnkList + "market=ch&list=stoptrading",{Domaine:"premium"});
+    _suisse.addChild("Off-Exchange", LnkList + "market=ch&list=off_exchange",{Domaine:"premium"});
+    _suisse.addChild("Sponsored Foreign Shares", LnkList + "market=ch&list=foreign");
+    _suisse.addChild(["Indizes", "Indices", "Indices"], LnkList + "market=chi&list=indices");
+    _suisse.addChild("ETFs", suisse_etfTerms + LnkEtfs + "&I_AGREE");
+    _suisse.addChild("SMI", LnkList + "market=ch&list=smi&sort=name&asc=true");
+    _suisse.addChild("SMI Movers", LnkSmiMovers);
+    _suisse.addChild("SMIM", LnkList + "market=ch&list=smim");
+    _suisse.addChild("SLI", LnkList + "market=ch&list=sli&sort=name&asc=true");
+    _suisse.addChild(["Bern", "Bern", "Berne"], LnkList + "market=ch&list=bern");
+
+    var _amerique_etfTerms = '/sq-web-info/termsAuto/USA?l=CLANG1&cookieName=SQ_terms&cookieValue=TC_Funds:I_AGREE,TC_Funds_Other:I_AGREE;path=/;&urlRedirect=';
+
+    var _amerique = tree.addChild(["Nordamerika", "North America", "Amérique du Nord"], "");
+    var _us = _amerique.addChild(["US Markt", "US Market", "Marché US"], LnkOverview + "market=us#us");
+    _us.addChild(["Übersicht", "Overview", "Aperçu"], LnkOverview + "market=us#us");
+    _us.addChild("Winners", LnkList + "market=us&list=winners");
+    _us.addChild("Losers", LnkList + "market=us&list=losers");
+    _us.addChild("Best Turnover", LnkList + "market=us&list=best_turnover");
+    _us.addChild("Best Volume", LnkList + "market=us&list=best_volume");
+    _us.addChild(["Indizes", "Indices", "Indices"], LnkList + "market=us&list=indices");
+    _us.addChild("ETFs", _amerique_etfTerms + LnkList + "market=us&list=etf");
+    _us.addChild("S&P 500 Futures", LnkUSSNP,{Domaine:"premium"});
+    _us.addChild("Dow Jones", LnkList + "market=us&list=dowjones");
+    _us.addChild("Nasdaq 100", LnkList + "market=us&list=nasdaq100");
+    var _cana = _amerique.addChild(["Kanadischer Markt", "Canadian Market", "Marché Canadien"], LnkOverview + "market=ca#ca");
+    _cana.addChild(["Übersicht", "Overview", "Aperçu"], LnkOverview + "market=ca#ca");
+    _cana.addChild("Winners", LnkList + "market=ca&list=winners");
+    _cana.addChild("Losers", LnkList + "market=ca&list=losers");
+    _cana.addChild("Best Turnover", LnkList + "market=ca&list=best_turnover");
+    _cana.addChild("Best Volume", LnkList + "market=ca&list=best_volume");
+    _cana.addChild("TSX 60", LnkList + "market=ca&list=tsx");
+
+    var _allemande_etfTerms = '/sq-web-info/termsAuto/Germany?l=CLANG1&cookieName=SQ_terms&cookieValue=TC_Funds_Other:I_AGREE;path=/;&urlRedirect=';
+
+    var _europe = tree.addChild(["Europa", "Europe", "Europe"], "");
+    var _allemand = _europe.addChild(["Deutscher Markt", "German Market", "Marché Allemand"], LnkOverview + "market=de#de");
+    _allemand.addChild(["Übersicht", "Overview", "Aperçu"], LnkOverview + "market=de#de");
+    _allemand.addChild("Winners", LnkList + "market=de&list=winners");
+    _allemand.addChild("Losers", LnkList + "market=de&list=losers");
+    _allemand.addChild("Best Turnover", LnkList + "market=de&list=best_turnover");
+    _allemand.addChild("Best Volume", LnkList + "market=de&list=best_volume");
+    _allemand.addChild("Indices", LnkList + "market=de&list=indices");
+    _allemand.addChild("ETFs", _allemande_etfTerms + LnkList + "market=ff&list=etf");
+    _allemand.addChild("DAX", LnkList + "market=de&list=dax");
+    //_allemand.addChild("US Stars", LnkList + "market=de&list=usstars",{Domaine:"premium"});
+    var _autriche = _europe.addChild(["Österreichischer Markt", "Austrian Market", "Marché Autrichien"], LnkOverview + "market=at#at");
+    _autriche.addChild(["Übersicht", "Overview", "Aperçu"], LnkOverview + "market=at#at");
+    _autriche.addChild("Winners", LnkList + "market=at&list=winners");
+    _autriche.addChild("Losers", LnkList + "market=at&list=losers");
+    _autriche.addChild("Best Turnover", LnkList + "market=at&list=best_turnover");
+    _autriche.addChild("Best Volume", LnkList + "market=at&list=best_volume");
+    _autriche.addChild("ATX", LnkList + "market=at&list=atx");
+
+    var _euronext_etfTerms = '/sq-web-info/termsAuto/Euronext?l=CLANG1&cookieName=SQ_terms&cookieValue=TC_Funds_Other:I_AGREE;path=/;&urlRedirect=';
+
+    var _euronext = _europe.addChild(["Euronext Markt", "Euronext Market", "Marché Euronext"], LnkOverview + "market=fr#fr");
+    _euronext.addChild(["Übersicht", "Overview", "Aperçu"], LnkOverview + "market=fr#fr");
+    _euronext.addChild("Winners", LnkList + "market=fr&list=winners");
+    _euronext.addChild("Losers", LnkList + "market=fr&list=losers");
+    _euronext.addChild("Best Turnover", LnkList + "market=fr&list=best_turnover");
+    _euronext.addChild("Best Volume", LnkList + "market=fr&list=best_volume");
+    _euronext.addChild("Indices", LnkList + "market=fr&list=indices",{Domaine:"premium"});
+    _euronext.addChild("ETFs", _euronext_etfTerms + LnkList + "market=fr&list=etf");
+    _euronext.addChild("CAC 40", LnkList + "market=fr&list=cac40");
+    _euronext.addChild("AEX 25", LnkList + "market=fr&list=aex25");
+    _euronext.addChild("BEL 20", LnkList + "market=fr&list=bel20");
+    var _italien = _europe.addChild(["Italienischer Markt", "Italian Market", "Marché Italien"], LnkOverview + "market=it#it");
+    _italien.addChild(["Übersicht", "Overview", "Aperçu"], LnkOverview + "market=it#it");
+    _italien.addChild("Winners", LnkList + "market=it&list=winners");
+    _italien.addChild("Losers", LnkList + "market=it&list=losers");
+    _italien.addChild("Best Turnover", LnkList + "market=it&list=best_turnover");
+    _italien.addChild("Best Volume", LnkList + "market=it&list=best_volume");
+    _italien.addChild("Indices", LnkList + "market=it&list=indices");
+    var _londre = _europe.addChild(["UK Markt", "UK Market", "Marché UK"], LnkList + "market=gb&list=best_turnover");
+    _londre.addChild("Winners", LnkList + "market=gb&list=winners");
+    _londre.addChild("Losers", LnkList + "market=gb&list=losers");
+    _londre.addChild("Best Turnover", LnkList + "market=gb&list=best_turnover");
+    _londre.addChild("Best Volume", LnkList + "market=gb&list=best_volume");
+    var _scandi = _europe.addChild(["Skandinavischer Markt", "Scandinavian Market", "Marché Scandinave"], LnkOverview + "market=sk#sk");
+    _scandi.addChild(["Übersicht", "Overview", "Aperçu"], LnkOverview + "market=sk#sk");
+    _scandi.addChild("Winners", LnkList + "market=sk&list=winners");
+    _scandi.addChild("Losers", LnkList + "market=sk&list=losers");
+    _scandi.addChild("Best Turnover", LnkList + "market=sk&list=best_turnover");
+    _scandi.addChild("Best Volume", LnkList + "market=sk&list=best_volume");
+    _scandi.addChild("HEX 25", LnkList + "market=fi&list=hex");
+    _scandi.addChild("KFX", LnkList + "market=dk&list=kfx");
+    _scandi.addChild("OMX", LnkList + "market=se&list=omx");
+
+    //World market
+    if (SITE == "PUBLIC") {
+    }
+    else {
+      var _world = tree.addChild(["Welt", "World", "Monde"], LnkWorldOverview, {Domaine:"premium"});
+    }
+
+    var _derivative = tree.addChild(["Warrants & Derivate", "Warrants & Derivatives", "Warrants & Dérivés"], LnkWarrantsIntro, {idPublic:"warrants"});
+    _derivative.addChild(["Start", "Intro", "Intro"], LnkWarrantsIntro);
+    var _der_ch = _derivative.addChild(["Schweizer Markt", "Swiss Market", "Marché Suisse"], LnkWarrantsSwOrverview);
+    _der_ch.addChild(["Übersicht", "Overview", "Aperçu"], LnkWarrantsSwOrverview);
+    var _der_ch_gamme = _der_ch.addChild(["Produktart", "Product types", "Type de produits"], LnkDerivatives + "/ch/Home.action?class1=1&l=CLANG2");
+    _der_ch_gamme.addChild(["Hebel", "Leverage", "Levier"], LnkDerivatives + "/ch/Home.action?class1=1&l=CLANG2");
+    _der_ch_gamme.addChild(["Partizipation", "Participation", "Participation"], LnkDerivatives + "/ch/Home.action?class1=2&l=CLANG2");
+    _der_ch_gamme.addChild(["Renditeoptimierung", "Yield - Enhancement", "Optimisation de la performance"], LnkDerivatives + "/ch/Home.action?class1=3&l=CLANG2");
+    _der_ch_gamme.addChild(["Kapitalschutz", "Capital Protected", "Protection du capital"], LnkDerivatives + "/ch/Home.action?class1=4&l=CLANG2");
+//                  _der_ch.addChild("Risk Overview", "/website-static/warrants/risk_overview/risk_overview_CLANG1.html");
+
+    var _der_dots = tree.addChild(["Swiss DOTS", "Swiss DOTS", "Swiss DOTS"], LnkSwissDots,{Bold:true});
+    _der_dots.addChild(["Übersicht", "Overview", "Aperçu"], LnkSwissDotsOverview);
+    _der_dots.addChild(["Alle Produkte","All products","Tous les produits"], LnkEquitySwDeriv +"SwissDerivativeSearch.action?searchFilter.bean.exchangeId=672&asSearchEngine=true&searchFilter.bean.productClass=1&searchFilter.bean.underlyingIsin=&searchFilter.bean.trend=&sort=dividend,iedate&dir=asc&searchFilter.bean.withVolume=false&frame=false");
+
+    _der_dots.addChild(["Neuemissionen","New Issues","Nouvelles émissions"], LnkEquitySwDeriv +"SwissDerivativeSearch.action?searchFilter.bean.predefinedIssueDate=w0&searchFilter.bean.exchangeId=672&lang=CLANG2");
+    _der_dots.addChild("Goldman Sachs", LnkEquitySwDeriv +"SwissDerivativeSearch.action?searchFilter.bean.exchangeId=672&searchFilter.bean.issuerId=gs&asSearchEngine=true&searchFilter.bean.productClass=1&frame=false");
+    _der_dots.addChild("UBS", LnkEquitySwDeriv +"SwissDerivativeSearch.action?searchFilter.bean.exchangeId=672&searchFilter.bean.issuerId=ubs&asSearchEngine=true&searchFilter.bean.productClass=1&frame=false");
+    _der_dots.addChild("Société Générale", LnkEquitySwDeriv +"SwissDerivativeSearch.action?searchFilter.bean.exchangeId=672&searchFilter.bean.issuerId=sog&asSearchEngine=true&searchFilter.bean.productClass=1&frame=false");
+    _der_dots.addChild("Deutsche Bank", LnkEquitySwDeriv +"SwissDerivativeSearch.action?searchFilter.bean.exchangeId=672&searchFilter.bean.issuerId=db&asSearchEngine=true&searchFilter.bean.productClass=1&frame=false");
+    _der_dots.addChild("Vontobel", LnkEquitySwDeriv +"SwissDerivativeSearch.action?searchFilter.bean.exchangeId=672&searchFilter.bean.issuerId=vt&asSearchEngine=true&searchFilter.bean.productClass=1&frame=false");
+    _der_dots.addChild("BNP Paribas", LnkEquitySwDeriv +"SwissDerivativeSearch.action?searchFilter.bean.exchangeId=672&searchFilter.bean.issuerId=bnp&asSearchEngine=true&searchFilter.bean.productClass=1&frame=false");
+
+    var _der_de = _derivative.addChild(["Deutscher Markt", "German Market", "Marché Allemand"], LnkWarrantGerman);
+
+    var _der_off = _derivative.addChild("After Hours Trading", "");
+    _der_off.addChild("Bank Vontobel", LnkWarrantsAfterHours + "vontobel");
+    _der_off.addChild("BNP Paribas", LnkWarrantsAfterHours + "bnp");
+    _der_off.addChild("Citi", LnkWarrantsAfterHours + "citi");
+    _der_off.addChild("Deutsche Bank", LnkWarrantsAfterHours + "deutschebank");
+    _der_off.addChild("Goldman Sachs", LnkWarrantsAfterHours + "goldmansachs");
+    _der_off.addChild("Société Générale", LnkWarrantsAfterHours + "societegenerale");
+    _der_off.addChild("UBS", LnkWarrantsAfterHours + "ubs");
+
+    var _optfut = tree.addChild("Options & Futures", LnkOptionFutureIndex,{idPublic:"options"});
+    _optfut.addChild(["Präsentation", "Presentation", "Présentation"], LnkOptionFuturePresentation);
+    _optfut.addChild(["Übersicht", "Overview", "Aperçu"], LnkOptionFutureOverview);
+    var _optfut_eur = _optfut.addChild(["Europa", "Europe", "Europe"], LnkOptionFutureEurope);
+    var _optfut_eur_option = _optfut_eur.addChild(["Optionen", "Options", "Options"], LnkEqui + "option/OptionSearch.action?searchFilter.market=eu&searchFilter.group=sw");
+    _optfut_eur_option.addChild(["Indizes", "Indices", "Indices"], LnkEqui + "option/OptionSearch.action?searchFilter.market=eu&searchFilter.group=id");
+    _optfut_eur_option.addChild(["Aktien / Schweiz", "Shares / Switzerland", "Action / Suisse"], LnkEqui + "option/OptionSearch.action?searchFilter.market=eu&searchFilter.group=sw");
+    _optfut_eur_option.addChild(["Aktien / Deutschland", "Shares / Germany", "Action / Allemagne"], LnkEqui + "option/OptionSearch.action?searchFilter.market=eu&searchFilter.group=de");
+    _optfut_eur_option.addChild(["Aktien / Euronext", "Shares / Euronext", "Action / Euronext"], LnkEqui + "option/OptionSearch.action?searchFilter.market=eu&searchFilter.group=fr");
+    _optfut_eur_option.addChild(["Aktien / Italien", "Shares / Italy", "Action / Italie"], LnkEqui + "option/OptionSearch.action?searchFilter.market=eu&searchFilter.group=it");
+    _optfut_eur_option.addChild(["Aktien / Skandinavien", "Shares / Scandinavia", "Action / Scandinavie"], LnkEqui + "option/OptionSearch.action?searchFilter.market=eu&searchFilter.group=sk");
+    _optfut_eur_option.addChild(["Aktien / Übrige", "Shares / Others", "Action / Autres"], LnkEqui + "option/OptionSearch.action?searchFilter.market=eu&searchFilter.group=xx");
+    _optfut_eur_option.addChild(["Zinsderivate", "Interest Rate", "Produits de taux"], LnkEqui + "option/OptionSearch.action?searchFilter.market=eu&searchFilter.group=bd");
+    var _optfut_eur_futures = _optfut_eur.addChild("Futures",LnkEqui + "future/FutureSearch.action?searchFilter.market=eu&searchFilter.group=id");
+    _optfut_eur_futures.addChild(["Indizes", "Indices", "Indices"], LnkEqui + "future/FutureSearch.action?searchFilter.market=eu&searchFilter.group=id");
+    _optfut_eur_futures.addChild(["Aktien / Schweiz", "Shares / Switzerland", "Action / Suisse"], LnkEqui + "future/FutureSearch.action?searchFilter.market=eu&searchFilter.group=sw");
+    _optfut_eur_futures.addChild(["Aktien / Deutschland", "Shares / Germany", "Action / Allemagne"], LnkEqui + "future/FutureSearch.action?searchFilter.market=eu&searchFilter.group=de");
+    _optfut_eur_futures.addChild(["Aktien / Euronext", "Shares / Euronext", "Action / Euronext"], LnkEqui + "future/FutureSearch.action?searchFilter.market=eu&searchFilter.group=fr");
+    _optfut_eur_futures.addChild(["Aktien / Italien", "Shares / Italy", "Action / Italie"], LnkEqui + "future/FutureSearch.action?searchFilter.market=eu&searchFilter.group=it");
+    _optfut_eur_futures.addChild(["Aktien / Skandinavien", "Shares / Scandinavia", "Action / Scandinavie"], LnkEqui + "future/FutureSearch.action?searchFilter.market=eu&searchFilter.group=sk");
+    _optfut_eur_futures.addChild(["Aktien / Übrige", "Shares / Others", "Action / Autres"], LnkEqui + "future/FutureSearch.action?searchFilter.market=eu&searchFilter.group=xx");
+    _optfut_eur_futures.addChild(["Zinsderivate", "Interest Rate", "Produits de taux"], LnkEqui + "future/FutureSearch.action?searchFilter.market=eu&searchFilter.group=bd");
+    var _optfut_usa = _optfut.addChild("USA", LnkOptionFutureUSA);
+    _optfut_usa.addChild(["Options", "Options", "Options"], LnkEqui + "option/OptionSearch.action?searchFilter.market=ud");
+    _optfut_usa.addChild(["Futures", "Futures", "Futures"], LnkEqui + "future/FutureSearch.action?searchFilter.market=ud");
+    _optfut_usa.addChild(["Optionen auf Futures", "Options on futures", "Options sur Futures","Opzioni sugli Futures"], LnkEqui + "option/OptionSearch.action?searchFilter.market=ud&searchFilter.group=of");
+
+    var LnkNewFunds = fundTerms + '/sq-espaces-cms/#fund/leaders';
+    var _fonds = tree.addChild(["Fonds", "Funds", "Fonds"], LnkNewFunds, {idPublic:"funds"});
+    
+    var etfTerms = '/sq-web-info/termsAuto/ETF?l=CLANG1&cookieName=SQ_terms_ETF&cookieValue=TC_Funds_Other:I_AGREE&urlRedirect=';
+    var etfLeaders = '/sq-espaces-cms/#etf/leaders';
+    var marketListingAction = '/sq_mi/market/Listing.action?l=CLANG1';
+    var _etf = tree.addChild("ETF / ETP", etfTerms + etfLeaders, {idPublic:"etf"});
+    _etf.addChild("ETF / ETP Leaders", etfTerms + etfLeaders);
+    _etf.addChild("ETF Finder", LnkEqui + "etfs/EtfSearch.action");
+    _etf.addChild("ETP Finder", etfTerms + marketListingAction + '&market=ch&list=etf.etp&I_AGREE');
+    _etf.addChild("SIX", etfTerms + marketListingAction + '&market=ch&list=etf&showCurrency=true&showUnderlying=true&showLink=true&I_AGREE');
+    _etf.addChild("US", etfTerms + marketListingAction + '&market=us&list=etf&I_AGREE');
+    _etf.addChild("Euronext", etfTerms + marketListingAction + '&market=fr&list=etf&I_AGREE');
+    _etf.addChild(["Deutschland","Germany","Allemagne"], etfTerms + marketListingAction + '&market=ff&list=etf&I_AGREE');
+
+    if (SITE == "PUBLIC") {
+      var _indice = tree.addChild(["Indizes", "Indices", "Indices"], LnkIndiceSw, {Domaine:"public"});
+    }
+    else {
+      var _indice = tree.addChild(["Indizes", "Indices", "Indices"], LnkIndiceOverview, {Domaine:"premium"});
+    }
+    _indice.addChild(["Übersicht", "Overview", "Aperçu"], LnkIndiceOverview, {Domaine:"premium"});
+    _indice.addChild(["Schweiz", "Swiss", "Suisse"], LnkIndiceSw);
+    _indice.addChild(["Deutschland", "Germany", "Allemagne"], LnkList + "market=de&list=indices");
+    _indice.addChild(["Europa", "Europe", "Europe"], LnkList + "market=euro&list=europa.indexes&showMarket=t", {Domaine:"premium"});
+    _indice.addChild("US", LnkList + "market=us&list=indices");
+    var _sect = _indice.addChild(["Sektoren", "Sectors", "Secteurs"], "");
+    _sect.addChild("SIX", LnkIndiceSector);
+    var _const = _indice.addChild(["Bestandteile", "Components", "Constituants"], "");
+    _const.addChild("AEX 25", LnkList + "market=fr&list=aex25");
+    _const.addChild("BEL 20", LnkList + "market=fr&list=bel20");
+    _const.addChild("CAC 40", LnkList + "market=fr&list=cac40");
+    _const.addChild("DAX", LnkList + "market=de&list=dax");
+    _const.addChild("DJ Euro Stoxx 50", LnkList + "market=euro&list=sx5e");
+    _const.addChild("DJ Stoxx 50", LnkList + "market=euro&list=sx5p");
+    _const.addChild("Dow Jones", LnkList + "market=us&list=dowjones");
+    _const.addChild("HEX 25", LnkList + "market=fi&list=hex");
+    _const.addChild("KFX", LnkList + "market=dk&list=kfx");
+    _const.addChild("Nasdaq 100", LnkList + "market=us&list=nasdaq100");
+    _const.addChild("OMX", LnkList + "market=se&list=omx");
+    _const.addChild("SMI", LnkList + "market=ch&list=smi&sort=name&asc=true");
+    _const.addChild("SLI", LnkList + "market=ch&list=sli&sort=name&asc=true");
+    _const.addChild("TSX 60", LnkList + "market=ca&list=tsx");
+    var _ind_der = _indice.addChild("Derivatives", "");
+    _ind_der.addChild(["Warrants auf Indizes", "Warrants on Indices", "Warrants sur Indices"], LnkWarrantOn + "market=id", {Domaine:"premium"});
+    _ind_der.addChild(["Optionen auf Indizes", "Options on Indices", "Options sur Indices"], LnkEqui + "option/OptionSearch.action?searchFilter.market=eu&searchFilter.group=id");
+    _ind_der.addChild(["Futures auf Indizes", "Futures on Indices", "Futures sur Indices"], LnkEqui + "future/FutureSearch.action?searchFilter.market=eu&searchFilter.group=id");
+    _ind_der.addChild("S&P 500 Futures", LnkEqui + "future/FutureSearch.action?searchFilter.market=ud&searchFilter.underlying=USSPX0000007", {Domaine:"premium"});
+
+
+    var _forex = tree.addChild("Forex", ForexMarketCurrencies + "Convertor.action?l=CLANG2", {idPublic:"forex"});
+    /*  var _fx_book = _forex.addChild("FX Book", "/website-static/forex/main_forex_CLANG1.html");
+    _fx_book.addChild(["Übersicht", "Overview", "Aperçu"], "/website-static/forex/main_forex_CLANG1.html");
+    //PUBLIC
+      _fx_book.addChild(["Registrierung", "Subscription", "Inscription"], "/mkt/open_account/bank_open_multi_CLANG1.html", {Domaine:"public"});
+    //PREMIUM
+      _fx_book.addChild(["Registrierung", "Subscription", "Inscription"], "https://trade.swissquote.ch/sqb_core/EforexCtrl?commandName=viewEforexMainPage", {Domaine:"premium"});
+    _fx_book.addChild(["Kosten und Konditionen", "Fees & Conditions", "Frais & Conditions"], "/website-services/information/information_fees_CLANG1.html");
+*/
+                _forex.addChild(['Währungsrechner', 'Calculator', 'Convertisseur'], ForexMarketCurrencies + 'Convertor.action?l=CLANG2');
+                _forex.addChild('Interbank Rates', ForexMarketCurrencies + "UBSInterbankRates.action");
+                _forex.addChild('World Cross Rates', ForexMarketCurrencies + "WorldCrossRates.action", {Domaine:'premium'});
+                _forex.addChild('Euro Locking Rates', ForexMarketCurrencies + "EuroLockRates.action", {Domaine:'premium'});
+
+        var crypto = tree.addChild(['Crypto Assets', 'Crypto Assets', 'Crypto Assets'],  LnkCrypto);
+
+        var _commodities_etfTerms = '/sq-web-info/termsAuto/Funds?l=CLANG1&cookieName=SQ_terms&cookieValue=TC_Funds:I_AGREE;path=/;&urlRedirect='
+
+        var _commodities = tree.addChild('Commodities', _commodities_etfTerms + LnkWinLos + "etf.details.commodities");
+            _commodities.addChild('ETFs', _commodities_etfTerms + LnkWinLos + "etf.details.commodities");
+            _commodities.addChild(['Edelmetalle','Precious Metals','Métaux précieux','Metalli preziosi'], LnkCommoditiesMarket +'Listing.action?market=co&list=precious');
+            _commodities.addChild('Gold Coins', LnkCommoditiesMarket + 'Listing.action?market=co&list=coins');
+            _commodities.addChild('Oil Brent Crude Future', LnkCommoditiesMarket + 'Detail.action?s=.OILBC,U', {Domaine:'premium'});
+            _commodities.addChild(['Derivate', 'Derivatives', 'Dérivés'], LnkCommoditiesDeriv);
+
+        var _oblig_premium = tree.addChild(['Obligationen', 'Bonds', 'Obligations'], LnkOblIntro,{idPublic:'bonds'});
+            _oblig_premium.addChild('Intro', LnkOblIntro, {Domaine:'premium'});
+            _oblig_premium.addChild(['Zinssatz', 'Interest Rates', 'Taux d\'intérêts'], LnkOblInterest, {Domaine:'premium'});
+            _oblig_premium.addChild(['Suche', 'Search', 'Recherche'], LnkEqui + "bonds/BondSearch.action", {Domaine:'premium'});
+
+        var _news = tree.addChild(['News Feed', 'News Feed','News Feed'], LnkNewsOverview, {idPublic:'news'});
+            //_news.addChild(['Suche','Search','Recherche'], LnkNewsSearch);
+            //_news.addChild(['News pro Firma', 'News by company', 'Nouvelles par compagnie'], LnkNewsCompany);
+            //_news.addChild(['Kalender', 'Agenda', 'Echéancier'], LnkNEWS + "t1=t&c1=CALENDAR");
+            //var _news_ch = _news.addChild(['News Schweiz', 'Swiss News', 'Nouvelles suisse']);
+            //  _news_ch.addChild(['Finanzen', 'Finance', 'Finances'], LnkNEWS + "t1=r&c1=sw&t2=t&c2=FINANCE");
+            //  _news_ch.addChild(['Märkte', 'Markets', 'Marchés'], LnkNEWS + "t1=r&c1=sw&t2=t&c2=MARKET");
+            //  _news_ch.addChild(['Wirtschaft', 'Economic news', 'Economie'], LnkNEWS + "t1=r&c1=sw&t2=t&c2=ECONOMIC");
+            //  _news_ch.addChild(['Firmen', 'Company', 'Sociétés'], LnkNEWS + "t1=r&c1=sw&t2=t&c2=COMPANY");
+            //  _news_ch.addChild(['Politik', 'Politics', 'Politique'], LnkNEWS + "t1=r&c1=sw&t2=t&c2=POLITICS");
+            //  _news_ch.addChild(['Management-Transaktionen', 'Management Transactions', 'Transactions du Management'], LnkNEWS + "t1=s&c1=STK&t2=s&c2=MGT");
+                //_news_ch.addChild(['Marktgespräch', 'Market Rumors', 'Rumeurs de marché'], LnkNEWS + "t2=t&c2=RUMOR", {Domaine:'premium'});
+        //      _news_ch.addChild(['Diverses', 'General', 'Divers'], LnkNEWS + "t1=r&c1=sw&t2=t&c2=GENERAL");
+        //  var _news_us = _news.addChild(['News US', 'US News', 'Nouvelles US']);
+        //      _news_us.addChild(['Finanzen', 'Finance', 'Finances'], LnkNEWS + "t1=r&c1=us&t2=t&c2=FINANCE");
+        //      _news_us.addChild(['Märkte', 'Markets', 'Marchés'], LnkNEWS + "t1=r&c1=us&t2=t&c2=MARKET");
+        //      _news_us.addChild(['Wirtschaft', 'Economic news', 'Economie'], LnkNEWS + "t1=r&c1=us&t2=t&c2=ECONOMIC");
+        //      _news_us.addChild(['Firmen', 'Company', 'Sociétés'], LnkNEWS + "t1=r&c1=us&t2=t&c2=COMPANY");
+        //      _news_us.addChild(['Politik', 'Politics', 'Politique'], LnkNEWS + "t1=r&c1=us&t2=t&c2=POLITICS");
+        //      _news_us.addChild(['Diverses', 'General', 'Divers'], LnkNEWS + "t1=r&c1=us&t2=t&c2=GENERAL");
+        //  var _news_de = _news.addChild(['News Xetra', 'Xetra News', 'Nouvelles Xetra']);
+        //      _news_de.addChild(['Finanzen', 'Finance', 'Finances'], LnkNEWS + "t1=r&c1=ge&t2=t&c2=FINANCE");
+        //      _news_de.addChild(['Märkte', 'Markets', 'Marchés'], LnkNEWS + "t1=r&c1=ge&t2=t&c2=MARKET");
+        //      _news_de.addChild(['Wirtschaft', 'Economic news', 'Economie'], LnkNEWS + "t1=r&c1=ge&t2=t&c2=ECONOMIC");
+        //      _news_de.addChild(['Firmen', 'Company', 'Sociétés'], LnkNEWS + "t1=r&c1=ge&t2=t&c2=COMPANY");
+        //      _news_de.addChild(['Politik', 'Politics', 'Politique'], LnkNEWS + "t1=r&c1=ge&t2=t&c2=POLITICS");
+        //      _news_de.addChild(['Diverses', 'General', 'Divers'], LnkNEWS + "t1=r&c1=ge&t2=t&c2=GENERAL");
+        //  var _news_fr = _news.addChild(['News Euronext', 'Euronext News', 'Nouvelles Euronext']);
+        //      _news_fr.addChild(['Finanzen', 'Finance', 'Finances'], LnkNEWS + "t1=r&c1=fr&t2=t&c2=FINANCE");
+        //      _news_fr.addChild(['Märkte', 'Markets', 'Marchés'], LnkNEWS + "t1=r&c1=fr&t2=t&c2=MARKET");
+        //      _news_fr.addChild(['Wirtschaft', 'Economic news', 'Economie'], LnkNEWS + "t1=r&c1=fr&t2=t&c2=ECONOMIC");
+        //      _news_fr.addChild(['Firmen', 'Company', 'Sociétés'], LnkNEWS + "t1=r&c1=fr&t2=t&c2=COMPANY");
+        //      _news_fr.addChild(['Politik', 'Politics', 'Politique'], LnkNEWS + "t1=r&c1=fr&t2=t&c2=POLITICS");
+        //      _news_fr.addChild(['Diverses', 'General', 'Divers'], LnkNEWS + "t1=r&c1=fr&t2=t&c2=GENERAL");
+        //  var _news_others = _news.addChild(['News Weltweit', 'World News', 'Nouvelles globales']);
+        //      _news_others.addChild(['Finanzen', 'Finance', 'Finances'], LnkNEWS + "t1=r&c1=any&t2=t&c2=FINANCE");
+        //      _news_others.addChild(['Märkte', 'Markets', 'Marchés'], LnkNEWS + "t1=r&c1=any&t2=t&c2=MARKET");
+        //      _news_others.addChild(['Wirtschaft', 'Economic news', 'Economie'], LnkNEWS + "t1=r&c1=any&t2=t&c2=ECONOMIC");
+        //      _news_others.addChild(['Firmen', 'Company', 'Sociétés'], LnkNEWS + "t1=r&c1=any&t2=t&c2=COMPANY");
+        //      _news_others.addChild(['Politik', 'Politics', 'Politique'], LnkNEWS + "t1=r&c1=any&t2=t&c2=POLITICS");
+        //      _news_others.addChild(['Diverses', 'General', 'Divers'], LnkNEWS + "t1=r&c1=any&t2=t&c2=GENERAL");
+        //  _news.addChild('News alert', LnkNewsNewsAlert, {Domaine:'premium'});
+        //  _news.addChild(['Morning News', 'Morning News', 'Morning News'], LnkNewsBulletin);
+        //  _news.addChild('Newsletter', LnkNewsLetter);
+//      tree.addChild('Community', LnkOpenCommunity);
+    }
+    else
+// SERVICES
+  if (type == "services" || type == "help" || type == "signup" || type == "contact" || type == "static") {
+
+// HELP
+    var _help = tree.addChild(["Hilfe", "Help", "Aides", "Ausili"], LnkElseHelp, {idPublic:"help"});
+    /*  _help.addChild(["Übersicht", "Introduction", "Introduction", "Introduzione"], "/website-help/main_CLANG1.html");
+_help.addChild(["Kontoführung / Anmeldungen", "Account Management / Subscriptions", "Gestion des comptes et Abonnements"], "/website-help/account/help_account_submgt_CLANG1.html");
+_help.addChild(["Kontoführung und Formulare", "Account Management and Forms", "Gestion du compte et formulaires"], "/website-services/information/information_forms_CLANG1.html");
+_help.addChild(["Tools", "Tools", "Outils"], "/website-help/tools/main_CLANG1.html");
+_help.addChild("FAQ", "/website-help/faq/faq_CLANG1.html");
+_help.addChild(["Allgemeine Infos", "General information", "Infos générales"], "/website-help/general_info/help_general_info_CLANG1.html");
+_help.addChild(["Technische Voraussetzungen", "Technical recommendations", "Recommandations techniques"], "/website-help/tech_recommandation/help_tech_recommend_CLANG1.html");
+*/
+    var _contact = tree.addChild(["Kontakte", "Contacts", "Contacts"], "https://trade.swissquote.ch/sqb_retail/contact/HelpPublic.action?l=CLANG1",{idPublic:"contact"});
+    //var _contact = tree.addChild(["Kontakte", "Contacts", "Contacts"], "https://secure.swissquote.ch/cgi-bin/SQ_contact/contact.pl?language=CLANG1",{idPublic:"contact"});
+    var _offices = tree.addChild(["Unsere Standorte", "Our offices", "Nos bureaux"], LnkElseOffice,{idPublic:"contact"});
+  }
+  else
+// GROUP
+  if (type == "group") {
+    tree.addChild("Intro", "/website-group/main_CLANG1.html",{idPublic:"group"});
+    var _group = tree.addChild(["Überblick", "The Group", "Le groupe"], LnkElseGroup + "intro_group_CLANG1.html");
+    _group.addChild(["Die Gruppe", "Presentation", "Présentation"], LnkElseGroup + "intro_group_CLANG1.html");
+    _group.addChild(["Ziele & Strategie", "Goals/Strategy", "Buts & Stratégie"], LnkElseGroup + "buts_CLANG1.html");
+    var _invest = tree.addChild(["Investoreninformation", "Investor Relations", "Information aux investisseurs"], LnkElseInvestor + "intro_investor_CLANG1.html");
+    _invest.addChild(["Präsentationen", "Presentation", "Présentation"], LnkElseInvestor + "intro_investor_CLANG1.html");
+    _invest.addChild(["Reporting", "Reporting", "Rapports"], LnkElseInvestor + "reporting_presentations_CLANG1.html");
+    _invest.addChild(["Generalversammlung", "AGM", "Assemblée Générale"], LnkElseInvestor + "agm_CLANG1.html");
+    _invest.addChild(["Statuten/HR-Auszug", "Statutes", "Statuts / Extrait du R.C"], LnkElseInvestor + "statues_CLANG1.html");
+    _invest.addChild(["Agenda", "Agenda", "Agenda"], "/website-group/main_CLANG1.html");
+    _invest.addChild(["E-Mail-Service", "E-mail Service", "E-mail service"], LnkElseGroupContact +"contact_news_CLANG1.html");
+    var _corp = tree.addChild("Corporate Governance", LnkElseGroupCorporate + "intro_corporate_CLANG1.html");
+    _corp.addChild(["Präsentation", "Introduction", "Présentation"], LnkElseGroupCorporate + "intro_corporate_CLANG1.html");
+    _corp.addChild(["Konzernstruktur und Aktionariat", "Group Structure and Shareholders", "Structure du Groupe et Actionnariat"], LnkElseGroupCorporate + "structure_CLANG1.html");
+    _corp.addChild(["Kapitalstruktur", "Capital structure", "Structure du capital"], LnkElseGroupCorporate + "capital_CLANG1.html");
+    _corp.addChild(["Verwaltungsrat", "Board of Directors", "Conseil d\"Administration"], LnkElseGroupCorporate + "board_CLANG1.html");
+    _corp.addChild(["Geschäftsleitung", "Executive Management", "Direction générale"], LnkElseGroupCorporate + "executive_CLANG1.html");
+    _corp.addChild(["Entschüldigungen, Beteiligungen und Darlehen", "Compensation", "Rémunérations, participations et prêts"], LnkElseGroupCorporate + "remuneration_CLANG1.html");
+    _corp.addChild(["Mitwirkungsrechte der Aktionäre", "Shareholders\"s participation", "Droits de participation des actionnaires"], LnkElseGroupCorporate + "sharholders_CLANG1.html");
+    _corp.addChild(["Kontrollwechsel und Abwehrmassnahmen", "Change of control and defence measures", "Prises de contrôle et mesures de défense"], LnkElseGroupCorporate + "change_CLANG1.html");
+    _corp.addChild(["Revisionsstelle", "Auditors", "Organe de révision"], LnkElseGroupCorporate + "auditors_CLANG1.html");
+    _corp.addChild(["Informationspolitik", "Information Policy", "Politique d\"information"], LnkElseGroupCorporate + "policy_CLANG1.html");
+    var _info = tree.addChild(["Presseinformation", "Press Room", "Infos presse"], LnkElseGroupPress + "release_CLANG1.html");
+    _info.addChild(["Medieninformationen", "Media Info", "Informations aux médias"], LnkElseGroupPress + "release_CLANG1.html");
+    _info.addChild(["Image Bank", "Gallery", "Banque d\"images"], LnkElseGroupPress + "gallery_CLANG1.html");
+    _info.addChild(["E-mail service", "E-mail service", "E-mail service"], LnkElseGroupContact + "contact_news_CLANG1.html");
+    var _jobs = tree.addChild("Jobs", LnkElseGroupJob + "job_CLANG1.html");
+    _jobs.addChild(["Intro", "Introduction", "Introduction"], LnkElseGroupJob + "job_CLANG1.html");
+    _jobs.addChild(["Offene Stellen (VD)", "Job offers (VD)", "Nos offres à Gland"], LnkElseGroupJob + "job_offres_CLANG1.html");
+    _jobs.addChild(["Offene Stellen (ZH)", "Job offers (ZH)", "Nos offres à Zürich"], LnkElseGroupJob + "job_offres_schw_CLANG1.html");
+  }
+  else
+// SAVING
+  if (type == "saving") {
+    var _savAccount = tree.addChild(["Mein Konto", "My Account", "Mon Compte", "Mio Conto"], LnkCHsav+"/sqb_saving/account/Account.action",{idPublic:"saving"});
+    _savAccount.addChild(["Konto übersicht", "Account summary", "Compte aperçu", "Panoramica del conto"], LnkCHsav+"/sqb_saving/account/Account.action");
+    _savAccount.addChild(["Konto Details", "Account detail", "Compte détail", "Dettaglio del conto"], LnkCHsav+"/sqb_saving/account/Account.action?showPositions");
+    _savAccount.addChild(["Anlagen übersicht", "Investment overview", "Aperçu des placements", "Aperçu des placement"], LnkCHsav+"/sqb_saving/account/Account.action?showOpenOrders");
+    _savAccount.addChild(["Modell-Verwaltung", "Model Management", "Gestion des modèles", "Gestion des modèles"], LnkCHsav+"/sqb_saving/savingmodel/SavingModel.action");
+//                  _savAccount.addChild(["Fälligkeit Kalender", "Maturity calendar", "Calendrier des maturités", "Calendario delle scadenze"], LnkCHsav+"/sqb_saving/maturitycalendar/MaturityCalendar.action");
+    _savAccount.addChild(["Transaktionen", "Transactions", "Transactions", "Transazioni"], LnkCHsav+"/sqb_saving/transactions/Transactions.action");
+    _savAccount.addChild(["Wechsel", "Change", "Change", "Cambio"], LnkCHsav+"/sqtr_exchange/change/change.do");
+    _savAccount.addChild(["Zahlungsverkehr", "Payment services", "Services de paiement", "Operazioni di pagamento"], LnkCHsav+"/sqb_retail/OpsFormSavingCtrl/?commandName=opsAccess");
+    _savAccount.addChild(["Cash facility", "Cash facility", "Cash facility", "Cash facility"], LnkCHsav+"/sqb_saving/account/CashFacility.action");
+    tree.addChild(["Mein Profil", "My Profile", "Mon Profil", "Mio Profilo"], LnkCHsav+"/sqb_client_relations2/ProfileCtrl?commandName=viewProfile");
+    //tree.addChild(["Lebensversicherung", "Life insurance", "Assurance Vie", "L\"assicurazione sulla vita"], LnkCHsav+"/sqb_saving/externalProducts/termlife/prod/TermLifeInsurance.action");
+    tree.addChild(["Benachrichtigungen", "Notifications", "Communications", "Comunicazione"], LnkCHsav+"/sqb_client_relations2/CommunicationSavingCtrl/?commandName=displayFirstPage");
+  } else if (type == "saving_portal"){
+    var _savAccount = tree.addChild(["Mein Konto", "My Account", "Mon Compte", "Mio Conto"], LnkCHsav+"/sqb_saving/account/Account.action",{idPublic:"saving"});
+    _savAccount.addChild(["Konto übersicht", "Account summary", "Compte aperçu", "Panoramica del conto"], LnkCHsav+"/sqb_saving/account/Account.action");
+    _savAccount.addChild(["Konto Details", "Account detail", "Compte détail", "Dettaglio del conto"], LnkCHsav+"/sqb_saving/account/Account.action?showPositions");
+    _savAccount.addChild(["Anlagen übersicht", "Investment overview", "Aperçu des placements", "Aperçu des placement"], LnkCHsav+"/sqb_saving/account/Account.action?showOpenOrders");
+    _savAccount.addChild(["Modell-Verwaltung", "Model Management", "Gestion des modèles", "Gestion des modèles"], LnkCHsav+"/sqb_saving/savingmodel/SavingModel.action");
+    _savAccount.addChild(["Transaktionen", "Transactions", "Transactions", "Transazioni"], LnkCHsav+"/sqb_saving/transactions/Transactions.action");
+    _savAccount.addChild(["Wechsel", "Change", "Change", "Cambio"], LnkCHsav+"/sqtr_exchange/change/change.do");
+    _savAccount.addChild(["Zahlungsverkehr", "Payment services", "Services de paiement", "Operazioni di pagamento"], LnkCHsav+"/sqb_retail/OpsFormSavingCtrl/?commandName=opsAccess");
+    _savAccount.addChild(["Cash facility", "Cash facility", "Cash facility", "Cash facility"], LnkCHsav+"/sqb_saving/account/CashFacility.action");
+  }
+// 3A
+  if (type == "3a") {
+    var _pension = tree.addChild(["Mein Konto", "My Account", "Mon Compte", "Mio Conto"], LnkCHsav+"/sqb_saving/3a/account/AccountDetail.action");
+    _pension.addChild(["Konto Übersicht", "Account summary", "Compte aperçu", "Panoramica del conto"], LnkCHsav+"/sqb_saving/3a/account/AccountDetail.action");
+    _pension.addChild(["Transaktionen", "Transactions", "Transactions", "Transazioni"], LnkCHsav+"/sqb_core/Transactions.action");
+    _pension.addChild(["iDynamic Plus", "iDynamic Plus", "iDynamic Plus", "iDynamic Plus"], LnkCHsav+"/website-bank/saving/dynamo/dynamo_overview_CLANG1.html");
+    tree.addChild(["Benachrichtigungen", "Notifications", "Communications", "Comunicazione"], LnkCHsav+"/sqb_client_relations2/CommunicationCtrl?commandName=displayFirstPage");
+  } else if (type == "3a_portal"){
+    //Nothing !
+  }
+}

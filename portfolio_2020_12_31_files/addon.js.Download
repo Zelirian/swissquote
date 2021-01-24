@@ -1,0 +1,21 @@
+<!--
+// COPYRIGHT (c) 2004 BY SWISSQUOTE GROUP LTD, GLAND, SWITZERLAND - Ver 4.1
+
+function myError(){
+  return false;
+}
+window.onerror = myError;
+
+var fset=false;//init by default, multi frames no. look request_advsearch.js for init true
+var Targ2='fsetmain';var Targ='sqmain';
+function BrwName(){return navigator.appName.charAt(0).toLowerCase();};
+function BrwVer(){var Agent=window.navigator.userAgent;return parseInt(Agent.substr(Agent.indexOf("MSIE ")+5,1),10);};
+bName=BrwName();bVer=BrwVer();
+var Mla=4;function Mlang(){if(typeof(Mla)=='undefined'){var Mla=4;}};
+var VerBug=0;var nappA=navigator.userAgent;var nappN=navigator.appName;var nappV=navigator.appVersion;var Dcd=document.domain.toLowerCase();
+var Dom=1;
+if(Dcd.indexOf('swissquote')!=-1){Dom=1;};
+if((jsver<1.2)||(navigator.appName.toLowerCase()=="konqueror")||((navigator.appName.toLowerCase()=="netscape")&&(navigator.userAgent.substring(navigator.userAgent.lastIndexOf('/') + 1)=="6.00"))||((navigator.appName.toLowerCase()=="netscape")&&(navigator.userAgent.substring(navigator.userAgent.lastIndexOf('/')+1)=="6.01"))){var VerBug=1;}
+function NE_resize_Go(){if ((navigator.appName.charAt(0))=='N'){}}
+function GoHome(){top.window.location=top.window.location;}
+// -->

@@ -1,0 +1,632 @@
+  /*--------------*/
+ /* =  Buttons = */
+/*-----------------------------------------------------------------------------*/
+
+/*Default button style*/
+
+	a.button {
+	  border:0;
+	  display:inline-block;
+	  padding-left:11px;
+	  margin:6px 0 5px 0;
+	  color:#000;
+	  line-height:15px;
+	  font-weight:bold;
+	  text-decoration:none;
+	  cursor:pointer;
+	}
+
+	a.button span.left,
+	a.button span.middle,
+	a.button span.right {height: 19px;float:left;}
+
+	a.button span.left {background-repeat:no-repeat; width:14px;}
+	a.button span.middle {background-repeat:repeat-x; font-size:10px; margin-top:0; line-height:19px;}
+	a.button span.right {background-repeat:no-repeat;width: 18px;}
+
+	a.button span.left {background-image: url('../images/action/btn_simple_left.gif');}
+	a.button span.middle {background-image: url('../images/action/btn_simple_middle.gif');}
+	a.button span.right {background-image: url('../images/action/btn_simple_right.gif');}
+
+	a.button:hover span.left {background-image:url('../images/action/btnH_simple_left.gif');}
+	a.button:hover span.middle {background-image:url('../images/action/btnH_simple_middle.gif'); color: #000; text-decoration: none;}
+	a.button:hover span.right {background-image:url('../images/action/btnH_simple_right.gif');}
+
+
+/*MODERNIZR*/
+	/*remove default background images*/
+	.cssgradients a.button span,
+	.cssgradients a.button:hover span {background-image:none;}
+
+	.cssgradients a.button span.left,
+	.cssgradients a.button span.right{width:0px;}
+
+	/*only for cssgradients browsers*/
+	.cssgradients a.button span.middle,
+	.cssgradients a.button:hover span.middle {
+		padding:0 17px 0 14px;
+		overflow:hidden;
+		white-space: nowrap;
+	}
+	
+	
+	.cssgradients a.button span.middle {
+		-webkit-border-radius: 6px;
+		   -moz-border-radius: 6px;
+		 		border-radius: 6px;
+
+
+		background-image: url('../images/action/btn_arrow.gif'), -webkit-gradient(linear, 0% 0%, 0% 100%, from( #efefef), to(#cacaca)); /* Saf 4 */
+		background-image: url('../images/action/btn_arrow.gif'), -webkit-linear-gradient(top, #efefef, #cacaca); /* Chrome 10+, Saf5.1+, iOS 5+ */
+		background-image: url('../images/action/btn_arrow.gif'),   -moz-linear-gradient(top, #efefef, #cacaca); /* FF3.6 */
+		background-image: url('../images/action/btn_arrow.gif'),    -ms-linear-gradient(top, #efefef, #cacaca); /* IE10 */
+		background-image: url('../images/action/btn_arrow.gif'),     -o-linear-gradient(top, #efefef, #cacaca); /* Opera 11.10+ */
+		background-image: url('../images/action/btn_arrow.gif'),        linear-gradient(top, #efefef, #cacaca);
+
+		background-repeat: no-repeat;
+		background-position: 94% 50%;
+	}
+
+	/*Hover*/
+	.cssgradients a.button:hover span.middle {
+		background-image: url('../images/action/btn_arrow.gif'), -webkit-gradient(linear, 0% 0%, 0% 100%, from( #e2e2e2), to(#cacaca)); /* Saf4 */
+		background-image: url('../images/action/btn_arrow.gif'), -webkit-linear-gradient(top, #e2e2e2, #cacaca); /* Chrome 10+, Saf5.1+, iOS 5+ */
+		background-image: url('../images/action/btn_arrow.gif'),   -moz-linear-gradient(top, #e2e2e2, #cacaca); /* FF3.6 */
+		background-image: url('../images/action/btn_arrow.gif'),    -ms-linear-gradient(top, #e2e2e2, #cacaca); /* IE10 */
+		background-image: url('../images/action/btn_arrow.gif'),     -o-linear-gradient(top, #e2e2e2, #cacaca); /* Opera 11.10+ */
+		background-image: url('../images/action/btn_arrow.gif'),        linear-gradient(top, #e2e2e2, #cacaca);
+	}
+
+/*end MODERNIZR*/
+
+
+
+/* HighLight */
+
+
+	a.button.highlight span.left,
+	a.button.highlight span.middle,
+	a.button.highlight span.right {height: 25px; float:left; color: #000; text-decoration: none;}
+
+	a.button.highlight span.left {background-repeat:no-repeat; width: 18px;}
+	a.button.highlight span.middle {font-size:10px; line-height:26px;}
+	a.button.highlight span.right {background-repeat:no-repeat; width: 27px;}
+
+	a.button.highlight span.left {background-image: url('../images/action/btn_highlight_left.gif');}
+	a.button.highlight span.middle {background-image: url('../images/action/btn_highlight_middle.gif');}
+	a.button.highlight span.right {background-image: url('../images/action/btn_highlight_right.gif');}
+
+	a.button.highlight:hover span.left {background-image:url('../images/action/btnH_highlight_left.gif');}
+	a.button.highlight:hover span.middle {background-image:url('../images/action/btnH_highlight_middle.gif');}
+	a.button.highlight:hover span.right {background-image:url('../images/action/btnH_highlight_right.gif');}
+
+
+
+/*MODERNIZR HighLight*/
+	/*remove default background images*/
+	.cssgradients a.button.highlight span,
+	.cssgradients a.button.highlight:hover span {background-image:none;}
+
+	.cssgradients a.button.highlight span.left,
+	.cssgradients a.button.highlight span.right{width:0px;}
+
+	/*only for cssgradients browsers*/
+	.cssgradients a.button.highlight span.middle {
+		padding:0 23px 0 18px;
+
+		-webkit-border-radius: 6px;
+		   -moz-border-radius: 6px;
+		 		border-radius: 6px;
+
+		background-image: url('../images/action/btn_arrow_highlight.gif'), -webkit-gradient(linear, 0% 0%, 0% 100%, from( #efefef), to(#cacaca)); /* Saf4 */
+		background-image: url('../images/action/btn_arrow_highlight.gif'), -webkit-linear-gradient(top, #efefef, #cacaca); /* Chrome 10+, Saf5.1+, iOS 5+ */
+		background-image: url('../images/action/btn_arrow_highlight.gif'),   -moz-linear-gradient(top, #efefef, #cacaca); /* FF3.6 */
+		background-image: url('../images/action/btn_arrow_highlight.gif'),    -ms-linear-gradient(top, #efefef, #cacaca); /* IE10 */
+		background-image: url('../images/action/btn_arrow_highlight.gif'),     -o-linear-gradient(top, #efefef, #cacaca); /* Opera 11.10+ */
+		background-image: url('../images/action/btn_arrow_highlight.gif'),        linear-gradient(top, #efefef, #cacaca);
+
+		background-repeat: no-repeat;
+		background-position: 94% 50%;
+	}
+
+	/*Hover*/
+	.cssgradients a.button.highlight:hover span.middle {
+		background-image: url('../images/action/btn_arrow_highlight.gif'), -webkit-gradient(linear, 0% 0%, 0% 100%, from( #e2e2e2), to(#cacaca)); /* Saf 4 */
+		background-image: url('../images/action/btn_arrow_highlight.gif'), -webkit-linear-gradient(top, #e2e2e2, #cacaca); /* Chrome 10+, Saf5.1+, iOS 5+ */
+		background-image: url('../images/action/btn_arrow_highlight.gif'),   -moz-linear-gradient(top, #e2e2e2, #cacaca); /* FF3.6 */
+		background-image: url('../images/action/btn_arrow_highlight.gif'),    -ms-linear-gradient(top, #e2e2e2, #cacaca); /* IE10 */
+		background-image: url('../images/action/btn_arrow_highlight.gif'),     -o-linear-gradient(top, #e2e2e2, #cacaca); /* Opera 11.10+ */
+		background-image: url('../images/action/btn_arrow_highlight.gif'),        linear-gradient(top, #e2e2e2, #cacaca);
+	}
+
+/*end MODERNIZR*/
+
+
+
+
+/*Default open account style*/
+	a.button.openAccount span.left,
+	a.button.openAccount span.middle,
+	a.button.openAccount span.right{display:block; float:left; height:25px;}
+
+
+	a.button.openAccount span.left {
+	  background-repeat: no-repeat;
+	  width: 18px;
+	  margin-right:-2px
+	}
+
+	a.button.openAccount span.middle {
+	  background-repeat: repeat-x;
+	  font-size: 12px;
+	  line-height: 22px;
+	  color: #ffffff;
+	  margin-top: 0;
+	}
+	a.button.openAccount span.right {
+	  background-repeat: no-repeat;
+	  width: 23px;
+	}
+
+	/*Open account skins*/
+	/*Trading*/
+		a.button.openAccount span.left {background-image: url('../images/action/img_trading_left.gif');}
+		a.button.openAccount span.middle {background-image: url('../images/action/img_trading_middle.gif');}
+		a.button.openAccount span.right {background-image: url('../images/action/img_trading_right.gif');}
+
+		a.button.openAccount:hover span.left {background-image: url('../images/action/imgH_trading_left.gif');}
+		a.button.openAccount:hover span.middle {background-image: url('../images/action/imgH_trading_middle.gif');}
+		a.button.openAccount:hover span.right {background-image: url('../images/action/imgH_trading_right.gif');}
+
+
+/*Default left Menu open account style*/
+
+
+		#leftcolumn a.button.openAccount{text-transform: uppercase; padding-top:4px; margin:0;width:179px;height:31px;background-repeat:no-repeat;color: #fff; font-size: 13px;}
+		#leftcolumn a.button.openAccount{background-image:url("../images/action/open_account_trading.gif")}
+
+		#leftcolumn a.button.openAccount span.left {display:none; background-image:none;}
+		#leftcolumn a.button.openAccount span.middle {background-image:none}
+		#leftcolumn a.button.openAccount span.right {display:none; background-image:none}
+
+		#leftcolumn a.button.openAccount:hover span.left {display:none; background-image:none}
+		#leftcolumn a.button.openAccount:hover span.middle {background-image:none}
+		#leftcolumn a.button.openAccount:hover span.right {display:none; background-image:none}
+
+
+
+/*MODERNIZR open account*/
+	/*remove default background images*/
+	.cssgradients a.button.openAccount span,
+	.cssgradients a.button.openAccount:hover span {background-image:none;}
+
+	.cssgradients a.button.openAccount span.left,
+	.cssgradients a.button.openAccount span.right{width:0px;}
+
+	/*only for cssgradients browsers*/
+	.cssgradients a.button.openAccount span.middle {
+		padding:0 23px 0 16px;
+		height:25px;
+		color:#fff;
+
+		-webkit-border-radius: 8px;
+		   -moz-border-radius: 8px;
+		 		border-radius: 8px;
+
+		background-image: url('../images/action/btn_arrow_account.gif'), -webkit-gradient(linear, 0% 0%, 0% 100%, from( #ffd2b5), to(#fd7626)); /* Saf 4 */
+		background-image: url('../images/action/btn_arrow_account.gif'), -webkit-linear-gradient(top, #ffd2b5, #fd7626); /* Chrome 10+, Saf5.1+, iOS 5+ */
+		background-image: url('../images/action/btn_arrow_account.gif'),   -moz-linear-gradient(top, #ffd2b5, #fd7626); /* FF3.6 */
+		background-image: url('../images/action/btn_arrow_account.gif'),    -ms-linear-gradient(top, #ffd2b5, #fd7626); /* IE10 */
+		background-image: url('../images/action/btn_arrow_account.gif'),     -o-linear-gradient(top, #ffd2b5, #fd7626); /* Opera 11.10+ */
+		background-image: url('../images/action/btn_arrow_account.gif'),        linear-gradient(top, #ffd2b5, #fd7626);
+
+		background-repeat: no-repeat;
+		background-position: 94% 50%;
+	}
+
+	/*Hover*/
+	.cssgradients a.button.openAccount:hover span.middle {
+		background-image: url('../images/action/btn_arrow_account.gif'), -webkit-gradient(linear, 0% 0%, 0% 100%, from( #fe833a), to(#fe833a)); /* Saf4 */
+		background-image: url('../images/action/btn_arrow_account.gif'), -webkit-linear-gradient(top, #fe833a, #fe833a); /* Chrome 10+, Saf5.1+, iOS 5+ */
+		background-image: url('../images/action/btn_arrow_account.gif'),   -moz-linear-gradient(top, #fe833a, #fe833a); /* FF3.6 */
+		background-image: url('../images/action/btn_arrow_account.gif'),    -ms-linear-gradient(top, #fe833a, #fe833a); /* IE10 */
+		background-image: url('../images/action/btn_arrow_account.gif'),     -o-linear-gradient(top, #fe833a, #fe833a); /* Opera 11.10+ */
+		background-image: url('../images/action/btn_arrow_account.gif'),        linear-gradient(top, #fe833a, #fe833a);
+	}
+
+/*end MODERNIZR*/
+
+
+
+
+
+
+
+/* My Account */
+		a.my_account span.right,
+		a.my_account span.middle,
+		a.my_account span.left{	float:left;	display:block;}
+
+		a.my_account {  text-decoration:none;  margin:0;}
+
+		a.my_account span.left,
+		a.my_account:hover span.left {	background-image:url("../images/action/btn_account_left.png");	background-repeat:no-repeat;	color:#4e4c4c;	font-size:12px;	font-weight:bold;	width:30px;	height:28px;	padding:0;}
+
+		a.my_account span.middle,
+		a.my_account:hover span.middle {	background-image:url("../images/action/btn_account_middle.png");	background-repeat:repeat;	color:#4e4c4c;	font-size:12px;	font-weight:bold;	height:28px;	line-height:27px;	padding:0 5px;}
+
+		a.my_account span.right,
+		a.my_account:hover span.right {	background-image:url("../images/action/btn_account_right.png");	background-repeat:no-repeat;	color:#4e4c4c;	font-size:12px;	font-weight:bold;	width:18px;	height:28px;	padding:0 5px;}
+
+
+/*MODERNIZR my account*/
+
+	/*remove default background images*/
+	.cssgradients a.button.my_account span,
+	.cssgradients a.button.my_account:hover span {background-image:none;}
+
+	.cssgradients a.button.my_account span.left,
+	.cssgradients a.button.my_account span.right{width:0px;}
+
+
+
+
+	/*override button css3*/
+	.cssgradients a.button.my_account span.middle{
+		padding:0 20px 0 35px;
+		height:28px;
+		color:#4e4c4c;
+
+
+		-webkit-border-radius: 8px;
+		   -moz-border-radius: 8px;
+		 		border-radius: 8px;
+
+		-webkit-border-top-left-radius: 0;
+			-moz-border-radius-topleft: 0;
+				border-top-left-radius: 0;
+
+		background-image: url('../images/action/icon_my_account.gif'), -webkit-gradient(linear, 0% 0%, 0% 100%, from( #ffd2b5), to(#fd7626)); /* Saf4 */
+		background-image: url('../images/action/icon_my_account.gif'), -webkit-linear-gradient(top, #ffd2b5, #fd7626); /* Chrome 10+, Saf5.1+, iOS 5+ */
+		background-image: url('../images/action/icon_my_account.gif'),   -moz-linear-gradient(top, #f5f1eb, #aea59b); /* FF3.6 */
+		background-image: url('../images/action/icon_my_account.gif'),    -ms-linear-gradient(top, #ffd2b5, #fd7626); /* IE10 */
+		background-image: url('../images/action/icon_my_account.gif'),     -o-linear-gradient(top, #ffd2b5, #fd7626); /* Opera 11.10+ */
+		background-image: url('../images/action/icon_my_account.gif'),        linear-gradient(top, #ffd2b5, #fd7626);
+
+		background-repeat: no-repeat;
+		background-position: 8% 40%;
+	}
+
+	/*Hover*/
+	.cssgradients a.button.my_account:hover span.middle {
+		background-image: url('../images/action/icon_my_account.gif'), -webkit-gradient(linear, 0% 0%, 0% 100%, from( #ffd2b5), to(#fd7626)); /* Saf4 */
+		background-image: url('../images/action/icon_my_account.gif'), -webkit-linear-gradient(top, #ffd2b5, #fd7626); /* Chrome 10+, Saf5.1+, iOS 5+ */
+		background-image: url('../images/action/icon_my_account.gif'),   -moz-linear-gradient(top, #f5f1eb, #aea59b); /* FF3.6 */
+		background-image: url('../images/action/icon_my_account.gif'),    -ms-linear-gradient(top, #ffd2b5, #fd7626); /* IE10 */
+		background-image: url('../images/action/icon_my_account.gif'),     -o-linear-gradient(top, #ffd2b5, #fd7626); /* Opera 11.10+ */
+		background-image: url('../images/action/icon_my_account.gif'),        linear-gradient(top, #ffd2b5, #fd7626);
+	}
+
+
+
+	/*-----------*/
+	/* = Link = */
+	/*-----------------------------------------------------------------------------*/
+
+	a.noDecoration {
+		text-decoration: none;
+	}
+
+	/*-----------*/
+	/* = SUBMIT = */
+	/*-----------------------------------------------------------------------------*/
+	a.button.submit span.left {background-image: url('../images/action/btn_cancel.png'); width:14px;}
+	a.button.submit span.middle {background-image: url('../images/action/btn_cancel.png');}
+	a.button.submit span.right {background-image: url('../images/action/btn_cancel.png'); width:14px;}
+
+	a.button.submit span.left,
+	a.button.submit span.middle,
+	a.button.submit span.right{height:30px;line-height:30px;}
+
+
+	/*MODERNIZR SUBMIT*/
+		/*remove default background images*/
+		.cssgradients a.button.submit span{background-image:none;}
+
+		.cssgradients a.button.submit span.left,
+		.cssgradients a.button.submit span.right{width:0px;}
+
+		/*only for cssgradients browsers*/
+		.cssgradients a.button.submit span.middle {
+			padding:0 14px;
+
+			-webkit-border-radius: 0px;
+			   -moz-border-radius: 0px;
+			 		border-radius: 0px;
+
+			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from( #F7F7F7), to(#b1b1b1)); /* Saf4 */
+			background-image: -webkit-linear-gradient(top, #F7F7F7, #b1b1b1); /* Chrome 10+, Saf5.1+, iOS 5+ */
+			background-image:    -moz-linear-gradient(top, #F7F7F7, #b1b1b1); /* FF3.6 */
+			background-image:     -ms-linear-gradient(top, #F7F7F7, #b1b1b1); /* IE10 */
+			background-image:      -o-linear-gradient(top, #F7F7F7, #b1b1b1); /* Opera 11.10+ */
+			background-image:         linear-gradient(top, #F7F7F7, #b1b1b1);
+		}
+
+		/*Hover*/
+		.cssgradients a.button.submit:hover span.middle {
+			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from( #b1b1b1), to(#b1b1b1)); /* Saf4 */
+			background-image: -webkit-linear-gradient(top, #b1b1b1, #b1b1b1); /* Chrome 10+, Saf5.1+, iOS 5+ */
+			background-image:    -moz-linear-gradient(top, #b1b1b1, #b1b1b1); /* FF3.6 */
+			background-image:     -ms-linear-gradient(top, #b1b1b1, #b1b1b1); /* IE10 */
+			background-image:      -o-linear-gradient(top, #b1b1b1, #b1b1b1); /* Opera 11.10+ */
+			background-image:         linear-gradient(top, #b1b1b1, #b1b1b1);
+		}
+
+	/*end MODERNIZR*/
+
+
+
+
+
+
+	/*-----------*/
+	/* = CANCEL = */
+	/*-----------------------------------------------------------------------------*/
+	a.button.cancel span.left {background-image: url('../images/action/btn_cancel.png'); width:14px;}
+	a.button.cancel span.middle {background-image: url('../images/action/btn_cancel.png');}
+	a.button.cancel span.right {background-image: url('../images/action/btn_cancel.png'); width:14px;}
+
+	a.button.cancel span.left,
+	a.button.cancel span.middle,
+	a.button.cancel span.right{height:30px;line-height:30px;}
+
+	/*MODERNIZR CANCEL*/
+		/*remove default background images*/
+		.cssgradients a.button.cancel span{background-image:none;}
+
+		.cssgradients a.button.cancel span.left,
+		.cssgradients a.button.cancel span.right{width:0px;}
+
+		/*only for cssgradients browsers*/
+		.cssgradients a.button.cancel span.middle {
+			padding:0 14px;
+
+			-webkit-border-radius: 0px;
+			   -moz-border-radius: 0px;
+			 		border-radius: 0px;
+
+			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from( #F7F7F7), to(#b1b1b1)); /* Saf4 */ 
+			background-image: -webkit-linear-gradient(top, #F7F7F7, #b1b1b1); /* Chrome 10+, Saf5.1+, iOS 5+ */
+			background-image:    -moz-linear-gradient(top, #F7F7F7, #b1b1b1); /* FF3.6 */
+			background-image:     -ms-linear-gradient(top, #F7F7F7, #b1b1b1); /* IE10 */
+			background-image:      -o-linear-gradient(top, #F7F7F7, #b1b1b1); /* Opera 11.10+ */
+			background-image:         linear-gradient(top, #F7F7F7, #b1b1b1);
+		}
+
+	/*end MODERNIZR*/
+
+
+	/*-----------*/
+	/* = BUY = */
+	/*-----------------------------------------------------------------------------*/
+	a.button.buy:hover span.left,
+	a.button.buy span.left {background-image: url('../images/action/btnPlaceOrderBuy.png'); width:14px;}
+
+	a.button.buy:hover span.middle,
+	a.button.buy span.middle {background-image: url('../images/action/btnPlaceOrderBuy.png');}
+
+	a.button.buy:hover span.right,
+	a.button.buy span.right {background-image: url('../images/action/btnPlaceOrderBuy.png'); width:14px;}
+
+	a.button.buy span.left,
+	a.button.buy span.middle,
+	a.button.buy span.right,
+	a.button.buy:hover span.left,
+	a.button.buy:hover span.middle,
+	a.button.buy:hover span.right{height:30px;line-height:30px; color:#ffffff;}
+
+
+/*MODERNIZR BUY*/
+	/*remove default background images*/
+	.cssgradients a.button.buy span{background-image:none;}
+
+	.cssgradients a.button.buy span.left,
+	.cssgradients a.button.buy span.right{width:0px;}
+
+	/*only for cssgradients browsers*/
+	.cssgradients a.button.buy span.middle {
+		padding:0 14px;
+
+		-webkit-border-radius: 0px;
+		   -moz-border-radius: 0px;
+		 		border-radius: 0px;
+
+		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from( #abb8d3), to(#275aa0)); /* Saf4 */
+		background-image: -webkit-linear-gradient(top, #abb8d3, #275aa0); /* Chrome 10+, Saf5.1+, iOS 5+ */
+		background-image:    -moz-linear-gradient(top, #abb8d3, #275aa0); /* FF3.6 */
+		background-image:     -ms-linear-gradient(top, #abb8d3, #275aa0); /* IE10 */
+		background-image:      -o-linear-gradient(top, #abb8d3, #275aa0); /* Opera 11.10+ */
+		background-image:         linear-gradient(top, #abb8d3, #275aa0);
+
+		background-repeat: no-repeat;
+		background-position: 94% 50%;
+	}
+
+	/*Hover*/
+	.cssgradients a.button.buy:hover span.middle {
+		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from( #275aa0), to(#275aa0)); /* Saf4 */
+		background-image: -webkit-linear-gradient(top, #275aa0, #275aa0); /* Chrome 10+, Saf5.1+, iOS 5+ */
+		background-image:    -moz-linear-gradient(top, #275aa0, #275aa0); /* FF3.6 */
+		background-image:     -ms-linear-gradient(top, #275aa0, #275aa0); /* IE10 */
+		background-image:      -o-linear-gradient(top, #275aa0, #275aa0); /* Opera 11.10+ */
+		background-image:         linear-gradient(top, #275aa0, #275aa0);
+	}
+
+/*end MODERNIZR*/
+
+
+	/*-----------*/
+	/* = SELL = */
+	/*-----------------------------------------------------------------------------*/
+	a.button.sell:hover span.left,
+	a.button.sell span.left {background-image: url('../images/action/btnPlaceOrderSell.png'); width:14px;}
+
+	a.button.sell:hover span.middle,
+	a.button.sell span.middle {background-image: url('../images/action/btnPlaceOrderSell.png');}
+
+	a.button.sell:hover span.right,
+	a.button.sell span.right {background-image: url('../images/action/btnPlaceOrderSell.png'); width:14px;}
+
+	a.button.sell span.left,
+	a.button.sell span.middle,
+	a.button.sell span.right,
+	a.button.sell:hover span.left,
+	a.button.sell:hover span.middle,
+	a.button.sell:hover span.right{height:30px;line-height:30px; color:#ffffff;}
+
+	/*MODERNIZR SELL*/
+		/*remove default background images*/
+		.cssgradients a.button.sell span{background-image:none;}
+
+		.cssgradients a.button.sell span.left,
+		.cssgradients a.button.sell span.right{width:0px;}
+
+		/*only for cssgradients browsers*/
+		.cssgradients a.button.sell span.middle {
+			padding:0 14px;
+
+			-webkit-border-radius: 0px;
+			   -moz-border-radius: 0px;
+			 		border-radius: 0px;
+
+			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from( #f1bfb6), to(#d12809)); /* Saf4 */
+			background-image: -webkit-linear-gradient(top, #f1bfb6, #d12809); /* Chrome 10+, Saf5.1+, iOS 5+ */
+			background-image:    -moz-linear-gradient(top, #f1bfb6, #d12809); /* FF3.6 */
+			background-image:     -ms-linear-gradient(top, #f1bfb6, #d12809); /* IE10 */
+			background-image:      -o-linear-gradient(top, #f1bfb6, #d12809); /* Opera 11.10+ */
+			background-image:         linear-gradient(top, #f1bfb6, #d12809);
+
+			background-repeat: no-repeat;
+			background-position: 94% 50%;
+		}
+
+		/*Hover*/
+		.cssgradients a.button.sell:hover span.middle {
+			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from( #d12809), to(#d12809)); /* Saf4 */
+			background-image: -webkit-linear-gradient(top, #d12809, #d12809); /* Chrome 10+, Saf5.1+, iOS 5+ */
+			background-image:    -moz-linear-gradient(top, #d12809, #d12809); /* FF3.6 */
+			background-image:     -ms-linear-gradient(top, #d12809, #d12809); /* IE10 */
+			background-image:      -o-linear-gradient(top, #d12809, #d12809); /* Opera 11.10+ */
+			background-image:         linear-gradient(top, #d12809, #d12809);
+		}
+
+	/*end MODERNIZR*/
+
+
+
+	/*-----------*/
+	/* = DELETE = */
+	/*-----------------------------------------------------------------------------*/
+	a.button.delete span.left {background-image: url('../images/action/btn_delete_l.gif'); width:3px;}
+	a.button.delete span.middle {background-image: url('../images/action/btn_delete_m.gif');}
+	a.button.delete span.right {background-image: url('../images/action/btn_delete_r.gif'); width:3px;}
+
+	a.button.delete span.left,
+	a.button.delete span.middle,
+	a.button.delete span.right{height:14px;line-height:16px; color:#ffffff; font-weight: bold;}
+
+	/*----------------------*/
+	/* = DISABLED BUTTON = */
+	/*-----------------------------------------------------------------------------*/
+
+
+	a.button.disabled span.middle,
+	.cssgradients .buttonHolder a.button.submit.disabled span.middle{color: #999}
+
+	a.button.disabled span.middle:hover,
+	.cssgradients .buttonHolder a.button.submit.disabled:hover span.middle{
+		color: #999;
+
+		background-image: -moz-linear-gradient(center top , #F7F7F7, #B1B1B1);
+	}
+
+	/*--------------*/
+	/* = SQWFORM = */
+	/*-----------------------------------------------------------------------------*/
+
+	.buttonHolder a.button span.left {background-image: url('../images/action/btn_form_left.png'); width:4px;}
+	.buttonHolder a.button span.middle {background-image: url('../images/action/btn_form_middle.png');}
+	.buttonHolder a.button span.right {background-image: url('../images/action/btn_form_right.png'); width:4px;}
+
+	.buttonHolder a.button span.left,
+	.buttonHolder a.button span.middle,
+	.buttonHolder a.button span.right{height:26px;line-height:28px;}
+
+	.buttonHolder a.button span.middle{padding:0 5px; font-size: 13px; color:#666; font-weight: normal; text-transform: uppercase;}
+
+	.buttonHolder a.button:hover span.left {background-image: url('../images/action/btn_form_left_hover.png'); width:4px;}
+	.buttonHolder a.button:hover span.middle {background-image: url('../images/action/btn_form_middle_hover.png');}
+	.buttonHolder a.button:hover span.right {background-image: url('../images/action/btn_form_right_hover.png'); width:4px;}
+
+	.buttonHolder a.button:active span.left {background-image: url('../images/action/btn_form_left_active.png'); width:4px;}
+	.buttonHolder a.button:active span.middle {background-image: url('../images/action/btn_form_middle_active.png');}
+	.buttonHolder a.button:active span.right {background-image: url('../images/action/btn_form_right_active.png'); width:4px;}
+
+
+
+	/*MODERNIZR sqwform*/
+		/*remove default background images*/
+		.cssgradients .buttonHolder a.button span,
+		.cssgradients .buttonHolder a.button:hover span {background-image:none;}
+
+		.cssgradients .buttonHolder a.button span.left,
+		.cssgradients .buttonHolder a.button span.right{width:0px;}
+
+
+
+		/*only for cssgradients browsers*/
+		.cssgradients .buttonHolder a.button span.middle,
+		.cssgradients .buttonHolder a.button.submit span.middle{
+		padding:0 14px; /*removed !important cause bug in skin_action for wl*/
+			overflow:hidden;
+			line-height:24px ;
+
+			-webkit-border-radius: 6px;
+			   -moz-border-radius: 6px;
+			 		border-radius: 6px;
+
+
+			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from( #efefef), to(#cacaca)); /* Saf4 */
+			background-image: -webkit-linear-gradient(top, #efefef, #cacaca); /* Chrome 10+, Saf5.1+, iOS 5+ */
+			background-image: 	 -moz-linear-gradient(top, #efefef, #cacaca); /* FF3.6 */
+			background-image:     -ms-linear-gradient(top, #efefef, #cacaca); /* IE10 */
+			background-image:      -o-linear-gradient(top, #efefef, #cacaca); /* Opera 11.10+ */
+			background-image:         linear-gradient(top, #efefef, #cacaca);
+
+			background-repeat: no-repeat;
+			background-position: 94% 50%;
+		}
+
+		/*Hover*/
+		.cssgradients .buttonHolder a.button.submit:hover span.middle {
+
+			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from( #b1b1b1), to(#b1b1b1)); /* Saf4 */
+			background-image: -webkit-linear-gradient(top, #b1b1b1, #b1b1b1); /* Chrome 10+, Saf5.1+, iOS 5+ */
+			background-image:    -moz-linear-gradient(top, #b1b1b1, #b1b1b1); /* FF3.6 */
+			background-image:     -ms-linear-gradient(top, #b1b1b1, #b1b1b1); /* IE10 */
+			background-image:      -o-linear-gradient(top, #b1b1b1, #b1b1b1); /* Opera 11.10+ */
+			background-image:         linear-gradient(top, #b1b1b1, #b1b1b1);
+		}
+
+
+
+	/*end MODERNIZR*/
+
+
+
+
+
+
+
+
+

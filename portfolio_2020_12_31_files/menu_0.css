@@ -1,0 +1,133 @@
+.AccountMenu {
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    font-size: 9pt;
+}
+
+.AccountMenu__row {
+    float: right;
+    padding: 0;
+    margin: 0;
+    list-style-image: none;
+    list-style-type: none;
+}
+
+.AccountMenu__item {
+    float: left;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    border: none;
+}
+
+.AccountMenu__item span {
+    display: block;
+    float: left;
+}
+
+.AccountMenu__item img {
+    margin-right: 10px;
+    margin-top: 3px;
+    vertical-align: top;
+}
+
+.AccountMenu__item--left,
+.AccountMenu__item--right,
+.AccountMenu__item--right--spacer {
+    display: none;
+}
+
+/* Common properties between Logout button
+   First level menu and Second level menu */
+.AccountMenu__row--1 .AccountMenu__item--middle,
+.AccountMenu__row--2 .AccountMenu__item--middle,
+.AccountMenu__item.highlight .AccountMenu__item--middle {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: 2px;
+    outline: 0;
+    padding: 0 10px;
+}
+/* First level menu */
+.AccountMenu__item.highlight .AccountMenu__item--middle,
+.AccountMenu__row--1 .AccountMenu__item--middle,
+.AccountMenu__row--2 .AccountMenu__item--middle {
+    margin-left: 10px;
+    border: 1px solid #c4c4c4;
+    background-color: #f0f0f0;
+    color: #4e4f54;
+    height: 20px;
+    line-height: 20px;
+}
+
+.AccountMenu__row--1 .AccountMenu__item--middle:hover,
+.AccountMenu__row--1 .AccountMenu__item:active .AccountMenu__item--middle,
+.AccountMenu__row--1 .AccountMenu__item.active .AccountMenu__item--middle,
+.AccountMenu__row--2 .AccountMenu__item--middle:hover,
+.AccountMenu__row--2 .AccountMenu__item--middle:active,
+.AccountMenu__row--2 .AccountMenu__item.active .AccountMenu__item--middle {
+    color: #333;
+    background-color: #c4c4c4;
+    border-color: #c4c4c4;
+}
+
+.AccountMenu__row.AccountMenu__row--2 {
+    margin-top: 15px;
+}
+
+/* New icon */
+.AccountMenu__item.new .AccountMenu__item--middle {
+    position: relative;
+    border-color: #4e4f54;
+    margin-right: 7px;
+    padding-right: 31px !important;
+    padding-left: 5px;
+    background-color: #fff;
+    font-weight: 700;
+}
+
+.AccountMenu__item.new .AccountMenu__item--middle:hover {
+    background-color: #c4c4c4;
+}
+
+.AccountMenu__item.new .Badge {
+    position: absolute;
+    right: -7px;
+    top: -7px;
+    height: auto;
+}
+
+.Badge {
+    display: block;
+    border-radius: 5px;
+    padding: 4px 4px 3px 4px;
+    font-size: 11px;
+    line-height: 1;
+}
+
+.Badge--new {
+    background-color: #0173c3;
+    color: #fff;
+}
+
+/* Button trade */
+.Button--cta .AccountMenu__item--middle {
+    background-color: #fd6732;
+    border-color: #fd6732;
+    color: #fff !important;
+}
+
+.Button--cta .AccountMenu__item--middle:hover,
+.AccountMenu__item.Button--cta.active .AccountMenu__item--middle {
+    border-color: #d15529;
+    background-color: #d15529;
+}
+
+/* Clear fix */
+.AccountMenu + div, .AccountMenu__row + div {
+    clear: both;
+}

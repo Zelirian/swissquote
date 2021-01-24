@@ -1,0 +1,213 @@
+#header {
+	position: relative;
+	padding: 0;
+	margin: 0;
+}
+#header .AccountMenu, #header .AccountMenu--error {
+	position: absolute;
+	right: 0;
+	top: 0;
+	margin-left: 250px;
+}
+
+#second .header_left {
+	margin: 0;
+	padding: 0;
+	height: 23px;
+}
+#first, #second, #third {
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+#header #second {
+    margin-top: 10px;
+}
+#first .header_left h1 {
+    font-family: Helvetica, Arial,sans-serif;
+    font-weight: 700;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 1pc;
+    color: #fd6732;
+    padding-bottom: 5px;
+    line-height: 21px;
+    border-bottom: 1px solid #ccc;
+}
+#first .header_left h1 span {
+	font-size: 14px;
+    color: #333;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#second .header_left h2.iban {
+	margin: 0;
+	height: 23px;
+	width: 230px;
+	padding: 0;
+    font-weight: normal;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    color: #434343;
+    white-space: nowrap;
+    line-height: 23px;
+    background-image: none;
+}
+.iban {
+	display: block;
+}
+
+.iban__label {
+    font-size: 11px;
+}
+
+.iban__value {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0 .5rem;
+	background: #fff;
+	border: 1px solid #c4c4c4;
+	border-radius: 2px;
+	white-space: nowrap;
+	font-size: .75rem;
+	line-height: 1.375;
+	text-align: center;
+	text-decoration: none;
+	text-transform: none;
+	border-radius: 10rem;
+	height: auto;
+}
+
+#third .header_left p.clock {
+	margin: 0;
+	text-align: left;
+	color: #555;
+	font-size: 10px;
+}
+
+/* account message box */
+body .tabnav.msgbox {
+    position: relative;
+    border: 1px solid #0173c3;
+    background-color: #d8e9f5;
+    padding: 10px;
+    text-align: left;
+}
+
+body .tabnav.msgbox.closed {
+    background-color: #fff;
+}
+
+body .tabnav.msgbox .msgbox_texte {
+    position: relative;
+    display: block;
+    width: auto;
+    height: auto;
+    border: 0;
+    background: #d8e9f5;
+    padding: 0;
+    vertical-align: top;
+    clear: both;
+}
+
+body .tabnav.msgbox .msgbox_texte.closed {
+    background: #fff;
+}
+
+body .tabnav.msgbox .msgbox_texte div {
+    position: relative;
+    background: url("../img/icon-info.png") no-repeat 6px;
+    padding: 10px 0 10px 38px;
+    text-transform: uppercase;
+    text-align: left;
+    font-size: 13px;
+    font-weight: bold;
+    color: #0173c3;
+}
+
+body .tabnav.msgbox .content {
+    position: relative;
+    display: block;
+    clear: both;
+}
+
+body .message .body .left .right .content div.msg_container,
+body .tabnav.msgbox div.content {
+    border: 0;
+    background-color: #d8e9f5 !important;
+}
+
+body .message .body .left .right .content div.msg_container {
+    padding: 5px 5px 5px 30px;
+}
+
+body .message .body .left .right .content div.msg_container p {
+    margin: 0;
+    padding: 0;
+}
+
+body .message .body .left .right .content div.msg_container.warning {
+    background: url(../img/info-circle-y.png) no-repeat #d8e9f5 10px !important;
+}
+
+body .message .body .left .right .content div.msg_container.error {
+    background: url(../img/info-circle-r.png) no-repeat #d8e9f5 10px !important;
+}
+
+body .message .body .left .right .content div.msg_container.ok {
+    background: url(../img/info-circle-g.png) no-repeat #d8e9f5 10px !important;
+}
+
+/* account message option button position */
+body .tabnav.msgbox ul {
+    position: absolute;
+    float: none;
+    top: 10px;
+    right: 10px;
+    margin-top: 0;
+    padding: 0 !important;
+}
+
+body .tabnav.msgbox ul {
+    padding: 6px 10px 6px 0  !important;
+}
+
+body .tabnav.msgbox li span.m_middle {
+    display: inline-block;
+    height: 20px !important;
+    border-radius: 2px !important;
+    border: 0 !important;
+    outline: 0;
+    background:none !important;
+    background-color: transparent !important;
+    margin-right: 1px !important;
+    padding: 0 25px 0 10px !important;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px !important;
+    text-decoration: none;
+    line-height: 20px !important;
+    color: #333 !important;
+    vertical-align: top !important;
+}
+
+/* Block options button on the right */
+body .tabnav.msgbox ul.tabnav_right li span.m_middle {
+   margin-left: 10px;
+   background: url(../img/icon-plus-w.png) no-repeat 85% center #999dad !important;
+   color: #fff !important;
+}
+
+body .tabnav.msgbox ul.tabnav_right li span.m_middle.minus {
+    background: url(../img/icon-minus-w.png) no-repeat 87% 5px #999dad !important;
+}
+
+body .tabnav.msgbox ul.tabnav_right li span.m_left,
+body .tabnav.msgbox ul.tabnav_right li span.m_right
+{
+	display: none;
+}

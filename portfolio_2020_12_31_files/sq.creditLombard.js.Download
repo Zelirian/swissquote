@@ -1,0 +1,90 @@
+/*** BUYING POWER HOVER ***/
+$(document).ready(function(){$('.bpContainer').hover(function(){
+	$('.buyingPowerBackground').css("-webkit-border-radius", "0 6px 6px 0");
+	$('.buyingPowerBackground').css("-moz-border-radius", "0 6px 6px 0");
+
+},function(){
+	$('.buyingPowerBackground').css("-webkit-border-radius", "6px");
+	$('.buyingPowerBackground').css("-moz-border-radius", "6px");
+	});
+});
+
+
+/*** BUYING POWER HOVER ***/
+$(document).ready(function(){
+	$('.clTips').hover(function(){
+		$('.clTipsTooltip').show();
+
+	},function(){
+		$('.clTipsTooltip').hide();
+	});
+});
+
+
+
+/*** SHOW HIDE BUYING POWER DETAILS ***/
+
+$(document).ready(function(){$('.bpContainer').on("openPanel",function(){
+	$('.bpInfoContainer').toggle();
+	$('.arrowContainer').find('.clArrow').css('background-image', 'URL("res/img/chevrons-top.png")');
+	});
+});
+
+$(document).ready(function(){$('.bpContainer').on("closePanel",function(){
+	$('.bpInfoContainer').toggle();
+	$('.arrowContainer').find('.clArrow').css('background-image', 'URL("res/img/chevrons-bottom.png")');
+	});
+});
+
+/*** SHOW HIDE CREDIT LOMBARD ***/
+
+$(document).ready(function(){
+	$('.creditContainer').on('openPanel', function(){
+		$('.creditLombardInfosContainer').toggle();
+		$('.creditContainer').find('.clArrow').css('background-image', 'URL("res/img/chevrons-top.png")');
+		$('.creditContainer').addClass('creditContainerClick');
+		$('.creditContainer').css('height', '23px');
+	});
+});
+
+$(document).ready(function(){
+	$('.creditContainer').on('closePanel', function(){
+		$('.creditLombardInfosContainer').toggle();
+		$('.creditContainer').removeClass('creditContainerClick');
+		$('.creditContainer').find('.clArrow').css('background-image', 'URL("res/img/chevrons-bottom.png")');
+		$('.creditContainer').css('height', '22px');
+
+		$('.creditContainer').hover(function(){
+			$('.creditContainer').addClass('creditContainerHover');
+		},function(){
+			$('.creditContainer').removeClass('creditContainerHover');
+		});
+	});
+});
+
+/*** bpContainer & creditContainer accordionSupport ***/
+$(document).ready(function(){
+	function resetAccordion() {
+		close($(".Accordion .is-active"));
+	}
+	
+	function open($this) {
+		resetAccordion();
+		$this.addClass("is-active");
+		$this.trigger('openPanel');
+	}
+	  
+	function close($this) {
+		$this.removeClass("is-active");
+		$this.trigger('closePanel');
+	}
+	
+	$(".Accordion__item").click(function toggleAccordionItem() {
+		var $this = $(this);
+		if ($this.hasClass("is-active")) {
+			close($this);
+		} else {
+			open($this);
+		}
+	});
+});

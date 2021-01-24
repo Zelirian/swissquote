@@ -1,0 +1,1086 @@
+.amount {
+	white-space: nowrap;
+}
+
+.bpcontainer {
+/*     font-size: 12px; */
+    margin: 0;
+}
+.bpinfo {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.bpinfo td {
+    font-size: 12px;
+    padding: 2px 5px;
+    text-align: left;
+    white-space: nowrap;
+    font-family: Arial;
+}
+.bpinfo .positive {
+    color: #000000;
+}
+.bpinfo .negative {
+    color: #CC0000;
+}
+.bpinfo .neutral {
+    color: #000000;
+}
+.bpinfo .right {
+    text-align: right;
+}
+
+/********* Attention: Upercase I: bpInfo !!! **************/
+.bpInfo {
+    border: 1px solid #CCCCCC;
+    padding: 10px;
+    width: 300px;
+}
+
+/***************/
+/*** NEW CSS ***/
+/***************/
+
+.messageBP {
+    float: left;
+    width:100%;
+    font-size:10px;
+}
+
+.bpClManagementBar{
+	min-width: 720px;
+	font-family: Arial;
+	clear:left;
+}
+
+.buyingPowerBackground{
+	background-color: #f7f6f5;
+	border: 1px solid #cccccc;
+	position: relative;
+	z-index: 3000;
+}
+
+
+.containerBpCl{
+	float: left;
+	position: relative;
+	height: 37px;
+	width: 69%;
+	max-width: 800px;
+/* 	overflow: hidden; */
+}
+
+.containerPerformance{
+	position: relative;
+	float: right;
+	z-index: 100;
+	width:31%;
+}
+
+/* .bpContainer, */
+/* .perfContainer, */
+/* .creditContainer */
+/* { */
+/* 	padding: 10px 0px 5px 15px; */
+/* } */
+
+.bpContainer,
+.creditContainer{
+	border-right: 1px solid #cccccc;
+}
+
+.bpContainer{
+	z-index: 2900;
+	min-width: 270px;
+	width: 36%;
+	line-height: 14p;
+}
+
+.bpContainer .tooltipLabel a{
+	white-space: nowrap;
+}
+
+
+.creditContainer{width:54%;}
+
+.creditContainer,
+.perfContainer{
+	z-index: 10;
+}
+
+
+.pfValue{
+	margin-right: 5px;
+}
+
+.clContainer{
+	padding: 8px 0px 0px 0px;
+}
+
+.perfContainer{
+	-webkit-border-radius: 0 6px 6px 0;
+	-moz-border-radius: 0 6px 6px 0;
+ 	border-radius: 0 6px 6px 0;
+
+ 	text-align: right;
+}
+
+.bpContainer{
+	-webkit-border-radius: 6px 0 0 6px;
+	-moz-border-radius: 6px 0 0 6px;
+ 	border-radius: 6px 0 0 6px;
+}
+
+.buyingPowerBackground{
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+ 	border-radius: 6px;
+ 	height: 37px;
+}
+
+.messageBPContainer{
+	margin-bottom: 5px;
+}
+
+.clLabel{
+	display: block;
+}
+
+
+.bpContainer, .bpSeparation, .creditContainer,
+.bpLabel,
+.clLabel,
+.clValue,
+.bpValue,
+.clTips{
+	float: left;
+}
+
+.creditContainer:hover{
+	cursor: pointer;
+	background: #f7f6f5;
+
+}
+
+.bpContainer, .creditContainer, .perfContainer{
+	height: 37px !important;
+	line-height: 37px;
+}
+
+.bpContainer, .creditContainer{
+	background: URL("../img/background_menu.png") repeat-x; /* Old browsers */
+	background: -moz-linear-gradient(top, #ffffff 0%, #ebeae9 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#ebeae9)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #ffffff 0%,#ebeae9 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #ffffff 0%,#ebeae9 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #ffffff 0%,#ebeae9 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #ffffff 0%,#ebeae9 100%); /* W3C */
+}
+
+.bpContainer:hover{
+	background: #f7f6f5;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	height: 37px;
+	cursor: pointer;
+}
+
+.bpContainer .bpValue{
+	display: block;
+	margin-left: 0px;
+	min-width: 110px;
+	/* width: 55%; */
+	line-height: 12px;
+	text-align: center;
+}
+
+.bpContainer.bp .bpLabel{width:auto}
+.bpContainer.bp .bpValue{width:51%; }
+
+.bpContainer.bp .bpValue .bpcontainer{padding-top:7px;font-size:10px;}
+
+.bpcontainer{padding-top:13px;}
+
+.clLabel{width:49%}
+
+.creditContainer .clValue{
+	display: block;
+/* 	float: right; */
+/* 	clear: right; */
+	width: 42%;
+	text-align: center;
+/* 	margin-left: 10px; */
+/* 	padding-left: 10px; */
+/* 	padding-right: 20px; */
+/* 	height: 24px; */
+/* 	margin-top: -8px; */
+/* 	padding-top: 8px; */
+/* 	border-right: 1px solid #cccccc; */
+}
+/* 	.bpContainer .bpValue:hover{ */
+/* 		margin-left: 9px; */
+/* 		border-left: 1px solid #cccccc; */
+/* 		border-right: 1px solid #cccccc; */
+/* 		background-color: #f5f5f5; */
+/* 		height: 29px; */
+/* 		margin-top: -12px; */
+/* 		padding-top: 12px; */
+/* 	} */
+
+.clLink,
+#bpAndDiscounts_container a{
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.clLink:hover,
+#bpAndDiscounts_container a:hover{
+	color: #000;
+	text-decoration: underline;
+}
+
+.pfValue b{
+	white-space: nowrap;
+}
+
+.creditContainer .clArrow{
+	margin-left: 10px;
+	margin-top: 12px;
+	font-size: 15px;
+	display: block;
+	width: 10px;
+	height: 12px;
+	background-image: URL("../img/chevrons-bottom.png");
+	float: right;
+}
+
+.arrowContainer {
+    float: right;
+    height: 100%;
+}
+
+.arrowContainer .clArrow{
+	position: relative;
+	min-width: 10px;
+	top: 13px;
+	right: 10px;
+	font-size: 15px;
+	display: block;
+	width: 10px;
+	height: 12px;
+	background-image: URL("../img/chevrons-bottom.png");
+}
+.creditContainerClick{
+	background: #ffffff !important;
+}
+
+.creditContainerHover{
+	background: #f7f6f5 !important;
+}
+
+/**********************/
+/*** BP HOVER TABLE ***/
+/**********************/
+.bpInfoContainer{
+	display: none;
+	width: 300px;
+	position: relative;
+	z-index: 9999;
+}
+
+.bpinfo{
+	width: 100%;
+	z-index: 100;
+	border: 1px solid #cccccc;
+}
+
+.bpinfo tr td{
+	padding-top: 6px;
+	padding-bottom: 6px;
+	/* background-color: #f5f5f5; */
+}
+
+.bpinfo tr .tdLegend{
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.bpinfo .negative{
+	color: #e0533c;
+}
+
+.bpinfo #trtotal td{
+	padding-top: 8px;
+	background-color: #ffe3c5;
+}
+
+
+
+
+/*****************************/
+/*** CREDIT LOMBARS RESULT ***/
+/*****************************/
+
+.creditLombardInfosContainer{
+	margin-top: -1px;
+	margin-left: 10px;
+	margin-right: 10px;
+	display: none;
+}
+
+.creditLombardInfosContainerBackground{
+	border: 1px solid #cccccc;
+	border-top: none;
+	padding: 10px;
+	background: URL('../img/background_credit_infos.png') bottom repeat-x; /* Old browsers */
+	background: -moz-linear-gradient(top, #ffffff 0%, #f7f6f5 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f7f6f5)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #ffffff 0%,#f7f6f5 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #ffffff 0%,#f7f6f5 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #ffffff 0%,#f7f6f5 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #ffffff 0%,#f7f6f5 100%); /* W3C */
+}
+
+.creditLombardInfosContainer h4{
+	display: inline;
+	font-weight: bold;
+	font-size: 12px;
+	color: #000;
+	margin-right: 20px;
+	padding-left: 0;
+}
+
+.creditLombardInfosContainer .creditLombardConditionsEtat{
+	width: 33%;
+	float: left;
+	background-color: #fdfdfd;
+	border: 1px solid #cccccc;
+/* 	z-index:2000; */
+}
+
+
+/* .tooltip{z-index: 3000} */
+
+.creditLombardInfosContainer .creditLombardConditionsEtat .creditLombardConditions{
+	background-color: #f5f5f5;
+	padding: 10px 10px 5px 5px;
+}
+
+.creditLombardInfosContainer .creditLombardConditionsEtat .creditLombardConditions.noCredit{
+	background-color: #fff;
+}
+
+.creditLombardInfosContainer .creditLombardConditionsEtat .creditLombardEtat{
+	padding: 10px 10px 5px 5px;
+}
+
+.creditLombardInfosContainer .conditionValuesContainer,
+.creditLombardInfosContainer span.conditionValue{
+	text-align: right;
+	float: right;
+}
+
+.creditLombardInfosContainer .conditionValuesContainer p.conditionValue{
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+.creditLombardInfosContainer .creditLombardConditionsEtat .creditLombardEtat .etatOctroyeUtilise{
+	float: right;
+	text-align: right;
+	width: 100%;
+/* 	padding-top:25px; */
+}
+
+.creditLombardInfosContainer .creditLombardConditionsEtat .creditLombardEtat .etatOctroyeUtilise .etatAmout{
+	padding: 0 20px 10px 10px;
+	text-align: right;
+	float: right;
+	background-color: blue;
+}
+
+.creditLombardInfosContainer .creditLombardConditionsEtat .creditLombardEtat .etatOctroyeUtilise .etatAmountValue{
+	float: left;
+	padding: 0 20px 20px 10px;
+	text-align: right;
+	float:right;
+	background-color: green;
+}
+
+.creditLombardInfosContainer .creditLombardLimiteSlider,
+.creditLombardInfosContainer .creditLombardContractText{
+	width: 63%;
+	float: right;
+
+}
+
+.creditLombardInfosContainer .creditLombardLimiteSlider{
+	border: 1px solid #ccc;
+	padding: 10px 7px;
+	background-color: #fff;
+}
+
+.creditLombardInfosContainer .creditLombardLimiteSlider .creditLombardLimite{
+	float: left;
+	width: 31%;
+	border-right: 1px solid #ccc;
+	padding-bottom: 20px;
+	padding-right: 5px;
+	min-height: 70px;
+}
+
+.creditLombardInfosContainer .creditLombardLimiteSlider .creditLombardLimite .conditionValue{
+	display: block;
+	margin-top: 10px;
+	text-align: left;
+	float: none;
+}
+
+.creditLombardInfosContainer .creditLombardLimiteSlider .creditLombardSliderButton{
+	width: auto;
+/* 	height: 67px; */
+	float: left;
+}
+
+
+.creditLombardInfosContainer .creditLombardLimiteSlider .creditLombardSliderButton .creditLombardSlider{
+	float: left;
+	padding: 10px;
+	padding-top: 15px;
+	border-right: 1px solid #ccc;
+}
+
+.creditLombardInfosContainer .creditLombardLimiteSlider .creditLombardSliderButton.hasLoan{
+	float: right;
+	width: 110px;
+	padding-top: 15px;
+}
+
+.creditLombardInfosContainer .creditLombardLimiteSlider .creditLombardLimite .conditionValue strong{
+	color: #23961a;
+}
+
+.creditLombardInfosContainer .creditLombardLimiteSlider .creditLombardButtonContainer{
+	width: 18%;
+	padding-left: 10px;
+	padding-bottom: 5px;
+	float: right;
+	height: 100%;
+	border-left: 1px solid #ccc;
+	min-height: 84px;
+	min-width: 116px;
+}
+
+
+
+
+
+/*** SLIDER ***/
+
+.creditLombardSliderButton strong{
+	display:block;
+	padding:0 10px 10px 10px;
+	max-width: 300px;
+}
+
+.sliderContainer{
+	float: left;
+/* 	padding-righct: 5px; */
+	width: 300px;
+}
+
+.creditLombardSliderButton .slider{
+	padding: 10px 10px 10px 10px;
+	margin-top: 10px;
+}
+
+
+.sliderContainer .defaultValueContainer{
+	margin: auto;
+	width: 100px;
+	position: relative;
+}
+
+.sliderContainer .defaultValueContainer .defaultValue{
+	text-align: center;
+	font-size: 12px;
+	color: #23961A;
+	margin-right: 0px;
+}
+
+.sliderContainer .defaultValueContainer .warningValue{
+	color: #D6722A;
+}
+
+.sliderContainer .legalMessage{
+	font-size: 10px;
+	padding-left: 12px;
+}
+
+.creditLombardSliderButton .slider .sliderButton{
+	margin-top: -13px;
+	float: left;
+	width: 19px;
+	height: 19px;
+	line-height: 18px;
+	border: 1px solid #dbdbdb;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.creditLombardSliderButton .slider #sliderBackground,
+.ui-slider .ui-slider-range,
+.creditLombardSliderButton .slider .sliderButton{
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+ 	border-radius: 4px;
+}
+
+.creditLombardSliderButton .slider .sliderButton:hover{
+	cursor: pointer;
+	border: 1px solid #006400;
+	color: #006400;
+}
+
+.creditLombardSliderButton .slider #sliderBackground{
+	width: 77%;
+	margin-top: -10px;
+	height: 13px;
+	border: 1px solid #037a00;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.creditLombardSliderButton .slider #sliderBackground{
+	float: left;
+}
+
+
+
+
+.ui-slider { position: relative; text-align: left; }
+.ui-slider .ui-slider-handle {
+	position: absolute;
+	z-index: 2;
+	width: 19px;
+	height: 21px;
+	background: URL('../img/slider-handle.png');
+	cursor: pointer;
+}
+
+.ui-slider .ui-slider-handle:focus {
+	outline: none;
+}
+
+.ui-slider .ui-slider-range { position: absolute; z-index: 1; font-size: .7em; display: block; border: 1px solid #037a00; background-position: 0 0; }
+
+.ui-slider-horizontal { height: .8em; }
+.ui-slider-horizontal .ui-slider-handle { top: -.3em; margin-left: -.6em; }
+.ui-slider-horizontal .ui-slider-range { top: 0; height: 100%; }
+.ui-slider-horizontal .ui-slider-range-min { left: 0; }
+.ui-slider-horizontal .ui-slider-range-max { right: 0; }
+
+.ui-slider-horizontal .ui-slider-range-max {
+	right: -1px;
+}
+.ui-slider-horizontal .ui-slider-range {
+	top: -1px;
+	height: 100%;
+}
+
+
+.creditLombardSliderButton .slider #sliderBackground{
+	border: 1px solid #037a00;
+	background: #30b242; /* Old browsers */
+	background: -moz-linear-gradient(left, #30b242 0%, #14840c 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#30b242), color-stop(100%,#14840c)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left, #30b242 0%,#14840c 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left, #30b242 0%,#14840c 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left, #30b242 0%,#14840c 100%); /* IE10+ */
+	background: linear-gradient(to right, #30b242 0%,#14840c 100%); /* W3C */
+}
+
+.creditLombardSliderButton .slider #sliderBackground.warningBackground{
+	border: 1px solid #D6722A;
+	background: #f78418; /* Old browsers */
+	background: -moz-linear-gradient(left, #f78418 0%, #fcbb44 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#f78418), color-stop(100%,#fcbb44)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left, #f78418 0%,#fcbb44 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left, #f78418 0%,#fcbb44 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left, #f78418 0%,#fcbb44 100%); /* IE10+ */
+	background: linear-gradient(to right, #f78418 0%,#fcbb44 100%); /* W3C */
+}
+
+.ui-slider-horizontal .ui-slider-range-max{
+	background: white;
+	border: 1px solid #cccccc;
+}
+
+
+/**************/
+/*** BUTTON ***/
+/**************/
+
+.creditLombardButton{
+	color: #fff;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 6px;
+	padding-bottom: 7px;
+	vertical-align: middle;
+	text-align: center;
+	cursor: pointer;
+	display: block;
+	font-size: 12px;
+}
+	.creditLombardButton:hover{
+		color: #fff;
+	}
+
+a.creditLombardLink{
+	color: #f1742b;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+a.creditLombardLink.pendingLoan{
+	font-size: 10px;
+}
+
+.creditLombardButton span.left,
+.creditLombardButton span.right{
+	display: none;
+}
+
+a.creditLombardLink:hover{
+	color: #F96;
+	text-decoration: none;
+}
+
+.creditLombardButton{
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+ 	border-radius: 4px;
+}
+
+.creditLombardButton.noCredit {
+	text-decoration: none;
+	color: white;
+}
+
+.creditLombardInfosContainer .creditLombardLimiteSlider .creditLombardButton,
+.creditLombardInfosContainer .creditLombardEtat .creditLombardButton{
+	float: right;
+}
+
+.creditLombardInfosContainer .creditLombardEtat .creditLombardButton{
+	margin-bottom: 10px;
+}
+
+.creditLombardInfosContainer .creditLombardEtat .creditLombardButton.noCredit{
+	margin-botom: 0px;
+}
+
+.creditLombardInfosContainer .creditLombardLimiteSlider .creditLombardButton.hasLoan{
+/* 	width: 110px; */
+	margin-top: 25px;
+	float: right;
+}
+
+.creditLombardButton{
+	border: 1px solid #ff9b46;
+	background-color:#ffaa70;
+	background-image: -webkit-linear-gradient(top, #ffccaa, #ff8e41);
+	background-image: -moz-linear-gradient(top, #ffccaa, #ff8e41);
+	background-image: -ms-linear-gradient(top, #ffccaa, #ff8e41);
+	background-image: -o-linear-gradient(top, #ffccaa, #ff8e41);
+	background-image: linear-gradient(top, #ffccaa, #ff8e41);
+}
+	.creditLombardButton:hover{
+		border: 1px solid #ff9b46;
+		background-color:#ffccaa;
+		background-image: -webkit-linear-gradient(top, #ff8e41, #ffccaa);
+		background-image: -moz-linear-gradient(top, #ff8e41, #ffccaa);
+		background-image: -ms-linear-gradient(top, #ff8e41, #ffccaa);
+		background-image: -o-linear-gradient(top, #ff8e41, #ffccaa);
+		background-image: linear-gradient(top, #ff8e41, #ffccaa);
+	}
+
+.creditLombardButton.disabled{
+	border: 1px solid #ccc;
+	color:#ccc;
+	cursor:default;
+	background-color:#efefef;
+	background-image: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+	background-image: -moz-linear-gradient(top, #e3e3e3, #f9f9f9);
+	background-image: -ms-linear-gradient(top, #e3e3e3, #f9f9f9);
+	background-image: -o-linear-gradient(top, #e3e3e3, #f9f9f9);
+	background-image: linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+.ui-dialog .creditLombardButton,
+#dialogConfirmationModification .creditLombardButton{display: inline-block;text-align: right}
+
+/*****************/
+/*** NO CREDIT ***/
+/*****************/
+
+.creditLombardInfosContainer .creditLombardConditionsEtat .creditLombardConditions.noCredit{
+	padding: 10px;
+}
+
+
+.creditLombardText table{
+	border-collapse: collapse;
+	border: 1px solid #cccccc;
+}
+
+.creditLombardText.pendingLoan{
+	border: 1px solid #cccccc;
+	background-color: #ffffff;
+	padding: 30px 20px 30px 30px;
+/* 	max-width: 400px; */
+}
+
+.creditLombardText.pendingLoan p{
+	font-size: 13px;
+}
+
+
+.creditLombardText.pendingLoan p span{
+	color: #F1742B;
+}
+
+.creditLombardText p{
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+.creditLombardText .textHeader{
+	color: #333333;
+	font-weight: bold;
+}
+
+.creditLombardText table td{
+	background-color: #ffffff;
+	border-collapse: collapse;
+}
+
+.creditLombardText p{
+	padding: 10px 20px 10px 20px;
+	font-size: 11px;
+/* 	text-align: justify; */
+}
+
+.creditLombardText .textHeader{
+	padding-bottom: 0px;
+}
+
+.creditLombardText table td.tdCreditLombardButton{
+	background-color: #fff;
+	padding-left: 10px;
+	padding-right: 10px;
+	vertical-align: middle;
+/* 	width: 110px; */
+}
+
+
+/*** TOOLTIP ***/
+
+.creditContainer .clTips{
+	width: 12px;
+	height: 12px;
+	padding: 2px;
+	text-align: center;
+/* 	margin-top: -26px; */
+	float: right;
+	clear:right;
+}
+
+.creditContainer .clTips .clTipsIcon{
+	width: 12px;
+	height: 12px;
+	background-repeat: no-repeat;
+	background-image: URL("../img/icone-info.png");
+}
+
+.clTipsTooltip,
+.warningSlider{
+	display: none;
+	position: relative;
+	background-color: #fff;
+	height: 70px;
+	width: 250px;
+	top: -120px;
+	left: -70px;
+	padding: 5px 5px 5px 5px;
+	padding-left: 20px;
+	padding-right: 20px;
+	border: 1px solid #cccccc;
+	z-index: 3001;
+
+	-webkit-border-radius: 16px;
+	-moz-border-radius: 16px;
+ 	border-radius: 16px;
+}
+
+.warningSlider{
+	width: 200px;
+	height: 50px;
+	left: 0;
+	top: -85px;
+	position: absolute;
+}
+
+.clTipsTooltip .clTipsTooltipArrow,
+.warningSlider .warningSliderArrow{
+	width: 24px;
+	height: 25px;
+	top: 80px;
+	left: 80px;
+	position: absolute;
+	z-index: 1000;
+	background-image: URL('../img/tooltip-arrow.png')
+}
+
+.warningSlider .warningSliderArrow{
+	top: 60px;
+	left: 70px;
+}
+
+
+
+
+/****************************/
+/*** MESSAGE BP CONTAINER ***/
+/****************************/
+
+.messageBPContainer{
+	height: 15px;
+}
+
+.messageBPContainer .messageBP,
+.messageBPContainer .messageNegativeBP{
+	display: block;
+}
+
+.messageBPContainer .messageBP{
+	float: right;
+}
+
+.messageBPContainer .messageNegativeBP{
+	float: left;
+	color: #ec2626;
+}
+
+
+
+p.conditionValue strong{width:100px;display:inline-block;width: 52px}
+
+
+
+
+
+/*****************/
+/*** DIALOG ***/
+/*****************/
+
+#dialogConfirmationModification{text-align: right}
+#dialogConfirmationModification p{text-align: left; min-height: 55px}
+
+/* Layout helpers
+----------------------------------*/
+.ui-helper-hidden { display: none; }
+.ui-helper-hidden-accessible { position: absolute !important; clip: rect(1px 1px 1px 1px); clip: rect(1px,1px,1px,1px); }
+.ui-helper-reset { margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none; }
+.ui-helper-clearfix:before, .ui-helper-clearfix:after { content: ""; display: table; }
+.ui-helper-clearfix:after { clear: both; }
+.ui-helper-clearfix { zoom: 1; }
+.ui-helper-zfix { width: 100%; height: 100%; top: 0; left: 0; position: absolute; opacity: 0; filter:Alpha(Opacity=0); }
+
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-disabled { cursor: default !important; }
+
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.ui-icon { display: block; text-indent: -99999px; overflow: hidden; background-repeat: no-repeat; }
+
+.ui-icon-closethick {background-image:url('../../jquery/img/dialog/close.gif');}
+
+
+/* Overlays */
+.ui-widget-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/* workarounds */
+button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra padding in Firefox */
+
+.ui-dialog { position: absolute;  width: 300px; overflow: hidden; }
+.ui-dialog .ui-dialog-titlebar { position: relative;  }
+.ui-dialog .ui-dialog-title { float: left; margin: .1em 16px .1em 5px; height:19px; }
+.ui-dialog .ui-dialog-titlebar-close { position: absolute; right: -2px; top: 50%; width: 19px; margin: -10px 0 0 0; padding: 1px; height: 18px; }
+.ui-dialog .ui-dialog-titlebar-close span { display: block; margin: 1px; }
+.ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus { padding: 0; }
+.ui-dialog .ui-dialog-content { position: relative; border: 0; padding: 10px; background: none; overflow: auto; zoom: 1; }
+.ui-dialog .ui-dialog-buttonpane { text-align: left; border-width: 1px 0 0 0; background-image: none; margin: .5em 0 0 0; padding: .3em 1em .5em .4em; }
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset { float: right; }
+.ui-dialog .ui-dialog-buttonpane button { margin: .5em .4em .5em 0; cursor: pointer; }
+.ui-dialog .ui-resizable-se { width: 14px; height: 14px; right: 3px; bottom: 3px; }
+.ui-draggable .ui-dialog-titlebar { cursor: move; }
+
+
+/* Component containers
+----------------------------------*/
+.ui-widget-content { border: 1px solid #aaaaaa; background-color: #fff;}
+
+
+.ui-widget-header { background:url(../../jquery/img/dialog/top_bar.gif) 50% 50% repeat-x; color: #222222/; font-weight: bold; }
+.ui-widget-header a { color: #222222/*{fcHeader}*/; }
+
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Overlays */
+.ui-widget-overlay { background: #aaaaaa 50% 50% repeat-x; opacity: .3;filter:Alpha(Opacity=30); }
+.ui-widget-shadow { margin: -8px 0 0 -8px; padding: 8px; background: #aaaaaa 50% 50% repeat-x; opacity: .3;filter:Alpha(Opacity=30); -moz-border-radius: 8px; -khtml-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }
+
+
+
+
+
+
+/* DL conditionValues*/
+
+/* dt,dd{float:left} */
+/* dd{clear:right} */
+
+dl.conditionValues,
+.conditionValues dt,
+.conditionValues dd{margin:0;}
+
+dl.conditionValues{width:100px;float:right;}
+.conditionValues dt,
+dl.conditionValues{text-align: right}
+.conditionValues dt{float:left;clear:left;width:35%;}
+.conditionValues dd{float:right;width:65%;font-weight: bold}
+
+
+dl.conditionValues{
+	overflow:hidden;
+	height: 100%;
+	margin-top:7px;
+}
+
+/*View More Rates*/
+
+dl.ratesToggle{
+	height:43px;
+}
+
+.seeMoreLess{
+	float:right;
+	clear:right;
+	font-size: 11px;
+	margin-top:5px;
+}
+
+a.seeMoreLess{
+	color:#FF9966;
+	font-weight: bold;
+}
+a.seeMoreLess:hover{
+	text-decoration: none;
+	}
+
+.hide{display: none}
+
+a.seeMoreLess .more{
+	background:url(../img/view_more.gif) 100% 50% no-repeat;
+	padding-right: 12px;
+}
+a.seeMoreLess .less{
+	background:url(../img/view_less.gif) 100% 50% no-repeat;
+	padding-right: 12px;
+}
+
+/* DL creditLombardEtat*/
+
+.creditLombardEtat dl{
+	margin:5px 0;
+}
+
+.creditLombardEtat dl dt{
+	float:left;
+	text-align:right;
+	width:65%;
+	white-space: nowrap;
+}
+.creditLombardEtat dl dd{
+	float:right;
+	margin-left:0;
+	width:35%;
+	font-weight:bold;
+	white-space: nowrap;
+}
+
+
+.loading{
+	background:#fff url(../img/loading.gif) 50% 50% no-repeat;
+}
+.loading .ui-dialog-titlebar-close,
+.loading #dialogConfirmationModification a.creditLombardButton{
+	display:none;
+}
+
+.loading #dialogConfirmationModification p{
+	text-align: center;
+	min-height: 15px;
+	padding-top:55px;
+}
+
+.bpLabel,
+.clLabel,
+.pfLabel{
+/* 	font-family: Verdana,Geneva,Arial,Helvetica,sans-serif; */
+	line-height: 15px;
+	height: 26px;
+	vertical-align: middle;
+	margin-top:13px;
+	overflow:hidden;
+}
+#clLabel{margin-top:6px;line-height:13px;white-space:nowrap;}
+
+.bpLabel{
+	margin-left:5px; 
+	min-width: 110px;
+	/* width:47%; */
+	white-space: nowrap;
+}
+
+.clLabel{margin-left:5px;}
+
+
+/*ToolTip*/
+
+.toolTip{
+	display: table;
+	height: 70px;
+	width: 100%;
+}
+.clTipsTooltipContent{
+	display: table-cell;
+	line-height: 14px;
+	vertical-align: middle;
+}
+
+.warningSlider .toolTip{height:53px}
+
+.warningSliderContent{margin:0;}
+
+

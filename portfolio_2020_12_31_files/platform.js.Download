@@ -1,0 +1,256 @@
+/*
+ 
+ */
+
+if (!String.prototype.contains) {
+  String.prototype.contains = function (s) {
+    return this.indexOf(s) > -1
+  }
+}
+
+(function (global) {
+  'use strict';
+  global.console = global.console || {};
+  var con = global.console;
+  var prop, method;
+  var empty = {};
+  var dummy = function () {
+  };
+  var properties = 'memory'.split(',');
+  var methods = ('assert,clear,count,debug,dir,dirxml,error,exception,group,' +
+  'groupCollapsed,groupEnd,info,log,markTimeline,profile,profiles,profileEnd,' +
+  'show,table,time,timeEnd,timeline,timelineEnd,timeStamp,trace,warn').split(',');
+  while (prop = properties.pop()) if (!con[prop]) con[prop] = empty;
+  while (method = methods.pop()) if (typeof con[method] !== 'function') con[method] = dummy;
+  // Using `this` for web workers & supports Browserify / Webpack.
+})(typeof window === 'undefined' ? this : window);
+
+var metanavHost = window.metaNavUrl ? window.metaNavUrl : "";
+var url = metanavHost + "/sq-meta-nav-plugin";
+var packFlag = window.packFlag ? window.packFlag : "pack=true";
+var pack = packFlag !== "pack=false";
+
+
+var log = function () {
+  return console && console.log && console.log.apply(console, ["[meta-nav]"].concat(Array.prototype.slice.call(arguments)));
+};
+
+var debug = function () {
+  if (window.location.search.indexOf("debug") > -1) {
+    log.apply(console, arguments);
+  }
+}
+
+var lteIE9 = function () {
+  var div = document.createElement("div");
+  div.innerHTML = "<!--[if lte IE 9]><i></i><![endif]-->";
+  return (div.getElementsByTagName("i").length == 1);
+};
+
+var loadScript = function (url, async) {
+  debug("loading", url);
+  if (typeof(async) === 'undefined') async = true;
+
+  return $.ajax({
+    async: async,
+    url: url,
+    dataType: "script",
+    cache: true,
+    success: function () {
+      debug("loaded", url)
+    }
+  });
+};
+
+var waitLoaded = function (scripts, nextStep) {
+  return $.when.apply($, scripts).then(function (loaded) {
+    debug("DONE", this, loaded);
+    nextStep && nextStep();
+  }, function (e) {
+    log("Cannot load scripts", e);
+    nextStep && nextStep();
+  });
+};
+
+var scriptLoader = function (scripts, nextstep, async) {
+  var level = [];
+  for (var i in scripts) {
+    level.push(loadScript(metanavHost + scripts[i], async));
+  }
+  waitLoaded(level, nextstep);
+};
+
+var configureRequire = function () {
+  requirejs.config({
+    paths: {
+      "css": [metanavHost + "/" + 'sq-meta-nav-plugin/webjars/require-css/0.1.8-1/css', "css"],
+      'sq-meta-nav-plugin': url
+    },
+    urlArgs: packFlag
+  });
+};
+
+var runPlugin = function () {
+  log("React loaded", !!window.React);
+  log("ReactDOM loaded", !!window.ReactDOM);
+  log("RSVP loaded", !!window.RSVP);
+  log("stacktrace loaded", !!window.printStackTrace);
+  log("requirejs loaded", !!window.require && !!window.define);
+  log("SQUP loaded", !!window.squp);
+  log("platform loaded !");
+
+  window.squpPlatformFinishedLoading = true;
+  window.squpPlatformLoaded();
+};
+
+// requires depndencies and call the callback function if it is passed as parameter
+var requireDependencies = function (files, callback, inWindow) {
+  if (files.length) {
+    require(files, function () {
+      for (var i in inWindow || []) {
+        window[inWindow[i]] = arguments[i];
+      }
+      if(callback) {
+        callback();
+      }
+    });
+  } else if(callback) {
+    callback();
+  }
+}
+
+var loadingReact = false;
+
+// Load RSVP, React and stacktrace
+var level1Loader = function () {
+  log("Start loading");
+
+  // If Require.js is not loaded we include the files using script tags
+  if (!window.require || !window.define) {
+
+    loadingReact = true;
+    var files = [];
+
+    // IE9 polyfills
+    if (lteIE9()) {
+      var ieFiles = [
+/* Bundle JS : page */
+"/sq-meta-nav-plugin/combined-pack/combined.js.h-106221172.cH4sIAAAAAAAAAGNgYHBiYGBwAOIKAKlMnI0MAAAA.pack"];
+      files = files.concat(ieFiles);
+    }
+
+    var globalFiles = [
+/* Bundle JS : page */
+"/sq-meta-nav-plugin/combined-pack/combined.js.h1189022663.cH4sIAAAAAAAAAGNgYDjIwMCwDoifAQDetxdSDAAAAA.pack"];
+
+    files = files.concat(globalFiles);
+
+    scriptLoader(files, function () {
+
+      // Requirejs must be loaded after rsvp, react and stacktrace
+      scriptLoader(['/sq-meta-nav-plugin/webjars/requirejs/2.1.15/require.min.js'], function () {
+        configureRequire();
+        level2Loader();
+      });
+
+    }, false);
+
+  } else {
+    // IfRequire.js is loaded we include the files using Require.js
+
+    var inWindow = [];
+    var files = [];
+
+    if (!window.React) {
+      loadingReact = true;
+      files.push('sq-meta-nav-plugin/webjars/react/0.14.7/react.min');
+      inWindow.push("React");
+    }
+
+    if (!window.RSVP) {
+      files.push('sq-meta-nav-plugin/webjars/rsvp/3.0.18/rsvp.min');
+      inWindow.push("RSVP");
+    }
+
+    if (!window.printStackTrace) {
+      files.push('sq-meta-nav-plugin/webjars/stacktrace/0.6.0/stacktrace');
+      inWindow.push("printStackTrace");
+    }
+
+    if (!String.prototype.trim) {
+      files.push('sq-meta-nav-plugin/webjars/es5-shim/4.5.7/es5-shim.min');
+    }
+
+    if (!Object.create) {
+      files.push('sq-meta-nav-plugin/webjars/es5-shim/4.5.7/es5-sham.min');
+    }
+
+    configureRequire();
+
+    requireDependencies(files, level2Loader, inWindow);
+
+  }
+};
+
+// Load ReactDom which depends in React.js
+var level2Loader = function () {
+  var inWindow = [];
+  var files = [];
+
+  if (!window.ReactDOM) {
+    if (loadingReact) {
+      if (!require.defined('react')) {
+        define('react', function() { 
+          return window.React; 
+        });
+      };
+      files.push('sq-meta-nav-plugin/webjars/react/0.14.7/react-dom.min');
+      inWindow.push("ReactDOM");
+    } else {
+      // In this case we probably have react 0.13
+      // We'll just alias React as ReactDOM
+      window.ReactDOM = window.React;
+      log("ReactDOM was aliased to React, update React")
+    }
+  }
+
+  requireDependencies(files, level3Loader, inWindow);
+};
+
+var level3Loader = function () {
+
+  var files = [];
+
+  if (!window.stjs || !window.stjs.bind) {
+    files = files.concat(
+      [
+/* Bundle JS : page */
+"/sq-meta-nav-plugin/combined-pack/combined.js.h-976874694.cH4sIAAAAAAAAAGNgYHgBAFa1lY8EAAAA.pack"]);
+  }
+
+  scriptLoader(files, level4Loader);
+};
+
+var level4Loader = function() {
+
+  var files = [];
+
+  files = files.concat(
+      [
+/* Bundle JS : page */
+"/sq-meta-nav-plugin/combined-pack/combined.js.h-1216098010.cH4sIAAAAAAAAAGNgYEhmYGB4DsRPgfgREN8DAN7Bnr8UAAAA.pack"]
+  );
+
+  scriptLoader(files, level5Loader);
+};
+
+var level5Loader = function () {
+  var files = [].concat(
+    [
+/* Bundle JS : page */
+"/sq-meta-nav-plugin/combined-pack/combined.js.h-1149824082.cH4sIAAAAAAAAAGNgYLjPwMDwBACAEeDJCAAAAA.pack"]
+  );
+  scriptLoader(files, runPlugin, false);
+};
+
+level1Loader();

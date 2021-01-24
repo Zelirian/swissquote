@@ -1,0 +1,120 @@
+/*-----------------------------------
+ *---------- COMMON LAYOUT ---------*
+ -----------------------------------*/
+/*
+ * 	=Global layout elements
+ *	=Content layout
+ *		|-
+ *	=Right column layout
+ *	=Footer layout
+ */
+
+  /*------------------*/
+ /* =CONTENT LAYOUT= */
+/*-----------------------------------------------------------------------------*/
+
+	.hide{display:none;}
+	.clear{clear:both;}
+
+	/* clearfix : http://www.positioniseverything.net/easyclearing.html */
+	.clearfix:after { content: "\0020";display: block;height: 0;clear: both;visibility: hidden;overflow: hidden;}
+	.clearfix { display: inline-table; }
+	/* Hides from IE-mac \*/
+	.clearfix { height: 1%; }
+	.clearfix { display: block; }
+	/* End hide from IE-mac */
+
+	.floatLeft{float:left;}
+	.floatRight{float:right;}
+
+	#contentwrapper {
+		float: left;
+		margin-left: 10px;
+		margin-top: 20px;
+	}
+
+	#contentwrapper.threeCols{
+		width:555px;
+	}
+
+	div.subscriptionBox,
+	div.advertBox{width:450px !important}
+
+	/* Breadcrumb */
+	ol.breadCrumb {
+		list-style: none;
+		list-style-image: none;
+		margin: 0;
+		padding: 0 0 0 7px;
+		height: 35px;
+	}
+	ol.breadCrumb li {
+		float: left;
+		font-size: 12px;
+		margin-right: 4px;
+		font-weight: bold;
+		color:#f63;
+	}
+	ol.breadCrumb li a, ol.breadCrumb li a:link, ol.breadCrumb li a:active, ol.breadCrumb li a:visited, ol.breadCrumb li a:hover  {
+		color:#666;
+		text-decoration: none;
+		font-weight:bold;
+	}
+
+	/* section tag quickfix*/
+	.section {padding-top:1px;}
+
+
+  /*-----------------*/
+ /* =FOOTER LAYOUT= */
+/*-----------------------------------------------------------------------------*/
+
+	#footerContent {
+		font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+		font-size:11px;
+	    clear: left;
+	    color: #6e6a6a;
+		margin:auto;
+	    padding-top:10px;
+		padding-bottom:5px
+	}
+
+
+
+	/* Sticky Footer - http://ryanfait.com/sticky-footer/ */
+	    html, body {height: 100%;}
+
+	    .sfWrapper {
+	    min-height: 100%;
+	    height: auto !important;
+	    height: 100%;
+	    margin: 0 auto -50px;
+	    }
+
+	    .sfFooter, .sfPush {height: 50px;clear:both}
+
+	/* END Sticky Footer */
+
+
+
+
+
+
+/** WHAT IS THIS ? LEGACY OR USED ? */
+		.expandButton{float:left;line-height:28px;background: transparent url(../images/nav/login_button_left_ex.gif) no-repeat scroll top left;}
+		.buttonContent{float:left;margin-left:8px;background: transparent url(../images/nav/login_button_center_ex.gif) repeat-x scroll top left;}
+		.buttonContent .defaultText{float:left}
+		.buttonClick{float:left;background: transparent url(../images/nav/login_button_right.gif) no-repeat scroll top right;}
+
+		.expandButton{float:right}
+		.expandButton ul{float:left; margin:0;padding:0; list-style:none}
+		.expandButton li{float:left}
+
+		.expand{display:block;}
+		.expandButton.expand{background: transparent url(../images/nav/login_button_open_left_ex.gif) no-repeat scroll top left;}
+		.buttonContent.expand{background: transparent url(../images/nav/login_button_open_center_ex.gif) repeat-x scroll top left;}
+
+.sqmr_id{border-bottom: 1px dotted red}
+.sqmr_id .sqmr_id_hover{display: none}
+.sqmr_id:hover{border-bottom: none; background-color: yellow}
+.sqmr_id:hover .sqmr_id_hover{display: inline !important; background-color: red; padding:2px; border:1px solid black; color:white; position:absolute;}
