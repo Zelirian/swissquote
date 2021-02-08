@@ -10,11 +10,11 @@ def korrSymbol(symbol):
     if symbol.lower() == "car-investissem":
         out = 'CAR-INVESAEURAC'
 
-    if symbol.lower() == "Res-GlobaMicrAD":
-        out = 'RES - MICROANDSME'
+    if symbol.lower() == "res-globamicrad":
+        out = 'RES-MICROANDSME'
 
-    if symbol.lower() == "CS-responsAbili":
-        out = 'RES - MICROANDSME'
+    if symbol.lower() == "cs-responsabili":
+        out = 'RES-MICROANDSME'
 
     return out
 
@@ -71,7 +71,7 @@ def scrapeSwissquoteTradingPageWithPandas(transaktionen):
                 letzterPreis = float(asset[letzterPreisCol].replace("'", ""))
                 config.letzterPreis[isin] = letzterPreis
             else:
-                print(f"keine isin zu {symbol=}")
+                print(f"FEHLER: keine isin zu {symbol=}")
 
 
 

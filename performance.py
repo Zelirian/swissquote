@@ -52,6 +52,7 @@ def korrName(name):
         out='CSF Lux Commodity Index Plus Sfr B'
     if name == 'rA Global Microfinance B':
         out = 'RESPONSABILITY GLOBAL MICROFINANCE FUND B'
+
     return out
 
 
@@ -77,13 +78,34 @@ if __name__ == '__main__':
 
             transaktionen[i] = dict(zip(fields, values))
 
-            # ändere die isin nummer zu symbolen, welche unterschiedliche isin haben
+            # für tests
+            if transaktionen[i]['ISIN'] == 'CH0013841017':
+                print(transaktionen[i])
 
-            # Spezialfall SYNN -> SYNNE
-            if transaktionen[i]['ISIN'] == 'CH0011037469': transaktionen[i]['ISIN'] = 'CH0316124541'  # SYNN zu SYNNE
+            # zu ignorierende isin
+            if transaktionen[i]['ISIN'] in ['GB00BMF7GD44','CH0465781083']:
+                continue
 
             # Spezialfall ZGLD
             if transaktionen[i]['ISIN'] == 'CH0024391002' and transaktionen[i]['Transaktionen'] == "Kauf": transaktionen[i]['ISIN'] = 'CH0139101593'
+
+            # Spezialfall ZUEBLIN
+            if transaktionen[i]['ISIN'] == 'CH0021831182':
+                transaktionen[i]['ISIN'] = 'CH0312309682'
+                transaktionen[i]['Name'] = 'ZUEBLIN IMM N'
+            if transaktionen[i]['ISIN'] == 'CH0312309682' and transaktionen[i]['Transaktionen'] == "Verkauf":
+                transaktionen[i]['Anzahl'] = '2500'
+                transaktionen[i]['Stückpreis'] = '0.01'
+
+            # Spezialfall SYNN -> SYNNE
+            if transaktionen[i]['ISIN'] == 'CH0011037469':
+                transaktionen[i]['ISIN'] = 'CH0316124541'
+                transaktionen[i]['Name'] = 'SYNGENTA N  2. Linie'
+                transaktionen[i]['Symbol'] = 'SYNNE'
+            if transaktionen[i]['ISIN'] == 'CH0316124541' and transaktionen[i]['Transaktionen'] == "Rückzahlung":
+                if transaktionen[i]['Anzahl'] == '-12':
+                    transaktionen[i]['Anzahl'] = '12'
+                    transaktionen[i]['Transaktionen'] = 'Verkauf'
 
             transaktionen[i]['Name'] = korrName(transaktionen[i]['Name'])
 
@@ -106,8 +128,6 @@ if __name__ == '__main__':
             #transaktionen[i]['Saldo'] = float(transaktionen[i]['Saldo'].replace("'", ""))
             transaktionen[i]['Kosten'] = strToFloat(transaktionen[i]['Kosten'])
             #transaktionen[i]['stueckkosten'] = transaktionen[i]['Kosten'] / transaktionen[i]['Anzahl']
-            if transaktionen[i]['Name'] == 'BABA-SW ORD':
-                print('baba')
             if len(curr) > 0:
                 rateToChf = config.currencyConverter.convert(1, curr, 'CHF', date=dtDatum)
                 transaktionen[i]['rate'] = rateToChf

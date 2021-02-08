@@ -11,9 +11,20 @@ splitFaktoren = {"ZKB GOLD ETF": {'datum': datetime.date(2011,10,26), 'anzahlFak
 nameExcludeList = ['CS GROUP ANRECHT ZU AKTIENDIVIDEND 2013-13.5.13',
                    'CS GROUP N ANR',
                    'INA INVEST HLDG SUB RIGHTS FOR SHS 2020-10.06.20',
+                   'ITM POWER SUB.SHS',
+                   'LAFARGEHOLCIM-ELECTION RIGHT 2019-3 1.05.19',
                    'MAGLTQ LEONGUE C 08/21',
+                   'MEYER BURGER ANR',
+                   'ORASCOM DEVL - ANRECHT  2015-14.12. 15',
                    'PRECIOUS WOODS HLDG - REG.SHS',
-                   'PRECIOUS WOODS N']
+                   'PRECIOUS WOODS N',
+                   'PRECIOUS WOODS HLDG ANR. 2013-11.3. 13',
+                   'PRECIOUS WOODS HOLDING ANRECHT 20 1 6-28.6.16',
+                   'ST.GALLER KB - SUBSCRIPTION RIGHTS 2019-23.05.19',
+                   'VON ROLL HLDG - ANRECHT  2016-6.4.1 6',
+                   'VON ROLL HLDG - ANRECHT FUER WAND. 2014-11.06.2014',
+                   'ZUEBLIN IMM ANR',
+                   ]
 
 
 def normalisiereAnzahlStueckpreis(trans):
@@ -65,7 +76,7 @@ def erstelleVKZeile(transaktionen, v,k):
 
     tage = (v['datum'] - k['datum']).days
     if tage == 0:
-        print("keine Tage")
+        print("FEHLER: keine Tage")
     gewinn = vchf - kchf + ertrag
     renditePa = gewinn/kchf * 365/tage * 100
     kaufDatum = k['datum'].strftime("%Y/%m/%d")
@@ -79,16 +90,15 @@ def erstelleVKZeile(transaktionen, v,k):
 
 def kalkuliereTitelRendite(name, transaktionen):
 
-    print("-------")
 
     totalGewinn = 0
     totalVerlust = 0
 
     if len(transaktionen) == 0:
-        print(f"keine transaktionen zu {name}")
+        print(f"FEHLER: keine transaktionen zu {name}")
         return 0, 0
 
-    print(f"titel: {transaktionen[0]['Name']=}")
+    #print(f"titel: {transaktionen[0]['Name']=}")
 
     kaeufe = []
     verkaeufe = []
@@ -105,8 +115,6 @@ def kalkuliereTitelRendite(name, transaktionen):
     kauf = namedtuple('kauf', 'datum nettobetrag kosten passivTage')
     verkauf = namedtuple('kauf', 'datum nettobetrag kosten passivTage')
 
-    if name == "INA INVEST N":
-        print("debug ")
     for trans in transaktionen:
         normalisiereAnzahlStueckpreis(trans)
 
@@ -160,7 +168,7 @@ def kalkuliereTitelRendite(name, transaktionen):
 
     # verkaufe offene käufe zum bewertungstag
     if len(orderedKauf1) == 0:
-        print(f"kein Kauf vorhanden")
+        print(f"FEHLER: kein Kauf vorhanden")
         return 0, 0
 
     v = orderedKauf1[0].copy()
@@ -185,9 +193,9 @@ def kalkuliereTitelRendite(name, transaktionen):
 
             except Exception as e:
                 v['Stückpreis'] = 0
-                print(f"kein aktueller Wert zu ISIN {k['ISIN']=}")
+                print(f"FEHLER: kein aktueller Wert zu ISIN {k['ISIN']=}")
 
-        return totalGewinn, totalVerlust
+    return totalGewinn, totalVerlust
 
 def titelRenditen(transaktionen):
 
@@ -203,10 +211,17 @@ def titelRenditen(transaktionen):
 
         if name in nameExcludeList: continue
 
+        print("-------")
+        print(name)
+
+        # test einzelne WS
+        #if name != "ZUEBLIN IMM N":
+        #    continue
         #if "PRECIOUS" in symbol: continue       # es gibt keinen kauf in den transaktionen???
         #if symbol == "CS GROUP ANR": continue
 
-        titelTrans = [transaktionen[x] for x in transaktionen if transaktionen[x]['Name'].replace("(","").replace(")","")  == name]
+        #titelTrans = [transaktionen[x] for x in transaktionen if transaktionen[x]['Name'].replace("(","").replace(")","")  == name]
+        titelTrans = [transaktionen[x] for x in transaktionen if transaktionen[x]['Name'] == name]
         orderedTitelTrans = sorted(titelTrans, key=lambda k: k['tage'])
 
         totalGewinn, totalVerlust = kalkuliereTitelRendite(name, orderedTitelTrans)
