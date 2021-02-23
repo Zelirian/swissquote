@@ -2,11 +2,10 @@
 
 {% block content %}
     <h1>{% block title %} Welcome to asset review {% endblock %}</h1>
-    {% for post in posts %}
+    {% for asset in assets %}
         <a href="#">
-            <h2>{{ post['title'] }}</h2>
+            <h4>{{ asset.assetName }}</h4>
         </a>
-        <span class="badge badge-primary">{{ post['created'] }}</span>
         <hr>
     {% endfor %}
 {% endblock %}

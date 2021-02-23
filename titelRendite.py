@@ -1,7 +1,6 @@
 
 import datetime
 from collections import namedtuple
-import pandas as pd
 
 import config
 
@@ -24,6 +23,7 @@ nameExcludeList = ['CS GROUP ANRECHT ZU AKTIENDIVIDEND 2013-13.5.13',
                    'VON ROLL HLDG - ANRECHT  2016-6.4.1 6',
                    'VON ROLL HLDG - ANRECHT FUER WAND. 2014-11.06.2014',
                    'ZUEBLIN IMM ANR',
+                   'RMAGQV VON C 07-21 -Z',
                    ]
 
 
@@ -34,6 +34,7 @@ def normalisiereAnzahlStueckpreis(trans):
             if trans['datum'] <= split['datum']:
                 trans['Anzahl'] = trans['Anzahl'] * split['anzahlFaktor']
                 trans['Stückpreis'] = trans['Stückpreis'] / split['anzahlFaktor']
+
 
 def akkumuliereGleichesDatumTransaktionen(trans):
     if len(trans) == 0:
@@ -56,7 +57,7 @@ def akkumuliereGleichesDatumTransaktionen(trans):
     return trans
 
 
-def erstelleVKZeile(transaktionen, v,k):
+def erstelleVKZeile(transaktionen, v, k, dbCursor):
     # todo Kosten + Zusatzertrag
     kKosten = k['Anzahl'] * k['stueckkosten']
     vKosten = v['Anzahl'] * v['stueckkosten']
@@ -82,13 +83,39 @@ def erstelleVKZeile(transaktionen, v,k):
     kaufDatum = k['datum'].strftime("%Y/%m/%d")
     verkaufDatum = v['datum'].strftime("%Y/%m/%d")
     print(f"{   kaufDatum}, anz:{k['Anzahl']:8.1f}, p:{k['Stückpreis']:10,.2f},    kauf:{kauf:10,.0f}, kosten:{kKosten:7.2f}, kurs({k['WährungNettobetrag']}) {k['rate']:5.3f}, chf:{kchf:10,.0f}")
+    '''
+    transId    INTEGER   PRIMARY    KEY,
+    assetId    INTEGER,
+    transaktionDatum  TEXT,
+    transaktionArt    TEXT,
+    anzahl       INTEGER,
+    kaufKurs      FLOAT,
+    kaufKosten      FLOAT,
+    kaufWaehrung      TEXT,
+    waehrungKurs       FLOAT,
+    chf        INTEGER,
+    '''
+    transId = config.transId
+    transaktionDatum = kaufDatum
+    transaktionArt = 'Kauf'
+    anzahl = k['Anzahl']
+    kaufKurs = k['stueckkosten']
+    transaktionKosten = kKosten
+    kaufWaehrung = rateToChf
+    #waehrungKurs =
+    #chf =
+    dbCursor.execute("INSERT INTO transactions VALUES(?,?,?)",
+                     (transId, assetId, transaktionDatum, transaktionArt, anzahl,
+                      kaufKurs, kaufKosten, kaufWaehrung, waehrungKurs, chf))
+    config.transId += 1
+
     print(f"{verkaufDatum}, anz:{v['Anzahl']:8.1f}, p:{v['Stückpreis']:10,.2f}, verkauf:{verkauf:10,.0f}, kosten:{vKosten:7.2f}, kurs({k['WährungNettobetrag']}) {v['rate']:5.3f}, chf:{vchf:10,.0f}, diff:{vchf-kchf:10,.0f}")
     print(f"{ertrag=:6.0f}, {gewinn=:6,.0f},  {tage=:4.0f}, {renditePa=:6.2f}")
 
     return gewinn
 
 
-def kalkuliereTitelRendite(name, transaktionen):
+def kalkuliereTitelRendite(name, transaktionen, dbCursor, assetId):
 
 
     totalGewinn = 0
@@ -105,7 +132,7 @@ def kalkuliereTitelRendite(name, transaktionen):
     kosten = []
     ertrag = 0
 
-    basisDatum = datetime.date(2000,1,1)
+
     gesamtTage = (config.berechnungsDatum - basisDatum).days
 
     passiveZinstage = 0
@@ -197,7 +224,11 @@ def kalkuliereTitelRendite(name, transaktionen):
 
     return totalGewinn, totalVerlust
 
+
 def titelRenditen(transaktionen):
+
+    assetId = 0
+    config.transId = 0
 
     gesamtGewinn = 0
     gesamtVerlust = 0
@@ -206,10 +237,16 @@ def titelRenditen(transaktionen):
                      if len(transaktionen[x]['Name']) > 0 ])
                      #if transaktionen[x]['Name'] == 'EMS-CHEMIE N'])
 
+    db = config.get_db_connection()
+    dbCursor = db.cursor()
+
     orderedNameListe = sorted(nameListe)
     for name in orderedNameListe:
 
         if name in nameExcludeList: continue
+
+        dbCursor.execute('INSERT INTO assets VALUES(?,?)', (assetId, name))
+        assetId += 1
 
         print("-------")
         print(name)
@@ -224,7 +261,7 @@ def titelRenditen(transaktionen):
         titelTrans = [transaktionen[x] for x in transaktionen if transaktionen[x]['Name'] == name]
         orderedTitelTrans = sorted(titelTrans, key=lambda k: k['tage'])
 
-        totalGewinn, totalVerlust = kalkuliereTitelRendite(name, orderedTitelTrans)
+        totalGewinn, totalVerlust = kalkuliereTitelRendite(name, orderedTitelTrans, dbCursor, assetId)
 
         print(f"{totalGewinn=:10,.0f}, {totalVerlust=:10,.0f}")
         gesamtGewinn += totalGewinn
@@ -232,3 +269,6 @@ def titelRenditen(transaktionen):
 
     print("===================================================")
     print(f"{gesamtGewinn=:10,.0f}, {gesamtVerlust=:10,.0f}")
+
+    db.commit()
+    db.close()
